@@ -1,21 +1,21 @@
 package com.example.odam;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.os.Bundle;
 
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class FirstMapActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
+    private ActivityFirstMapBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityFirstMapBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
     }
