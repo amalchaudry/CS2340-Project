@@ -18,5 +18,8 @@ public class FirstMapActivity extends AppCompatActivity {
         binding = ActivityFirstMapBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        int lakeHP = 0; //change this to be equivalent to other configuration screen's difficulty variable
+        binding.lakeHealthText.setText("Lake HP: " + lakeHP);
     }
 }
