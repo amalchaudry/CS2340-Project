@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.odam">
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ODam">
         <activity
-            android:name=".MainActivity2"
+            android:name=".FirstMapActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -21,10 +22,4 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
-
-</manifest>
