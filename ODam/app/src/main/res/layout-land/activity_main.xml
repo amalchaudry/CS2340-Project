@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/water_background"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="-118dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonStart"
+        android:layout_width="230dp"
+        android:layout_height="91dp"
+        android:background="#63dec1"
+        android:text="START"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonQuit"
+        android:layout_width="230dp"
+        android:layout_height="91dp"
+        android:text="QUIT"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:background="#63dec1"
+        android:layout_below="@id/buttonStart"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
