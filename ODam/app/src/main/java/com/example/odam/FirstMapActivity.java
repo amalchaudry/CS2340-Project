@@ -19,10 +19,28 @@ public class FirstMapActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        int lakeHP = 0; //change this to be equivalent to other configuration screen's difficulty variable
-        binding.lakeHealthText.setText("Lake HP: " + lakeHP);
+         //change this to be equivalent to other configuration screen's difficulty variable
 
-        int money = 2000;
+
+        Difficulty diff = Difficulty.EASY;
+        int money;
+        int lakeHP;
+        switch (diff) {
+            case EASY:
+                money = 600;
+                lakeHP = 200;
+            case MEDIUM:
+                money = 500;
+                lakeHP = 150;
+            case HARD:
+                money = 400;
+                lakeHP = 100;
+            default:
+                money = 600;
+                lakeHP = 200;
+        }
+
         binding.moneyText.setText("Money: " + money);
+        binding.lakeHealthText.setText("Lake HP: " + lakeHP);
     }
 }
