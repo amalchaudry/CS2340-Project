@@ -44,7 +44,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     }
 
     private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, FirstMapActivity.class);
+        Intent switchActivityIntent = new Intent(this, ConfigActivity.class);
         startActivity(switchActivityIntent);
     }
 }
