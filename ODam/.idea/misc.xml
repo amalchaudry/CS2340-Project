@@ -6,6 +6,12 @@
         <entry key="..\:/Documents/HW/_Spring 2022/CS 2340/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_first_map.xml" value="0.34811165845648606" />
         <entry key="..\:/Documents/HW/_Spring 2022/CS 2340/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Documents/HW/_Spring 2022/CS 2340/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_main2.xml" value="0.2246376811594203" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/fish_background.xml" value="0.2745" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2745" />
+        <entry key="app/src/main/res/layout/activity_config.xml" value="0.11235292618891152" />
+        <entry key="app/src/main/res/layout/activity_config2.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/activity_first_map.xml" value="0.1905982905982906" />
       </map>
     </option>
   </component>
