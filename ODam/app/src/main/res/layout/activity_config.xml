@@ -10,10 +10,9 @@
         android:id="@+id/imageView10"
         android:layout_width="1587dp"
         android:layout_height="574dp"
-        android:layout_marginTop="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/configbackground"
-        tools:layout_editor_absoluteX="-362dp" />
+        tools:layout_editor_absoluteX="-368dp" />
 
     <TextView
         android:id="@+id/textView2"
