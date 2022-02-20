@@ -11,13 +11,6 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ODam!"
-=======
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
@@ -34,12 +27,11 @@
         android:layout_height="91dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="248dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="184dp"
         android:background="#63dec1"
         android:text="START"
         android:textSize="36sp"
         android:textStyle="bold"
->>>>>>> Amal
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView1" />
 
@@ -49,7 +41,7 @@
         android:layout_height="91dp"
         android:layout_below="@id/buttonStart"
         android:layout_marginStart="248dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="60dp"
         android:background="#63dec1"
         android:text="QUIT"
         android:textSize="36sp"
