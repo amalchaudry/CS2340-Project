@@ -15,6 +15,7 @@ public class ConfigActivity extends AppCompatActivity {
     private ActivityConfigBinding binding;
     private String lightTeal = "#FF03DAC5";
     private String darkTeal = "#FF018786";
+    private boolean diffSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class ConfigActivity extends AppCompatActivity {
                     ColorStateList.valueOf(Color.parseColor(darkTeal)));
                 binding.hardButton.setBackgroundTintList(
                     ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                diffSelected = true;
             }
         });
 
@@ -48,6 +50,7 @@ public class ConfigActivity extends AppCompatActivity {
                     ColorStateList.valueOf(Color.parseColor(lightTeal)));
                 binding.hardButton.setBackgroundTintList(
                     ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                diffSelected = true;
             }
         });
 
@@ -62,6 +65,7 @@ public class ConfigActivity extends AppCompatActivity {
                     ColorStateList.valueOf(Color.parseColor(darkTeal)));
                 binding.hardButton.setBackgroundTintList(
                     ColorStateList.valueOf(Color.parseColor(lightTeal)));
+                diffSelected = true;
             }
         });
 
@@ -69,7 +73,7 @@ public class ConfigActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (binding.nameTextEdit.getText().toString().trim().length() > 0) {
+                if (binding.nameTextEdit.getText().toString().trim().length() > 0 && diffSelected) {
                     ((GameApplication) getApplication()).setName(
                         binding.nameTextEdit.getText().toString());
                     switchActivities();
