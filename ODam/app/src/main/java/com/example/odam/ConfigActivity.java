@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.odam.databinding.ActivityConfigBinding;
-import com.example.odam.databinding.ActivityWelcomeScreenBinding;
 
 public class ConfigActivity extends AppCompatActivity {
 
@@ -29,9 +28,12 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ((GameApplication) getApplication()).setDiff(Difficulty.EASY);
-                binding.easyButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(lightTeal)));
-                binding.mediumButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
-                binding.hardButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.easyButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(lightTeal)));
+                binding.mediumButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.hardButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
             }
         });
 
@@ -40,9 +42,12 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ((GameApplication) getApplication()).setDiff(Difficulty.MEDIUM);
-                binding.easyButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
-                binding.mediumButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(lightTeal)));
-                binding.hardButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.easyButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.mediumButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(lightTeal)));
+                binding.hardButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
             }
         });
 
@@ -51,9 +56,12 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ((GameApplication) getApplication()).setDiff(Difficulty.HARD);
-                binding.easyButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
-                binding.mediumButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(darkTeal)));
-                binding.hardButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(lightTeal)));
+                binding.easyButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.mediumButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(darkTeal)));
+                binding.hardButton.setBackgroundTintList(
+                    ColorStateList.valueOf(Color.parseColor(lightTeal)));
             }
         });
 
@@ -62,7 +70,8 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (binding.nameTextEdit.getText().toString().trim().length() > 0) {
-                    ((GameApplication) getApplication()).setName(binding.nameTextEdit.getText().toString());
+                    ((GameApplication) getApplication()).setName(
+                        binding.nameTextEdit.getText().toString());
                     switchActivities();
                 }
             }

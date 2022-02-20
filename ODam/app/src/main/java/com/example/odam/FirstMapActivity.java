@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
 
@@ -20,26 +19,26 @@ public class FirstMapActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-         //change this to be equivalent to other configuration screen's difficulty variable
+        //change this to be equivalent to other configuration screen's difficulty variable
 
 
         Difficulty diff = ((GameApplication) getApplication()).getDiff();
         Log.d("Diff", diff.toString());
-        int money;;
+        int money;
         int lakeHP;
         switch (diff) {
-            case MEDIUM:
-                money = 500;
-                lakeHP = 150;
-                break;
-            case HARD:
-                money = 400;
-                lakeHP = 100;
-                break;
-            default:
-                money = 600;
-                lakeHP = 200;
-                break;
+        case MEDIUM:
+            money = 500;
+            lakeHP = 150;
+            break;
+        case HARD:
+            money = 400;
+            lakeHP = 100;
+            break;
+        default:
+            money = 600;
+            lakeHP = 200;
+            break;
         }
 
         binding.moneyText.setText("Money: " + money);
