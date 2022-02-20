@@ -1,25 +1,20 @@
 package com.example.odam;
 
 import androidx.appcompat.app.AppCompatActivity;
-HEAD
 import android.view.View;
 
 
 import android.graphics.Color;
 import android.widget.Button;
- Amal
 import android.os.Bundle;
 
 import com.example.odam.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-HEAD
 
     private ActivityMainBinding binding;
 
-
-    Button button;
- Amal
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
