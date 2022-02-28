@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
 
 public class FirstMapActivity extends AppCompatActivity {
 
     private  ActivityFirstMapBinding binding;
+    private Tower chosenTower;
+    private ImageView chosenTowerImage;
+    private Difficulty diff;
+    private boolean isPlacingTower = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +26,9 @@ public class FirstMapActivity extends AppCompatActivity {
         setContentView(view);
 
         //change this to be equivalent to other configuration screen's difficulty variable
+        chosenTowerImage = new ImageView(FirstMapActivity.this);
 
-
-        Difficulty diff = ((GameApplication) getApplication()).getDiff();
+        diff = ((GameApplication) getApplication()).getDiff();
         Log.d("Diff", diff.toString());
         int money;
         int lakeHP;
@@ -43,5 +49,36 @@ public class FirstMapActivity extends AppCompatActivity {
 
         binding.moneyText.setText("Money: " + money);
         binding.lakeHealthText.setText("Lake HP: " + lakeHP);
+
+        //testing
+        binding.fisherButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                chosenTower = new FishermanTower(diff);
+                chosenTowerImage.setImageResource(chosenTower.getImage()); //TODO: Change to appropriate image
+                isPlacingTower = true;
+            }
+        });
+
+        //TODO: Try drag and drop listener instead
+        binding.mapImage.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                System.out.println("Hello");
+                chosenTowerImage.bringToFront();
+                int action = event.getAction();
+                switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    chosenTowerImage.setX(event.getX());
+                    chosenTowerImage.setY(event.getY());
+                case MotionEvent.ACTION_MOVE:
+                    chosenTowerImage.setX(event.getX());
+                    System.out.println(chosenTowerImage.getX());
+                    chosenTowerImage.setY(event.getY());
+                case MotionEvent.ACTION_UP:
+                    chosenTowerImage.setX(event.getX());
+                    chosenTowerImage.setY(event.getY());
+                }
+                return true;
+            }
+        });
     }
 }
