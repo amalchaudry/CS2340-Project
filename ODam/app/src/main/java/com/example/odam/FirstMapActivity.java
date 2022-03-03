@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -30,6 +31,11 @@ public class FirstMapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
 
         binding = ActivityFirstMapBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -62,6 +68,10 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.moneyText.setText("Money: " + money);
         binding.lakeHealthText.setText("Lake HP: " + lakeHP);
 
+//        int[] imageViewCoordinates = new int[2];
+//        binding.mapImage.getLocationOnScreen(imageViewCoordinates);
+//        binding.testview.setText(Float.toString(imageViewCoordinates[0]) + " " + Float.toString(imageViewCoordinates[1]));
+
         //testing
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -88,17 +98,31 @@ public class FirstMapActivity extends AppCompatActivity {
                     if (isPlacingTower && chosenTower != null) {
                         chosenTowerImage.setX((int)event.getX() - chosenTowerImage.getWidth() / 2);
                         chosenTowerImage.setY((int)event.getY() - chosenTowerImage.getHeight());
+                        int selectedArea = bitmap.getPixel((int) (event.getX()), (int) (event.getY() + 50));
+                        float[] hsv = new float[3];
+                        Color.colorToHSV(selectedArea, hsv);
+                        binding.testview.setText(Float.toString(hsv[0]));
+                        if (hsv[0] >= 175 && hsv[0] <= 260) {
+                            chosenTowerImage.setAlpha(1f);
+                        } else {
+                            chosenTowerImage.setAlpha(0.5f);
+                        }
                     }
+                    binding.testview.setText(event.getX() + " " + event.getY());
                     break;
                 case MotionEvent.ACTION_UP://TODO: https://stackoverflow.com/questions/17931816/how-to-tell-if-an-x-and-y-coordinate-are-inside-my-button for bounds check
                     if (isPlacingTower) {
                         isPlacingTower = false;
-                        chosenTowerImage.setAlpha(1f);
-                        int selectedArea = bitmap.getPixel((int)event.getX(), (int)event.getY());
-                        binding.testview.setText(String.format("0x%08X", selectedArea));
-                        if (selectedArea == 0xff18bbc0) {
+                        int[] imageViewCoordinates = new int[2];
+                        binding.mapImage.getLocationOnScreen(imageViewCoordinates);
+                        int selectedArea = bitmap.getPixel((int) (event.getX()), (int) (event.getY() + 100));
+                        float[] hsv = new float[3];
+                        Color.colorToHSV(selectedArea, hsv);
+                        binding.testview.setText(Float.toString(hsv[0]));
+                        if (hsv[0] >= 175 && hsv[0] <= 260) {
                             chosenTowerImage.setImageResource(0);
                         }
+                        chosenTowerImage.setAlpha(1f);
                     }
                     break;
                 }
@@ -130,7 +154,7 @@ public class FirstMapActivity extends AppCompatActivity {
         chosenTowerImage.setDrawingCacheEnabled(true);
     }
 
-    public void display(Tower tower, ImageView image) {
+    public void display(Tower tower, ImageView image) {//TODO: Adjust later to display info
         image.setX(200);
         image.setY(200);
     }
