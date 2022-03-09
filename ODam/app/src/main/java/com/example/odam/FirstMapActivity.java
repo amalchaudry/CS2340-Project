@@ -26,6 +26,8 @@ public class FirstMapActivity extends AppCompatActivity {
     private Difficulty diff;
     private boolean isPlacingTower = false;
     private Bitmap bitmap;
+    private int money;
+    private int lakeHP;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -48,19 +50,17 @@ public class FirstMapActivity extends AppCompatActivity {
 
         diff = ((GameApplication) getApplication()).getDiff();
         Log.d("Diff", diff.toString());
-        int money;
-        int lakeHP;
         switch (diff) {
         case MEDIUM:
-            money = 500;
+            money = 900;
             lakeHP = 150;
             break;
         case HARD:
-            money = 400;
+            money = 800;
             lakeHP = 100;
             break;
         default:
-            money = 600;
+            money = 1000;
             lakeHP = 200;
             break;
         }
@@ -72,22 +72,44 @@ public class FirstMapActivity extends AppCompatActivity {
 //        binding.mapImage.getLocationOnScreen(imageViewCoordinates);
 //        binding.testview.setText(Float.toString(imageViewCoordinates[0]) + " " + Float.toString(imageViewCoordinates[1]));
 
-        //testing
+        //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 chooseNewTower(new FishermanTower(diff));
                 isPlacingTower = true;
+                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
             }
         });
 
-        //TODO: Try drag and drop listener instead
+        //spearButton
+        binding.Spearman.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                chooseNewTower(new SpearTower(diff));
+                isPlacingTower = true;
+                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
+            }
+        });
+
+        // boatButton
+        binding.Boatman.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                chooseNewTower(new BoatTower(diff));
+                isPlacingTower = true;
+                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
+            }
+        });
+
+        //TODO: Try drag and drop listener instead and subtract money if you have to
+
         binding.mapImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 chosenTowerImage.bringToFront();
                 int action = event.getAction();
                 switch (action) {
                 case MotionEvent.ACTION_DOWN:
-                    if (isPlacingTower && chosenTower != null) {
+                    if (chosenTower != null && isPlacingTower && money - chosenTower.getCost() < 0) {
+                        binding.towerInfo.setText("Buy: Don't have \n enough money!");
+                    } else if (chosenTower != null && isPlacingTower && money - chosenTower.getCost() >= 0){
                         chosenTowerImage.setImageResource(chosenTower.getImage());
                         chosenTowerImage.setX((int)event.getX() - chosenTowerImage.getWidth() / 2);
                         chosenTowerImage.setY((int)event.getY() - chosenTowerImage.getHeight());
@@ -111,7 +133,7 @@ public class FirstMapActivity extends AppCompatActivity {
                     binding.testview.setText(event.getX() + " " + event.getY());
                     break;
                 case MotionEvent.ACTION_UP://TODO: https://stackoverflow.com/questions/17931816/how-to-tell-if-an-x-and-y-coordinate-are-inside-my-button for bounds check
-                    if (isPlacingTower) {
+                    if (isPlacingTower && chosenTower != null) {
                         isPlacingTower = false;
                         int[] imageViewCoordinates = new int[2];
                         binding.mapImage.getLocationOnScreen(imageViewCoordinates);
@@ -123,6 +145,11 @@ public class FirstMapActivity extends AppCompatActivity {
                             chosenTowerImage.setImageResource(0);
                         }
                         chosenTowerImage.setAlpha(1f);
+                        if (money - chosenTower.getCost() > 0) {
+                            money -= chosenTower.getCost();
+                            binding.moneyText.setText("Money: " + money);
+                            binding.towerInfo.setText("Buy: Purchased! \n " + chosenTower.getName() + " for " + chosenTower.getCost() );
+                        }
                     }
                     break;
                 }
@@ -131,6 +158,9 @@ public class FirstMapActivity extends AppCompatActivity {
         });
     }
 
+    public Difficulty getDiff() {
+        return diff;
+    }
     @SuppressLint("ClickableViewAccessibility")
     public void chooseNewTower(Tower tower) {
         chosenTower = tower;
@@ -157,6 +187,7 @@ public class FirstMapActivity extends AppCompatActivity {
     public void display(Tower tower, ImageView image) {//TODO: Adjust later to display info
         image.setX(200);
         image.setY(200);
+
     }
 
     public static Bitmap drawableToBitmap (Drawable drawable) {
@@ -179,5 +210,9 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    public void buyTower () {
+
     }
 }
