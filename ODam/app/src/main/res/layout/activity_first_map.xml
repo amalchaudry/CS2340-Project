@@ -75,7 +75,271 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="618dp"
-        tools:layout_editor_absoluteY="184dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/river1"
+        android:layout_width="540dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river2"
+        android:layout_width="19dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river3"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river4"
+        android:layout_width="373dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river5"
+        android:layout_width="75dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.624"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river6"
+        android:layout_width="66dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.667"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river7"
+        android:layout_width="71dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river8"
+        android:layout_width="66dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="212dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.605"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river9"
+        android:layout_width="41dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="220dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river10"
+        android:layout_width="46dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="224dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river11"
+        android:layout_width="68dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="236dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river12"
+        android:layout_width="182dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river13"
+        android:layout_width="105dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="244dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river14"
+        android:layout_width="14dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="288dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river15"
+        android:layout_width="109dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="288dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river16"
+        android:layout_width="15dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="288dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river17"
+        android:layout_width="375dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="324dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river18"
+        android:layout_width="339dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="336dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river19"
+        android:layout_width="229dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="344dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river20"
+        android:layout_width="92dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="312dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river22"
+        android:layout_width="83dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="296dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river23"
+        android:layout_width="83dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="300dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river24"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="272dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
+
+    <ImageView
+        android:id="@+id/river25"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="280dp"
+        app:layout_constraintEnd_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapImage"
+        app:srcCompat="@android:drawable/list_selector_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
