@@ -6,68 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".FirstMapActivity">
 
-    <TextView
-        android:id="@+id/lakeHealthText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Lake HP: 0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/mapImage"
-        app:layout_constraintTop_toBottomOf="@+id/moneyText" />
-
     <ImageView
-        android:id="@+id/mapImage"
-        android:layout_width="589dp"
-        android:layout_height="412dp"
-        android:contentDescription="map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_0005"
-        tools:ignore="ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/moneyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/archivo_black"
-        android:text="Money: 0"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toEndOf="@+id/mapImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
+        android:visibility="invisible"
         android:id="@+id/lakeMonumentImage"
         android:layout_width="84dp"
         android:layout_height="81dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/mapImage"
-        app:layout_constraintTop_toTopOf="@+id/mapImage"
-        app:layout_constraintVertical_bias="0.742"
-        app:srcCompat="@drawable/lake_monument" />
+        app:srcCompat="@drawable/lake_monument"
+        tools:layout_editor_absoluteX="505dp" />
+
+    <ImageView
+        android:id="@+id/mapImage"
+        android:layout_width="888dp"
+        android:layout_height="405dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mapver2" />
 
     <Button
         android:id="@+id/fisherButton"
         android:layout_width="73dp"
         android:layout_height="39dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
         android:text="Fisher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/mapImage"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/towerInfo" />
+
+    <Button
+        android:id="@+id/Spearman"
+        android:layout_width="90dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:text="Spearer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fisherButton" />
+
+    <Button
+        android:id="@+id/Boatman"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="32dp"
+        android:text="Boater"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Spearman" />
+
+    <TextView
+        android:id="@+id/lakeHealthText"
+        android:layout_width="92dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="292dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Lake HP: 0"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/moneyText"
+        android:layout_width="127dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Money: 0"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/lakeHealthText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/towerInfo"
+        android:layout_width="122dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Buy:"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lakeHealthText" />
 
     <TextView
@@ -75,14 +111,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="662dp"
+        tools:layout_editor_absoluteY="368dp" />
 
     <ImageView
         android:id="@+id/river1"
-        android:layout_width="540dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="508dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,9 +140,9 @@
         android:id="@+id/river3"
         android:layout_width="76dp"
         android:layout_height="74dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="112dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -115,9 +151,9 @@
         android:id="@+id/river4"
         android:layout_width="373dp"
         android:layout_height="23dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -126,9 +162,9 @@
         android:id="@+id/river5"
         android:layout_width="75dp"
         android:layout_height="52dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="160dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.624"
+        app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -137,9 +173,9 @@
         android:id="@+id/river6"
         android:layout_width="66dp"
         android:layout_height="21dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="184dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.667"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -148,9 +184,9 @@
         android:id="@+id/river7"
         android:layout_width="71dp"
         android:layout_height="26dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="164dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -159,9 +195,9 @@
         android:id="@+id/river8"
         android:layout_width="66dp"
         android:layout_height="25dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="188dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.605"
+        app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -170,9 +206,9 @@
         android:id="@+id/river9"
         android:layout_width="41dp"
         android:layout_height="24dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="204dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -181,9 +217,9 @@
         android:id="@+id/river10"
         android:layout_width="46dp"
         android:layout_height="30dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="212dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -192,9 +228,9 @@
         android:id="@+id/river11"
         android:layout_width="68dp"
         android:layout_height="35dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="224dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -203,9 +239,9 @@
         android:id="@+id/river12"
         android:layout_width="182dp"
         android:layout_height="28dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="256dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -214,9 +250,9 @@
         android:id="@+id/river13"
         android:layout_width="105dp"
         android:layout_height="29dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="240dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -225,9 +261,9 @@
         android:id="@+id/river14"
         android:layout_width="14dp"
         android:layout_height="48dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="292dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -236,20 +272,20 @@
         android:id="@+id/river15"
         android:layout_width="109dp"
         android:layout_height="40dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="284dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
 
     <ImageView
         android:id="@+id/river16"
-        android:layout_width="15dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="288dp"
+        android:layout_width="26dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="268dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -260,7 +296,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="324dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -269,9 +305,9 @@
         android:id="@+id/river18"
         android:layout_width="339dp"
         android:layout_height="18dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="340dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -280,9 +316,9 @@
         android:id="@+id/river19"
         android:layout_width="229dp"
         android:layout_height="22dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="352dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -291,9 +327,9 @@
         android:id="@+id/river20"
         android:layout_width="92dp"
         android:layout_height="29dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="304dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -302,9 +338,9 @@
         android:id="@+id/river22"
         android:layout_width="83dp"
         android:layout_height="41dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="292dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -313,9 +349,9 @@
         android:id="@+id/river23"
         android:layout_width="83dp"
         android:layout_height="41dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="304dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -324,9 +360,9 @@
         android:id="@+id/river24"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="336dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
@@ -335,9 +371,9 @@
         android:id="@+id/river25"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="356dp"
         app:layout_constraintEnd_toEndOf="@+id/mapImage"
-        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mapImage"
         app:srcCompat="@android:drawable/list_selector_background" />
