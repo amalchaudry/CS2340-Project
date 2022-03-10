@@ -23,11 +23,9 @@ import com.example.odam.databinding.ActivityFirstMapBinding;
 public class FirstMapActivity extends AppCompatActivity {
 
     private  ActivityFirstMapBinding binding;
-    private Tower chosenTower;
     private ImageView chosenTowerImage;
-    private Difficulty diff;
-    private boolean isPlacingTower = false;
     private Bitmap bitmap;
+    private Game game;
 //    private int money;
 //    private int lakeHP;
 
@@ -50,31 +48,11 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.getRoot().addView(chosenTowerImage);
         bitmap = drawableToBitmap(binding.mapImage.getDrawable());
 
+        game = new Game(((GameApplication) getApplication()).getDiff());
+        Player player = game.getPlayer();
 
-        diff = ((GameApplication) getApplication()).getDiff();
-        Log.d("Diff", diff.toString());
-        int money = 0;
-        int lakeHP = 0;
-
-        switch (diff) {
-        case MEDIUM:
-            money = 900;
-            lakeHP = 150;
-            break;
-        case HARD:
-            money = 800;
-            lakeHP = 100;
-            break;
-        default:
-            money = 1000;
-            lakeHP = 200;
-            break;
-        }
-
-        Player player = new Player(money, lakeHP);
-
-        binding.moneyText.setText("Money: " + money);
-        binding.lakeHealthText.setText("Lake HP: " + lakeHP);
+        binding.moneyText.setText("Money: " + player.getMoney());
+        binding.lakeHealthText.setText("Lake HP: " + player.getLakeHP());
 
 //        int[] imageViewCoordinates = new int[2];
 //        binding.mapImage.getLocationOnScreen(imageViewCoordinates);
@@ -83,27 +61,30 @@ public class FirstMapActivity extends AppCompatActivity {
         //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                chooseNewTower(new FishermanTower(diff));
-                isPlacingTower = true;
-                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
+                game.chooseNewTower(new FishermanTower(game.getDiff()));
+                Tower tower = game.getChosenTower();
+                newTowerImage(tower);
+                binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
 
         //spearButton
         binding.Spearman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                chooseNewTower(new SpearTower(diff));
-                isPlacingTower = true;
-                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
+                game.chooseNewTower(new SpearTower(game.getDiff()));
+                Tower tower = game.getChosenTower();
+                newTowerImage(tower);
+                binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
 
         // boatButton
         binding.Boatman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                chooseNewTower(new BoatTower(diff));
-                isPlacingTower = true;
-                binding.towerInfo.setText("Buy: \n" + chosenTower.getName() + " $" + chosenTower.getCost());
+                game.chooseNewTower(new BoatTower(game.getDiff()));
+                Tower tower = game.getChosenTower();
+                newTowerImage(tower);
+                binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
 
@@ -117,58 +98,37 @@ public class FirstMapActivity extends AppCompatActivity {
                 float offsetY = binding.mapImage.getY() - chosenTowerImage.getHeight() / 2;
                 switch (action) {
                 case MotionEvent.ACTION_DOWN:
-                    if (chosenTower != null && isPlacingTower && player.getMoney() - chosenTower.getCost() < 0) {
-                        binding.towerInfo.setText("Buy: Don't have \n enough money!");
-                    } else if (chosenTower != null && isPlacingTower && player.getMoney() - chosenTower.getCost() >= 0){
-                        chosenTowerImage.setImageResource(chosenTower.getImage());
-                        chosenTowerImage.setX((int)event.getX() + offsetX);
-                        chosenTowerImage.setY((int)event.getY() + offsetY);
-                        chosenTowerImage.setAlpha(0.5f);
+                    if (game.isPlacingChosenTower()) {
+                        if (game.canBuyChosenTower()) {
+                            chosenTowerImage.setImageResource(game.getChosenTower().getImage());
+                            chosenTowerImage.setX((int)event.getX() + offsetX);
+                            chosenTowerImage.setY((int)event.getY() + offsetY);
+                            chosenTowerImage.setAlpha(0.5f);
+                        } else {
+                            binding.towerInfo.setText("Buy: Don't have \n enough money!");
+                        }
                     }
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    if (isPlacingTower && chosenTower != null) {
+                    if (game.isPlacingChosenTower()) {
                         chosenTowerImage.setX((int)event.getX() + offsetX);
                         chosenTowerImage.setY((int)event.getY() + offsetY);
                     }
                     break;
                 case MotionEvent.ACTION_UP://TODO: https://stackoverflow.com/questions/17931816/how-to-tell-if-an-x-and-y-coordinate-are-inside-my-button for bounds check
-                    int bitmapOffsetX = 220;
-                    int bitmapOffsetY = 25;
-                    int viewableWidth = 1980;
-                    int viewableHeight = 1075;
-                    int mapWidth = 1530;
-                    int mapHeight = viewableHeight;
-                    int bitmapWidth = 3300;
-                    int bitmapHeight = 1640;
-                    float trueX = event.getX() - bitmapOffsetX;
-                    float trueY = event.getY() - bitmapOffsetY;
-                    boolean isWithinBoundsX = (0 <= trueX && trueX <= mapWidth);
-                    boolean isWithinBoundsY = (0 <= trueY && trueY <= mapHeight);
-                    if (isPlacingTower && chosenTower != null
-                            && isWithinBoundsX && isWithinBoundsY)  {
-                        isPlacingTower = false;
-                        chosenTowerImage.setAlpha(1f);
+                    if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)) {
+                        Tower tower = game.getChosenTower();
+                        game.setPlayerMoney(player.getMoney() - tower.getCost());
 
-                        int finalX = (int) (trueX / viewableWidth * bitmapWidth);
-                        int finalY = (int) (trueY / viewableHeight * bitmapHeight);
-                        int pixel = bitmap.getPixel(finalX, finalY);
-                        float[] hsv = new float[3];
-                        Color.colorToHSV(pixel, hsv);
-                        binding.testview.setText("Hue Value: " + hsv[0]);
-                        int lowerboundBlue = 180;
-                        int upperboundBlue = 200;
-                        if (lowerboundBlue <= hsv[0] && hsv[0] <= upperboundBlue) {
-                            deleteNewTower();
-                        }
-                        else if (player.getMoney() - chosenTower.getCost() > 0) {
-                            player.setMoney(player.getMoney() - chosenTower.getCost());
-                            binding.moneyText.setText("Money: " + player.getMoney());
-                            binding.towerInfo.setText("Buy: Purchased! \n " + chosenTower.getName() + " for " + chosenTower.getCost() );
-                        }
+                        binding.moneyText.setText("Money: " + player.getMoney());
+                        binding.towerInfo.setText("Buy: Purchased! \n " + tower.getName() + " for " + tower.getCost());
+
+                        chosenTowerImage.setAlpha(1f);
+                        game.stopChoosingTower();
                     } else {
-                        deleteNewTower();
-                        isPlacingTower = false;
+                        game.stopChoosingTower();
+                        chosenTowerImage.setImageResource(0);
+                        chosenTowerImage.setOnTouchListener(null);
                     }
                     break;
                 }
@@ -177,17 +137,8 @@ public class FirstMapActivity extends AppCompatActivity {
         });
     }
 
-    public Difficulty getDiff() {
-        return diff;
-    }
-
-    public void deleteNewTower() {
-        chosenTower = null;
-        chosenTowerImage.setImageResource(0);
-    }
     @SuppressLint("ClickableViewAccessibility")
-    public void chooseNewTower(Tower tower) {
-        chosenTower = tower;
+    public void newTowerImage(Tower tower) {
         chosenTowerImage = new ImageView(FirstMapActivity.this);
         chosenTowerImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -235,18 +186,4 @@ public class FirstMapActivity extends AppCompatActivity {
         return bitmap;
     }
 
-    float[] getPointerCoords(ImageView view, MotionEvent e)
-    {
-        int index = e.getActionIndex();
-        float[] coords = new float[] { e.getX(index), e.getY(index) };
-        Matrix matrix = new Matrix();
-        view.getImageMatrix().invert(matrix);
-        matrix.postTranslate(view.getScrollX(), view.getScrollY());
-        matrix.mapPoints(coords);
-        return coords;
-    }
-
-    public void buyTower () {
-
-    }
 }

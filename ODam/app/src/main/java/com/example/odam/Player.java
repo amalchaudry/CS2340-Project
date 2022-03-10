@@ -3,6 +3,7 @@ package com.example.odam;
 public class Player {
     private int money;
     private int lakeHP;
+    private int fishesCaught = 0;
 
     public Player(int money, int lakeHP) {
         this.lakeHP = lakeHP;
