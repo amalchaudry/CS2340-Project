@@ -122,11 +122,9 @@ public class FirstMapActivity extends AppCompatActivity {
 
                         binding.moneyText.setText("Money: " + player.getMoney());
                         binding.towerInfo.setText("Buy: Purchased! \n " + tower.getName() + " for " + tower.getCost());
-                        binding.testview.setText("hey");
                         chosenTowerImage.setAlpha(1f);
                         //game.stopChoosingTower();
                     } else {
-                        binding.testview.setText("woah");
                         game.stopChoosingTower();
                         chosenTowerImage.setImageResource(0);
                         chosenTowerImage.setOnTouchListener(null);
