@@ -2,11 +2,13 @@ package com.example.odam;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -153,14 +155,42 @@ public class FirstMapActivity extends AppCompatActivity {
                     }
                     break;
                 case MotionEvent.ACTION_UP://TODO: https://stackoverflow.com/questions/17931816/how-to-tell-if-an-x-and-y-coordinate-are-inside-my-button for bounds check
-                    if (isPlacingTower && chosenTower != null) {
+                    int bitmapOffsetX = 220;
+                    int bitmapOffsetY = 25;
+                    int viewableWidth = 1980;
+                    int viewableHeight = 1075;
+                    int mapWidth = 1530;
+                    int mapHeight = viewableHeight;
+                    int bitmapWidth = 3300;
+                    int bitmapHeight = 1640;
+                    float trueX = event.getX() - bitmapOffsetX;
+                    float trueY = event.getY() - bitmapOffsetY;
+                    boolean isWithinBoundsX = (0 <= trueX && trueX <= mapWidth);
+                    boolean isWithinBoundsY = (0 <= trueY && trueY <= mapHeight);
+                    if (isPlacingTower && chosenTower != null
+                            && isWithinBoundsX && isWithinBoundsY)  {
                         isPlacingTower = false;
                         chosenTowerImage.setAlpha(1f);
-                        if (player.getMoney() - chosenTower.getCost() > 0) {
+
+                        int finalX = (int) (trueX / viewableWidth * bitmapWidth);
+                        int finalY = (int) (trueY / viewableHeight * bitmapHeight);
+                        int pixel = bitmap.getPixel(finalX, finalY);
+                        float[] hsv = new float[3];
+                        Color.colorToHSV(pixel, hsv);
+                        binding.testview.setText("Hue Value: " + hsv[0]);
+                        int lowerboundBlue = 180;
+                        int upperboundBlue = 200;
+                        if (lowerboundBlue <= hsv[0] && hsv[0] <= upperboundBlue) {
+                            deleteNewTower();
+                        }
+                        else if (player.getMoney() - chosenTower.getCost() > 0) {
                             player.setMoney(player.getMoney() - chosenTower.getCost());
                             binding.moneyText.setText("Money: " + player.getMoney());
                             binding.towerInfo.setText("Buy: Purchased! \n " + chosenTower.getName() + " for " + chosenTower.getCost() );
                         }
+                    } else {
+                        deleteNewTower();
+                        isPlacingTower = false;
                     }
                     break;
                 }
@@ -171,6 +201,11 @@ public class FirstMapActivity extends AppCompatActivity {
 
     public Difficulty getDiff() {
         return diff;
+    }
+
+    public void deleteNewTower() {
+        chosenTower = null;
+        chosenTowerImage.setImageResource(0);
     }
     @SuppressLint("ClickableViewAccessibility")
     public void chooseNewTower(Tower tower) {
@@ -220,6 +255,17 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    float[] getPointerCoords(ImageView view, MotionEvent e)
+    {
+        int index = e.getActionIndex();
+        float[] coords = new float[] { e.getX(index), e.getY(index) };
+        Matrix matrix = new Matrix();
+        view.getImageMatrix().invert(matrix);
+        matrix.postTranslate(view.getScrollX(), view.getScrollY());
+        matrix.mapPoints(coords);
+        return coords;
     }
 
     public void buyTower () {
