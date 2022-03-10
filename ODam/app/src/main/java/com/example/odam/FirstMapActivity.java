@@ -107,28 +107,6 @@ public class FirstMapActivity extends AppCompatActivity {
             }
         });
 
-        binding.river1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int action = event.getAction();
-                binding.testview.setText("hello");
-                switch (action) {
-                    case MotionEvent.ACTION_UP:
-                        binding.testview.setText("hello1");
-                        if (isPlacingTower) {
-                            isPlacingTower = false;
-                            chosenTowerImage.setImageResource(0);
-                            chosenTower = null;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
-
-
         //TODO: Try drag and drop listener instead and subtract money if you have to
 
         binding.mapImage.setOnTouchListener(new View.OnTouchListener() {
