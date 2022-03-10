@@ -13,6 +13,7 @@ public class Game {
     private Tower chosenTower;
     private Difficulty diff;
     private boolean isPlacingTower = false;
+    private Player player;
 
     public Game(Difficulty diff) {
         this.diff = diff;
@@ -35,7 +36,7 @@ public class Game {
                 break;
         }
 
-        Player player = new Player(money, lakeHP);
+        player = new Player(money, lakeHP);
     }
 
     public void chooseNewTower(Tower tower) {
@@ -77,7 +78,7 @@ public class Game {
             Color.colorToHSV(pixel, hsv);
             int lowerboundBlue = 180;
             int upperboundBlue = 200;
-            return hsv[0] < lowerboundBlue  &&  upperboundBlue < hsv[0];
+            return hsv[0] < lowerboundBlue  ||  upperboundBlue < hsv[0];
         }
         return false;
     }
@@ -109,8 +110,6 @@ public class Game {
     public void setPlayerMoney(int money) {
         player.setMoney(money);
     }
-
-    private Player player;
 
 
 }
