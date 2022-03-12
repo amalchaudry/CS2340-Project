@@ -2,18 +2,13 @@ package com.example.odam;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,8 +21,8 @@ public class FirstMapActivity extends AppCompatActivity {
     private ImageView chosenTowerImage;
     private Bitmap bitmap;
     private Game game;
-//    private int money;
-//    private int lakeHP;
+    //private int money;
+    //private int lakeHP;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -53,10 +48,6 @@ public class FirstMapActivity extends AppCompatActivity {
 
         binding.moneyText.setText("Money: " + player.getMoney());
         binding.lakeHealthText.setText("Lake HP: " + player.getLakeHP());
-
-//        int[] imageViewCoordinates = new int[2];
-//        binding.mapImage.getLocationOnScreen(imageViewCoordinates);
-//        binding.testview.setText(Float.toString(imageViewCoordinates[0]) + " " + Float.toString(imageViewCoordinates[1]));
 
         //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +79,6 @@ public class FirstMapActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Try drag and drop listener instead and subtract money if you have to
 
         binding.mapImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -101,8 +91,8 @@ public class FirstMapActivity extends AppCompatActivity {
                     if (game.isPlacingChosenTower()) {
                         if (game.canBuyChosenTower()) {
                             chosenTowerImage.setImageResource(game.getChosenTower().getImage());
-                            chosenTowerImage.setX((int)event.getX() + offsetX);
-                            chosenTowerImage.setY((int)event.getY() + offsetY);
+                            chosenTowerImage.setX((int) event.getX() + offsetX);
+                            chosenTowerImage.setY((int) event.getY() + offsetY);
                             chosenTowerImage.setAlpha(0.5f);
                         } else {
                             binding.towerInfo.setText("Buy: Don't have \n enough money!");
@@ -111,17 +101,18 @@ public class FirstMapActivity extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_MOVE:
                     if (game.isPlacingChosenTower()) {
-                        chosenTowerImage.setX((int)event.getX() + offsetX);
-                        chosenTowerImage.setY((int)event.getY() + offsetY);
+                        chosenTowerImage.setX((int) event.getX() + offsetX);
+                        chosenTowerImage.setY((int) event.getY() + offsetY);
                     }
                     break;
-                case MotionEvent.ACTION_UP://TODO: https://stackoverflow.com/questions/17931816/how-to-tell-if-an-x-and-y-coordinate-are-inside-my-button for bounds check
+                case MotionEvent.ACTION_UP:
                     if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)) {
                         Tower tower = game.getChosenTower();
                         game.setPlayerMoney(player.getMoney() - tower.getCost());
 
                         binding.moneyText.setText("Money: " + player.getMoney());
-                        binding.towerInfo.setText("Buy: Purchased! \n " + tower.getName() + " for " + tower.getCost());
+                        binding.towerInfo.setText("Buy: Purchased! \n "
+                                + tower.getName() + " for " + tower.getCost());
                         chosenTowerImage.setAlpha(1f);
                         //game.stopChoosingTower();
                     } else {
@@ -130,7 +121,10 @@ public class FirstMapActivity extends AppCompatActivity {
                         chosenTowerImage.setOnTouchListener(null);
                     }
                     break;
+                default:
+                    break;
                 }
+
                 return true;
             }
         });
@@ -142,10 +136,8 @@ public class FirstMapActivity extends AppCompatActivity {
         chosenTowerImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
-                switch (action) {
-                case MotionEvent.ACTION_UP:
-                    display(tower, chosenTowerImage); //TODO: This will be the code that displays the tower's stats on press
-                    break;
+                if (action == MotionEvent.ACTION_UP) {
+                    display(tower, chosenTowerImage);
                 }
                 return true;
             }
@@ -154,29 +146,35 @@ public class FirstMapActivity extends AppCompatActivity {
         chosenTowerImage.setAdjustViewBounds(true);
         chosenTowerImage.setMaxHeight(100);
         chosenTowerImage.setMaxWidth(100);
-        chosenTowerImage.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
+        chosenTowerImage.setLayoutParams(new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                ConstraintLayout.LayoutParams.WRAP_CONTENT));
         chosenTowerImage.setDrawingCacheEnabled(true);
     }
 
-    public void display(Tower tower, ImageView image) {//TODO: Adjust later to display info
+    public void display(Tower tower, ImageView image) {
         image.setX(200);
         image.setY(200);
     }
 
-    public static Bitmap drawableToBitmap (Drawable drawable) {
+    public static Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap = null;
 
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            if(bitmapDrawable.getBitmap() != null) {
+            if (bitmapDrawable.getBitmap() != null) {
                 return bitmapDrawable.getBitmap();
             }
         }
 
-        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
-            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(
+            1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
         } else {
-            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            bitmap = Bitmap.createBitmap(
+                    drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(),
+                    Bitmap.Config.ARGB_8888);
         }
 
         Canvas canvas = new Canvas(bitmap);

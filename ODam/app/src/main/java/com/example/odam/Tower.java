@@ -1,12 +1,12 @@
 package com.example.odam;
 
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
 
 public abstract class Tower {
     protected String name;
-    protected int imageID;    //INT REPRESENTS RESOURCE ID IN DRAWABLE FOLDER I.E. R.drawable.fisherman_with_rod returns an int
-                            //tower stores the drawable resource id, imageview is constructed in activity code
+    protected int imageID;      /**INT REPRESENTS RESOURCE ID IN DRAWABLE FOLDER
+                                I.E. R.drawable.fisherman_with_rod returns an int
+                                tower stores the drawable resource id,
+                                imageview is constructed in activity code **/
     protected TowerUpgradeLevel upgradeLevel;
     protected float damage;
     protected int cost;

@@ -3,11 +3,6 @@ package com.example.odam;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class Game {
     private Tower chosenTower;
@@ -22,18 +17,18 @@ public class Game {
         int lakeHP = 0;
 
         switch (diff) {
-            case MEDIUM:
-                money = 900;
-                lakeHP = 150;
-                break;
-            case HARD:
-                money = 800;
-                lakeHP = 100;
-                break;
-            default:
-                money = 1000;
-                lakeHP = 200;
-                break;
+        case MEDIUM:
+            money = 900;
+            lakeHP = 150;
+            break;
+        case HARD:
+            money = 800;
+            lakeHP = 100;
+            break;
+        default:
+            money = 1000;
+            lakeHP = 200;
+            break;
         }
 
         player = new Player(money, lakeHP);
