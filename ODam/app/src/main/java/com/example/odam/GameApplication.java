@@ -19,7 +19,7 @@ public class GameApplication extends Application {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     /**when you want to access this class
