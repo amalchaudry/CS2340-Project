@@ -1,7 +1,9 @@
 package com.example.odam;
 import android.app.Application;
 import org.junit.Test;
-import
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import static org.junit.Assert.*;
 
 /**
@@ -15,7 +17,7 @@ import static org.junit.Assert.*;
         assertEquals(4, 2 + 2);
     }
 }*/
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class startUnitTest {
     /**
      * This tests m3
@@ -66,18 +68,18 @@ public class startUnitTest {
     public void differentLakeHP() {
         Game test = new Game(Difficulty.HARD);
         assertEquals(100, test.getPlayer().getLakeHP());
-        Game test = new Game(Difficulty.MEDIUM);
+        test = new Game(Difficulty.MEDIUM);
         assertEquals(150, test.getPlayer().getLakeHP());
-        Game test = new Game(Difficulty.EASY);
+        test = new Game(Difficulty.EASY);
         assertEquals(200, test.getPlayer().getLakeHP());
     }
     @Test
     public void differentMoney() {
         Game test = new Game(Difficulty.HARD);
         assertEquals(800, test.getPlayer().getMoney());
-        Game test = new Game(Difficulty.MEDIUM);
+        test = new Game(Difficulty.MEDIUM);
         assertEquals(900, test.getPlayer().getMoney());
-        Game test = new Game(Difficulty.EASY);
+        test = new Game(Difficulty.EASY);
         assertEquals(1000, test.getPlayer().getMoney());
     }
     @Test
@@ -100,15 +102,16 @@ public class startUnitTest {
     public void cannotPlaceTowerOutOfMap() {
         Game test = new Game(Difficulty.HARD);
         test.chooseNewTower(new BoatTower(Difficulty.HARD));
-        assertFalse(test.canPlaceChosenTower(100000,100000, null);
+        assertFalse(test.canPlaceChosenTower(100000,100000, null));
     }
+
     @Test
     public void canBuyTower() {
         Game test = new Game(Difficulty.MEDIUM);
-        test.chooseNewTower(new BoatTower(Difficulty.MEDIUM));
+        test.chooseNewTower(new FishermanTower(Difficulty.MEDIUM));
         assertTrue(test.canBuyChosenTower());
         Game second = new Game(Difficulty.HARD);
         second.chooseNewTower(new BoatTower(Difficulty.HARD));
-        assertFalse(test.canBuyChosenTower());
+        assertFalse(second.canBuyChosenTower());
     }
 }
