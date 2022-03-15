@@ -125,7 +125,7 @@ public class Milestone3UnitTest {
     public void cannotPlaceTowerOutOfMap() {
         Game test = new Game(Difficulty.HARD);
         test.chooseNewTower(new BoatTower(Difficulty.HARD));
-        assertFalse(test.canPlaceChosenTower(100000,100000, null));
+        assertFalse(test.canPlaceChosenTower(100000, 100000, null));
     }
 
     /**
