@@ -1,9 +1,8 @@
 package com.example.odam;
 import android.app.Application;
 import org.junit.Test;
-import
 import static org.junit.Assert.*;
-
+import android.test.ActivityTestCase;
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -18,7 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class startUnitTest {
     /**
-     * This tests m3
+     * This tests m3 towers cost
      */
     @Test
     public void towersCostDifferently() {
@@ -30,7 +29,7 @@ public class startUnitTest {
         assertEquals(test3.getCost(), 950);
     }
     /**
-     * This tests m3
+     * This tests m3 towers different stats
      */
     @Test
     public void differentTowersDifferentRange() {
@@ -42,7 +41,7 @@ public class startUnitTest {
         assertFalse(fishGuy.getRange() == test.getRange());
     }
     /**
-     * This tests m3
+     * This tests m3 towers different stats
      */
     @Test
     public void differentTowersDifferentCooldown() {
@@ -54,7 +53,7 @@ public class startUnitTest {
         assertFalse(fishGuy.getCooldown() == test.getCooldown());
     }
     /**
-     * This tests m2
+     * This tests m2 name whitespace
      */
     @Test
     public void testWhiteSpaceonName() {
@@ -62,6 +61,10 @@ public class startUnitTest {
         test.setName("     ");
         assertEquals(test.getName(), "");
     }
+
+    /**
+     * This tests m2 different starting hp
+     */
     @Test
     public void differentLakeHP() {
         Game test = new Game(Difficulty.HARD);
@@ -71,6 +74,10 @@ public class startUnitTest {
         Game test = new Game(Difficulty.EASY);
         assertEquals(200, test.getPlayer().getLakeHP());
     }
+
+    /**
+     * This tests m2 different starting money
+     */
     @Test
     public void differentMoney() {
         Game test = new Game(Difficulty.HARD);
@@ -80,6 +87,10 @@ public class startUnitTest {
         Game test = new Game(Difficulty.EASY);
         assertEquals(1000, test.getPlayer().getMoney());
     }
+
+    /**
+     * m3 tower stats
+     */
     @Test
     public void allSameDamage() {
         BoatTower test = new BoatTower(Difficulty.HARD);
@@ -89,6 +100,10 @@ public class startUnitTest {
         assertTrue(fishGuy.getDamage() == spearman.getDamage());
         assertTrue(fishGuy.getDamage() == test.getDamage());
     }
+
+    /**
+     * tests player object functionality (m2)
+     */
     @Test
     public void gameInstantiatesPlayerObject() {
         Game test = new Game(Difficulty.HARD);
@@ -96,12 +111,20 @@ public class startUnitTest {
         assertEquals(test.getPlayer().getMoney(), 800);
         assertEquals(test.getPlayer().getLakeHP(), 100);
     }
+
+    /**
+     * tests placing towers out of the map (m3)
+     */
     @Test
     public void cannotPlaceTowerOutOfMap() {
         Game test = new Game(Difficulty.HARD);
         test.chooseNewTower(new BoatTower(Difficulty.HARD));
         assertFalse(test.canPlaceChosenTower(100000,100000, null);
     }
+
+    /**
+     * tests purchasing of towers (m3)
+     */
     @Test
     public void canBuyTower() {
         Game test = new Game(Difficulty.MEDIUM);
