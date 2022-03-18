@@ -2,52 +2,31 @@ package com.example.odam;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.util.Log;
 
-public class Game {
-    private Difficulty diff;
-    private Shop shop;
-    private Player player;
+public class Shop {
+    private boolean isPlacingTower = false;
+    private Tower chosenTower;
 
-    public Game(Difficulty diff) {
-        this.diff = diff;
-        Log.d("Diff", diff.toString());
-        int money = 0;
-        int lakeHP = 0;
+    public Shop()  {
 
-        switch (diff) {
-        case MEDIUM:
-            money = 900;
-            lakeHP = 150;
-            break;
-        case HARD:
-            money = 800;
-            lakeHP = 100;
-            break;
-        default:
-            money = 1000;
-            lakeHP = 200;
-            break;
-        }
-
-        player = new Player(money, lakeHP);
-        shop = new Shop();
     }
 
     public void chooseNewTower(Tower tower) {
-        shop.chooseNewTower(tower);
+        chosenTower = tower;
+        isPlacingTower = true;
     }
 
     public void stopChoosingTower() {
-        shop.chooseNewTower();
+        chosenTower = null;
+        isPlacingTower = false;
     }
 
     public boolean isPlacingChosenTower() {
         return chosenTower != null && isPlacingTower;
     }
 
-    public boolean canBuyChosenTower() {
-        return  player.getMoney() - chosenTower.getCost() >= 0;
+    public boolean canBuyChosenTower(int playerMoney) {
+        return  playerMoney - chosenTower.getCost() >= 0;
     }
 
     public boolean canPlaceChosenTower(float eventX, float eventY, Bitmap bitmap) {
@@ -79,30 +58,5 @@ public class Game {
     public Tower getChosenTower() {
         return chosenTower;
     }
-
-    public Difficulty getDiff() {
-        return diff;
-    }
-
-    public void setDiff(Difficulty diff) {
-        this.diff = diff;
-    }
-
-    public void setPlacingTower(boolean placingTower) {
-        isPlacingTower = placingTower;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setPlayerMoney(int money) {
-        player.setMoney(money);
-    }
-
 
 }

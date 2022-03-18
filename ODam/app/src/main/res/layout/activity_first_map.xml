@@ -44,6 +44,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:backgroundTint="#87E10A"
         android:text="Start Combat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.972"

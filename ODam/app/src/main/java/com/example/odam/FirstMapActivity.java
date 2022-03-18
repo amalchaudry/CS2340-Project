@@ -49,6 +49,12 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.moneyText.setText("Money: " + player.getMoney());
         binding.lakeHealthText.setText("Lake HP: " + player.getLakeHP());
 
+        binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                game.startCombat();
+            }
+        });
+
         //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
