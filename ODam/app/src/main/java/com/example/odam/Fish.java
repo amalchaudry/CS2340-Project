@@ -5,5 +5,7 @@ public interface Fish {
     public int setCoord();
     public int getHealth ();
     public int setHealth();
+    public void swim();
+    public void attackMon();
 
 }
