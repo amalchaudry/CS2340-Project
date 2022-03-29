@@ -6,19 +6,12 @@ public abstract class Fish {
     int health;
     int speed;
 
-    public int getCoord () {
-        x = this.x;
-        y = this.y;
-        return x;
-    }
-    public abstract int setCoord();
-
-    public int getHealth () {
-    health = this.health;
-    return health;
-    }
-    public abstract int setHealth();
-
+    public abstract int getX();
+    public abstract int getY();
+    public abstract void setX();
+    public abstract void setY();
+    public abstract int getHealth();
+    public abstract void setHealth();
     public abstract void swim();
     public abstract void attackMon();
 }

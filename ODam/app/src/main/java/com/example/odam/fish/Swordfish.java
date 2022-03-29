@@ -1,22 +1,37 @@
 package com.example.odam.fish;
 
 public class Swordfish extends Fish {
-    @Override public int getCoord () {
-        return 0;
+    @Override
+    public int getX() {
+        return this.x;
     }
 
-    @Override public int setCoord() {
-        return 0;
+    @Override
+    public int getY() {
+        return this.y;
     }
 
-    @Override public int getHealth () {
-        return 0;
+    public void setX() {
+        x = getX();
+        return;
     }
 
-    @Override public int setHealth() {
-        return 0;
+    @Override
+    public void setY() {
+        y = getY();
+        return;
     }
 
+    @Override
+    public int getHealth () {
+        return this.health;
+    }
+
+    @Override
+    public void setHealth() {
+        health = getHealth();
+        return;
+    }
 
     @Override
     public void swim() {
@@ -25,6 +40,8 @@ public class Swordfish extends Fish {
 
     @Override
     public void attackMon() {
+        //check position and decrease lake HP
         return;
     }
+
 }
