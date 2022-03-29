@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.odam.databinding.ActivityConfigBinding;
+import com.example.odam.gameLogic.Difficulty;
+import com.example.odam.gameLogic.GameApplication;
 
 public class ConfigActivity extends AppCompatActivity {
 

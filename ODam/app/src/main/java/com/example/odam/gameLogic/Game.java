@@ -1,8 +1,10 @@
-package com.example.odam;
+package com.example.odam.gameLogic;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
+
+import com.example.odam.tower.Tower;
 
 public class Game {
     private Difficulty diff;
@@ -34,20 +36,16 @@ public class Game {
         shop = new Shop();
     }
 
-    public void chooseNewTower(Tower tower) {
+    public void selectNewTower(Tower tower) {
         shop.chooseNewTower(tower);
     }
 
-    public void stopChoosingTower() {
-        shop.chooseNewTower();
-    }
+    public void deselectTower() { shop.stopChoosingTower(); }
 
-    public boolean isPlacingChosenTower() {
-        return chosenTower != null && isPlacingTower;
-    }
+    public boolean isPlacingChosenTower() { return shop.isPlacingChosenTower(); }
 
     public boolean canBuyChosenTower() {
-        return  player.getMoney() - chosenTower.getCost() >= 0;
+        return  shop.canBuyChosenTower(player.getMoney());
     }
 
     public boolean canPlaceChosenTower(float eventX, float eventY, Bitmap bitmap) {
@@ -77,7 +75,7 @@ public class Game {
     }
 
     public Tower getChosenTower() {
-        return chosenTower;
+        return shop.getChosenTower();
     }
 
     public Difficulty getDiff() {
@@ -89,7 +87,7 @@ public class Game {
     }
 
     public void setPlacingTower(boolean placingTower) {
-        isPlacingTower = placingTower;
+        shop.setPlacingTower(placingTower);
     }
 
     public Player getPlayer() {
@@ -104,5 +102,7 @@ public class Game {
         player.setMoney(money);
     }
 
-
+    public void startCombat() {
+        //TODO: functionality @Tina
+    }
 }

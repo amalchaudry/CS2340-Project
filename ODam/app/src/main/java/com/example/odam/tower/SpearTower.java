@@ -1,4 +1,8 @@
-package com.example.odam;
+package com.example.odam.tower;
+
+import com.example.odam.gameLogic.Difficulty;
+import com.example.odam.R;
+import com.example.odam.gameLogic.TowerUpgradeLevel;
 
 public class SpearTower extends Tower {
     public SpearTower(Difficulty diff) {

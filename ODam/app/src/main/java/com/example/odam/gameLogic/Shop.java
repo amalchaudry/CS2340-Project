@@ -1,7 +1,9 @@
-package com.example.odam;
+package com.example.odam.gameLogic;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+
+import com.example.odam.tower.Tower;
 
 public class Shop {
     private boolean isPlacingTower = false;
@@ -57,6 +59,10 @@ public class Shop {
 
     public Tower getChosenTower() {
         return chosenTower;
+    }
+
+    public void setPlacingTower(boolean placingTower) {
+        isPlacingTower = placingTower;
     }
 
 }
