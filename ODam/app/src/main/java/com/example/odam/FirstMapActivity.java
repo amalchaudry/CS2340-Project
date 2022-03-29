@@ -14,6 +14,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
+import com.example.odam.gameLogic.Game;
+import com.example.odam.gameLogic.GameApplication;
+import com.example.odam.gameLogic.Player;
+import com.example.odam.tower.BoatTower;
+import com.example.odam.tower.FishermanTower;
+import com.example.odam.tower.SpearTower;
+import com.example.odam.tower.Tower;
 
 public class FirstMapActivity extends AppCompatActivity {
 
@@ -49,10 +56,16 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.moneyText.setText("Money: " + player.getMoney());
         binding.lakeHealthText.setText("Lake HP: " + player.getLakeHP());
 
+        binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                game.startCombat();
+            }
+        });
+
         //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                game.chooseNewTower(new FishermanTower(game.getDiff()));
+                game.selectNewTower(new FishermanTower(game.getDiff()));
                 Tower tower = game.getChosenTower();
                 newTowerImage(tower);
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
@@ -62,7 +75,7 @@ public class FirstMapActivity extends AppCompatActivity {
         //spearButton
         binding.Spearman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                game.chooseNewTower(new SpearTower(game.getDiff()));
+                game.selectNewTower(new SpearTower(game.getDiff()));
                 Tower tower = game.getChosenTower();
                 newTowerImage(tower);
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
@@ -72,7 +85,7 @@ public class FirstMapActivity extends AppCompatActivity {
         // boatButton
         binding.Boatman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                game.chooseNewTower(new BoatTower(game.getDiff()));
+                game.selectNewTower(new BoatTower(game.getDiff()));
                 Tower tower = game.getChosenTower();
                 newTowerImage(tower);
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
@@ -116,7 +129,7 @@ public class FirstMapActivity extends AppCompatActivity {
                         chosenTowerImage.setAlpha(1f);
                         //game.stopChoosingTower();
                     } else {
-                        game.stopChoosingTower();
+                        game.deselectTower();
                         chosenTowerImage.setImageResource(0);
                         chosenTowerImage.setOnTouchListener(null);
                     }

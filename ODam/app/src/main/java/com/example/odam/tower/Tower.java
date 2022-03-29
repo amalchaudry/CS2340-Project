@@ -1,5 +1,7 @@
-package com.example.odam;
+package com.example.odam.tower;
 
+
+import com.example.odam.gameLogic.TowerUpgradeLevel;
 
 public abstract class Tower {
     protected String name;

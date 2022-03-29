@@ -1,4 +1,4 @@
-package com.example.odam;
+package com.example.odam.fish;
 
 public abstract class Fish {
     int x;
@@ -19,11 +19,6 @@ public abstract class Fish {
     }
     public abstract int setHealth();
 
-    public void swim() {
-
-    }
-    public void attackMon() {
-
-    }
-
+    public abstract void swim();
+    public abstract void attackMon();
 }

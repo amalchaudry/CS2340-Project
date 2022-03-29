@@ -1,4 +1,4 @@
-package com.example.odam;
+package com.example.odam.gameLogic;
 
 public enum Difficulty {
     EASY, MEDIUM, HARD

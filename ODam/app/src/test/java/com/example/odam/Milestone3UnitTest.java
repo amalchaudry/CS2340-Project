@@ -5,6 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import com.example.odam.gameLogic.Difficulty;
+import com.example.odam.gameLogic.Game;
+import com.example.odam.gameLogic.GameApplication;
+import com.example.odam.tower.BoatTower;
+import com.example.odam.tower.FishermanTower;
+import com.example.odam.tower.SpearTower;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -124,7 +131,7 @@ public class Milestone3UnitTest {
     @Test
     public void cannotPlaceTowerOutOfMap() {
         Game test = new Game(Difficulty.HARD);
-        test.chooseNewTower(new BoatTower(Difficulty.HARD));
+        test.selectNewTower(new BoatTower(Difficulty.HARD));
         assertFalse(test.canPlaceChosenTower(100000, 100000, null));
     }
 
@@ -134,10 +141,10 @@ public class Milestone3UnitTest {
     @Test
     public void canBuyTower() {
         Game test = new Game(Difficulty.MEDIUM);
-        test.chooseNewTower(new FishermanTower(Difficulty.MEDIUM));
+        test.selectNewTower(new FishermanTower(Difficulty.MEDIUM));
         assertTrue(test.canBuyChosenTower());
         Game second = new Game(Difficulty.HARD);
-        second.chooseNewTower(new BoatTower(Difficulty.HARD));
+        second.selectNewTower(new BoatTower(Difficulty.HARD));
         assertFalse(second.canBuyChosenTower());
     }
 }
