@@ -1,6 +1,6 @@
 package com.example.odam;
 
-public class Salmon implements Fish {
+public class Salmon extends Fish {
     @Override public int getCoord () {
 
     }
