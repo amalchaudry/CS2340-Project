@@ -155,8 +155,13 @@ public class Game {
             combatStarted = false;
             timer.cancel();
         }
+        // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
-            fishArr.get(i).update(player);
+            boolean res = fishArr.get(i).update(player);
+            if (res) {
+                int damage = fishArr.get(i).getHealth();
+                player.setLakeHP(player.getLakeHP() - damage);
+            }
         }
         updateFish = true;
     }
