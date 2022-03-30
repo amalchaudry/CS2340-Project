@@ -12,7 +12,7 @@ public abstract class Fish {
     protected int speed;
     protected int imageID;
     protected int nextCheckpoint = 0;
-    protected  boolean isFinished = false;
+    protected boolean isFinished = false;
     protected int[][] checkpoints = {
             {1120, 250},
             {770, 615},
@@ -121,5 +121,12 @@ public abstract class Fish {
 
     public void setCheckpoint(int nextCheckPoint) {
         this.nextCheckpoint = nextCheckPoint;
+    }
+    public boolean getIsFinished() {
+        return isFinished;
+    }
+
+    public void setIsFinished(boolean Finished) {
+        this.isFinished = Finished;
     }
 }
