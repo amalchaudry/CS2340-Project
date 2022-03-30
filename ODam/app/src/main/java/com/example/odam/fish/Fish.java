@@ -29,16 +29,16 @@ public abstract class Fish {
         height = 1;
     }
 
-    public void update(Player player) {
+    public boolean update(Player player) {
         int totalHealth;
         if (isFinished) {
-            return;
+            return isFinished;
         }
         if (nextCheckpoint >= checkpoints.length) {
             isFinished = true;
             totalHealth = player.getLakeHP() - 10;
             player.setLakeHP(totalHealth);
-            return;
+            return isFinished;
         }
         int diffX = checkpoints[nextCheckpoint][0] - x;
         int diffY = checkpoints[nextCheckpoint][1] - y;
@@ -48,6 +48,7 @@ public abstract class Fish {
 //        Log.d("length", String.valueOf(checkpoints.length));
 //        Log.d("diffY", String.valueOf(diffY));
         swim(dirX, dirY);
+        return isFinished;
     }
 
     public void swim(double dirX, double dirY) {
