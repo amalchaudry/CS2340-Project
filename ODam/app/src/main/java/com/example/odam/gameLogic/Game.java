@@ -3,13 +3,21 @@ package com.example.odam.gameLogic;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
-
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Random;
+import com.example.odam.fish.Fish;
+import com.example.odam.fish.Salmon;
+import com.example.odam.fish.Swordfish;
+import com.example.odam.fish.Tuna;
 import com.example.odam.tower.Tower;
 
 public class Game {
     private Difficulty diff;
     private Shop shop;
     private Player player;
+    private ArrayList<Fish> fishArr = new ArrayList<Fish>(new Tuna());
 
     public Game(Difficulty diff) {
         this.diff = diff;
@@ -103,6 +111,59 @@ public class Game {
     }
 
     public void startCombat() {
-        //TODO: functionality @Tina
+        Timer timer = new Timer();
+        Timer timer2 = new Timer();
+        Random rand = new Random();
+        int fishCounter = 0;
+
+        // inst. task for updating coordinates
+        TimerTask updateTask = new TimerTask() {
+            @Override
+            public void run() {
+                int index = rand.nextInt(2);
+                if (index == 1) {
+                    fishArr.add(new Swordfish());
+                }
+
+                if (index == 2) {
+                    fishArr.add(new Tuna());
+                }
+
+                if (index == 3) {
+                    fishArr.add(new Salmon());
+                }
+            }
+        };
+
+        // inst. task for adding new fish onto map
+        TimerTask addFishTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (fishCounter >= 15) {
+                    timer2.cancel();
+                }
+                int index = rand.nextInt(2);
+                if (index == 1) {
+                    fishArr.add(new Swordfish());
+                }
+
+                if (index == 2) {
+                    fishArr.add(new Tuna());
+                }
+
+                if (index == 3) {
+                    fishArr.add(new Salmon());
+                }
+            }
+        };
+
+        // update coordinate of fish time
+        // delay: Schedules the specified task for execution after the specified delay.
+        // delay: in milliseconds before task is to be executed.
+        timer.scheduleAtFixedRate(updateTask, 1000, 1000);
+        // add fish until the 15th fish is added, then stop adding new fish
+        timer2.scheduleAtFixedRate(addFishTask, 1000, 1000);
+
+
     }
 }

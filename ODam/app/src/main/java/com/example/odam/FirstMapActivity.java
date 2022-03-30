@@ -119,7 +119,7 @@ public class FirstMapActivity extends AppCompatActivity {
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)) {
+                    if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap) & game.canBuyChosenTower()) {
                         Tower tower = game.getChosenTower();
                         game.setPlayerMoney(player.getMoney() - tower.getCost());
 
@@ -195,5 +195,4 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.draw(canvas);
         return bitmap;
     }
-
 }
