@@ -16,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/water_background"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="33dp" />
+        android:src="@drawable/welcome_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonStart"
@@ -48,6 +48,22 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView1"
+        app:layout_constraintStart_toStartOf="@+id/imageView1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="208dp"
+        android:layout_marginBottom="292dp"
+        android:fontFamily="@font/archivo_black"
+        android:lines="2"
+        android:text="Defense of \n the Fishermen"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="38dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
