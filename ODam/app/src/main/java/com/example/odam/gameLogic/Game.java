@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Random;
+
+import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
 import com.example.odam.fish.Salmon;
 import com.example.odam.fish.Swordfish;
@@ -17,10 +19,40 @@ public class Game {
     private Difficulty diff;
     private Shop shop;
     private Player player;
-    private ArrayList<Fish> fishArr = new ArrayList<Fish>(new Tuna());
+    private ArrayList<Fish> fishArr = new ArrayList<Fish>();
 
+    private boolean combatStarted = false;
+    private boolean updateFish = false;
+    private FirstMapActivity fmp;
+    private int fishCounter = 0; //represent fish generated in round
+
+
+    //for junit testing
     public Game(Difficulty diff) {
         this.diff = diff;
+        Log.d("Diff", diff.toString());
+        int money = 0;
+        int lakeHP = 0;
+
+        switch (diff) {
+            case MEDIUM:
+                money = 900;
+                lakeHP = 150;
+                break;
+            case HARD:
+                money = 800;
+                lakeHP = 100;
+                break;
+            default:
+                money = 1000;
+                lakeHP = 200;
+                break;
+        }
+    }
+
+    public Game(Difficulty diff, FirstMapActivity fmp) {
+        this.diff = diff;
+        this.fmp = fmp;
         Log.d("Diff", diff.toString());
         int money = 0;
         int lakeHP = 0;
@@ -111,59 +143,58 @@ public class Game {
     }
 
     public void startCombat() {
-        Timer timer = new Timer();
-        Timer timer2 = new Timer();
-        Random rand = new Random();
-        int fishCounter = 0;
-
-        // inst. task for updating coordinates
-        TimerTask updateTask = new TimerTask() {
-            @Override
-            public void run() {
-                int index = rand.nextInt(2);
-                if (index == 1) {
-                    fishArr.add(new Swordfish());
-                }
-
-                if (index == 2) {
-                    fishArr.add(new Tuna());
-                }
-
-                if (index == 3) {
-                    fishArr.add(new Salmon());
-                }
-            }
-        };
-
-        // inst. task for adding new fish onto map
-        TimerTask addFishTask = new TimerTask() {
-            @Override
-            public void run() {
-                if (fishCounter >= 15) {
-                    timer2.cancel();
-                }
-                int index = rand.nextInt(2);
-                if (index == 1) {
-                    fishArr.add(new Swordfish());
-                }
-
-                if (index == 2) {
-                    fishArr.add(new Tuna());
-                }
-
-                if (index == 3) {
-                    fishArr.add(new Salmon());
-                }
-            }
-        };
-
-        // update coordinate of fish time
-        // delay: Schedules the specified task for execution after the specified delay.
-        // delay: in milliseconds before task is to be executed.
-        timer.scheduleAtFixedRate(updateTask, 1000, 1000);
-        // add fish until the 15th fish is added, then stop adding new fish
-        timer2.scheduleAtFixedRate(addFishTask, 1000, 1000);
-
-
+        combatStarted = true;
     }
+
+    public void update(Timer timer) {
+        if (player.getDeadFish() >= 15) {
+            combatStarted = false;
+            timer.cancel();
+        }
+        for (int i = 0; i < fishArr.size(); i++) {
+            fishArr.get(i).update();
+        }
+        updateFish = true;
+    }
+
+    public Fish addFish (Timer timer) {
+        Random rand = new Random();
+        if (fishCounter >= 15) {
+            timer.cancel();
+        }
+        int index = rand.nextInt(3);
+        Fish newFish;
+        if (index == 0) {
+            newFish = new Swordfish();
+        } else if (index == 1) {
+            newFish = new Tuna();
+        } else {
+            newFish = new Salmon();
+        }
+        fishCounter++;
+        fishArr.add(newFish);
+        return newFish;
+    }
+
+    public boolean isCombatStarted() {
+        return combatStarted;
+    }
+
+    public void setCombatStarted(boolean combatStarted) {
+        this.combatStarted = combatStarted;
+    }
+
+
+    public ArrayList<Fish> getFishArr() {
+        return fishArr;
+    }
+
+    public boolean isUpdateFish() {
+        return updateFish;
+    }
+
+    public void setUpdateFish(boolean updateFish) {
+        this.updateFish = updateFish;
+    }
+
 }

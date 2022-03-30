@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
+import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.GameApplication;
 import com.example.odam.gameLogic.Player;
@@ -22,12 +23,19 @@ import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
 import com.example.odam.tower.Tower;
 
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class FirstMapActivity extends AppCompatActivity {
 
     private  ActivityFirstMapBinding binding;
     private ImageView chosenTowerImage;
     private Bitmap bitmap;
     private Game game;
+    private Timer timer = new Timer();
+    private Timer timer2 = new Timer();
+    private ArrayList<ImageView> fishViews = new ArrayList<>();
     //private int money;
     //private int lakeHP;
 
@@ -50,7 +58,7 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.getRoot().addView(chosenTowerImage);
         bitmap = drawableToBitmap(binding.mapImage.getDrawable());
 
-        game = new Game(((GameApplication) getApplication()).getDiff());
+        game = new Game(((GameApplication) getApplication()).getDiff(), FirstMapActivity.this);
         Player player = game.getPlayer();
 
         binding.moneyText.setText("Money: " + player.getMoney());
@@ -58,7 +66,62 @@ public class FirstMapActivity extends AppCompatActivity {
 
         binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                game.startCombat();
+                if (!game.isCombatStarted()) {
+                    game.startCombat();
+                    // inst. task for updating coordinates
+                    TimerTask updateTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            game.update(timer);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    for (int i = 0; i < fishViews.size(); i++) {
+                                        ImageView fishView = fishViews.get(i);
+                                        Fish fish = game.getFishArr().get(i);
+                                        fishView.setX(fish.getX());
+                                        fishView.setY(fish.getY());
+                                    }
+                                }
+                            });
+                        }
+                    };
+
+                    // inst. task for adding new fish onto map
+                    TimerTask addFishTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            Fish fish = game.addFish(timer2);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ImageView fishView = new ImageView(FirstMapActivity.this);
+                                    binding.getRoot().addView(fishView);
+                                    fishViews.add(fishView);
+                                    fishView.bringToFront();
+                                    fishView.setImageResource(fish.getImage());
+                                    fishView.setX(fish.getX());
+                                    fishView.setY(fish.getY());
+                                    fishView.setAdjustViewBounds(true);
+                                    fishView.setMaxHeight(100);
+                                    fishView.setMaxWidth(100);
+                                    fishView.setLayoutParams(new ConstraintLayout.LayoutParams(
+                                            ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                                            ConstraintLayout.LayoutParams.WRAP_CONTENT));
+                                    fishView.setDrawingCacheEnabled(true);
+                                }
+                            });
+
+                        }
+                    };
+                    // update coordinate of fish time
+                    // delay: Schedules the specified task for execution after the specified delay.
+                    // delay: in milliseconds before task is to be executed.
+                    timer.scheduleAtFixedRate(updateTask, 0, 250);
+                    // add fish until the 15th fish is added, then stop adding new fish
+                    timer2.scheduleAtFixedRate(addFishTask, 1000, 1000);
+                }
             }
         });
 
@@ -117,6 +180,7 @@ public class FirstMapActivity extends AppCompatActivity {
                         chosenTowerImage.setX((int) event.getX() + offsetX);
                         chosenTowerImage.setY((int) event.getY() + offsetY);
                     }
+                    binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
                     break;
                 case MotionEvent.ACTION_UP:
                     if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap) & game.canBuyChosenTower()) {
@@ -128,7 +192,7 @@ public class FirstMapActivity extends AppCompatActivity {
                                 + tower.getName() + " for " + tower.getCost());
                         chosenTowerImage.setAlpha(1f);
                         //game.stopChoosingTower();
-                    } else {
+                    } else if (game.getChosenTower() != null){
                         game.deselectTower();
                         chosenTowerImage.setImageResource(0);
                         chosenTowerImage.setOnTouchListener(null);
@@ -142,6 +206,7 @@ public class FirstMapActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     public void newTowerImage(Tower tower) {

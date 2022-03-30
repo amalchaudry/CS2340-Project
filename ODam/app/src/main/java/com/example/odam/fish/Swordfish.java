@@ -1,12 +1,14 @@
 package com.example.odam.fish;
 
+import com.example.odam.R;
+
 public class Swordfish extends Fish {
-    public Sworddfish() {
+    public Swordfish() {
+        super();
         fishType = "Swordfish";
-        x = 0;
-        y = 0;
+        imageID = R.drawable.fish_swordfish;
         health = 100;
-        speed = 0;
+        speed = 50;
     }
 
 }
