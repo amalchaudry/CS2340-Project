@@ -115,4 +115,12 @@ public abstract class Fish {
         //check position and decrease lake HP
         return;
     }
+
+    public int getCheckpoint() {
+        return nextCheckpoint;
+    }
+
+    public void setCheckpoint(int nextCheckPoint) {
+        this.nextCheckpoint = nextCheckPoint;
+    }
 }
