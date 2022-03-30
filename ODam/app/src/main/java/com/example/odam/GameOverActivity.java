@@ -18,7 +18,7 @@ public class GameOverActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GameOverActivity.this, MainActivity.class));
+                startActivity(new Intent(GameOverActivity.this, WelcomeScreenActivity.class));
             }
         });
     }

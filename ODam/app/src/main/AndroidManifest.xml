@@ -13,6 +13,9 @@
             android:name=".FirstMapActivity"
             android:exported="false" />
         <activity
+            android:name=".GameOverActivity"
+            android:exported="false" />
+        <activity
             android:name=".WelcomeScreenActivity"
             android:exported="true" >
             <intent-filter>
