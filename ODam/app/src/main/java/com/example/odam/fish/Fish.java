@@ -1,6 +1,6 @@
 package com.example.odam.fish;
 
-import android.util.Log;
+import com.example.odam.gameLogic.Player;
 
 public abstract class Fish {
     protected String fishType;
@@ -29,14 +29,15 @@ public abstract class Fish {
         height = 1;
     }
 
-    public void update() {
+    public void update(Player player) {
+        int totalHealth;
         if (isFinished) {
             return;
         }
         if (nextCheckpoint >= checkpoints.length) {
-            //TODO: subtract from player health here, thoughts here is either change return type to int and return amount of hp to lose every update
-            //TODO: or get reference of player from game for every fish but that's probably a code smell
             isFinished = true;
+            totalHealth = player.getLakeHP() - 10;
+            player.setLakeHP(totalHealth);
             return;
         }
         int diffX = checkpoints[nextCheckpoint][0] - x;

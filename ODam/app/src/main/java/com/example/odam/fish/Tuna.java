@@ -8,7 +8,7 @@ public class Tuna extends Fish {
         fishType = "Tuna";
         imageID = R.drawable.fish_tuna;
         health = 100;
-        speed = 100;
+        speed = 50;
     }
 
 }

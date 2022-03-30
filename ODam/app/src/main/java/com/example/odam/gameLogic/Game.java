@@ -48,6 +48,9 @@ public class Game {
                 lakeHP = 200;
                 break;
         }
+
+        player = new Player(money, lakeHP);
+        shop = new Shop();
     }
 
     public Game(Difficulty diff, FirstMapActivity fmp) {
@@ -147,13 +150,13 @@ public class Game {
     }
 
     public void update(Timer timer) {
-        checkGameOver();
+//        checkGameOver(); uncomment this once you're done with checkGameOver(Player player) @AMAL
         if (player.getDeadFish() >= 15) {
             combatStarted = false;
             timer.cancel();
         }
         for (int i = 0; i < fishArr.size(); i++) {
-            fishArr.get(i).update();
+            fishArr.get(i).update(player);
         }
         updateFish = true;
     }
@@ -177,8 +180,11 @@ public class Game {
         return newFish;
     }
 
-    //TODO: Check if lakeHP is <= 0, if so transition to gameover activity
-    public void checkGameOver() {return;}
+    //TODO: @AMAL Check if lakeHP is <= 0, if so transition to gameover activity
+//    public void checkGameOver(Player player) {
+//        if (player.getLakeHP() <= 0 ) {
+//        }
+//    }
     public boolean isCombatStarted() {
         return combatStarted;
     }
