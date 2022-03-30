@@ -12,6 +12,7 @@ public abstract class Fish {
     protected int speed;
     protected int imageID;
     protected int nextCheckpoint = 0;
+    protected  boolean isFinished = false;
     protected int[][] checkpoints = {
             {1120, 250},
             {770, 615},
@@ -29,7 +30,13 @@ public abstract class Fish {
     }
 
     public void update() {
+        if (isFinished) {
+            return;
+        }
         if (nextCheckpoint >= checkpoints.length) {
+            //TODO: subtract from player health here, thoughts here is either change return type to int and return amount of hp to lose every update
+            //TODO: or get reference of player from game for every fish but that's probably a code smell
+            isFinished = true;
             return;
         }
         int diffX = checkpoints[nextCheckpoint][0] - x;

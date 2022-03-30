@@ -147,6 +147,7 @@ public class Game {
     }
 
     public void update(Timer timer) {
+        checkGameOver();
         if (player.getDeadFish() >= 15) {
             combatStarted = false;
             timer.cancel();
@@ -176,6 +177,8 @@ public class Game {
         return newFish;
     }
 
+    //TODO: Check if lakeHP is <= 0, if so transition to gameover activity
+    public void checkGameOver() {return;}
     public boolean isCombatStarted() {
         return combatStarted;
     }
