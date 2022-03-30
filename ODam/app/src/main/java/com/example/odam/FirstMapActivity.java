@@ -62,7 +62,7 @@ public class FirstMapActivity extends AppCompatActivity {
         Player player = game.getPlayer();
 
         binding.moneyText.setText("Money: " + player.getMoney());
-        binding.lakeHealthText.setText("Lake HP: " + player.getLakeHP());
+        binding.lakeHealthText.setText("HP: " + player.getLakeHP());
 
         binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,6 +77,7 @@ public class FirstMapActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    binding.lakeHealthText.setText("HP: " + player.getLakeHP());
                                     for (int i = 0; i < fishViews.size(); i++) {
                                         ImageView fishView = fishViews.get(i);
                                         Fish fish = game.getFishArr().get(i);
@@ -86,7 +87,9 @@ public class FirstMapActivity extends AppCompatActivity {
                                 }
                             });
                         }
+
                     };
+
 
                     // inst. task for adding new fish onto map
                     TimerTask addFishTask = new TimerTask() {

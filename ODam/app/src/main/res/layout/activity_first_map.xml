@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/lakeMonumentImage"
-        android:layout_width="84dp"
-        android:layout_height="81dp"
-        android:visibility="invisible"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/lake_monument"
-        tools:layout_editor_absoluteX="505dp" />
+        tools:layout_editor_absoluteX="506dp"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/mapImage"
@@ -21,7 +22,7 @@
         android:layout_height="411dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mapver2" />
