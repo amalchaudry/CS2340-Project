@@ -1,8 +1,5 @@
 package com.example.odam;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,11 +11,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.GameApplication;
-import com.example.odam.gameLogic.GameOverActivity;
 import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
@@ -31,7 +30,7 @@ import java.util.TimerTask;
 
 public class FirstMapActivity extends AppCompatActivity {
 
-    private  ActivityFirstMapBinding binding;
+    private ActivityFirstMapBinding binding;
     private ImageView chosenTowerImage;
     private Bitmap bitmap;
     private Game game;
@@ -66,7 +65,6 @@ public class FirstMapActivity extends AppCompatActivity {
 
         binding.moneyText.setText("Money: " + player.getMoney());
         binding.lakeHealthText.setText("HP: " + player.getLakeHP());
-
         binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!game.isCombatStarted()) {
@@ -76,7 +74,7 @@ public class FirstMapActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             game.update(timer);
-
+                            gameOver(player);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -266,11 +264,15 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.draw(canvas);
         return bitmap;
     }
-
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, GameOverActivity.class);
+        startActivity(switchActivityIntent);
+    }
     public void gameOver(Player player) {
         boolean gO = game.checkGameOver(player);
-        if (gO = true) {
-            startActivity(new Intent(v.getContext(), GameOverActivity.class));
+        if (gO) {
+            timer.cancel();
+            switchActivities();
         }
     }
 }
