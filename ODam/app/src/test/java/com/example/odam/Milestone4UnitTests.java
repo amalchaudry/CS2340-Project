@@ -1,5 +1,6 @@
 package com.example.odam;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -12,16 +13,18 @@ import com.example.odam.fish.Tuna;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.GameApplication;
+import com.example.odam.gameLogic.GameOverActivity;
 import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Timer;
 
-public class Milestone4UnitTestsTina {
+public class Milestone4UnitTests {
 
     /**
      * This tests if the health goes down by 10 every time fish pass monument
@@ -100,5 +103,54 @@ public class Milestone4UnitTestsTina {
         assertEquals(fish3.getImage(), R.drawable.fish_salmon);
         assertEquals(fish2.getImage(), R.drawable.fish_tuna);
         assertEquals(fish.getImage(), R.drawable.fish_swordfish);
+    }
+
+    /**
+     * Tests the health set for the fish
+     */
+    @Test
+    public void checkHealth() {
+        Fish tuna = new Tuna();
+        Fish salmon = new Salmon();
+        Fish swordf = new Swordfish();
+        assertEquals(100, tuna.getHealth());
+        assertEquals(100, salmon.getHealth());
+        assertEquals(100, swordf.getHealth());
+    }
+
+    /**
+     * Tests the speed set for the fish
+     */
+    @Test
+    public void checkSpeed() {
+        Fish tuna = new Tuna();
+        Fish salmon = new Salmon();
+        Fish swordf = new Swordfish();
+        assertEquals(50, tuna.getSpeed());
+        assertEquals(50, salmon.getHealth());
+        assertEquals(50, swordf.getHealth());
+    }
+
+    /**
+     * Tests that game is over when HP is <= 0.
+     */
+    @Test
+    public void isGameOver() {
+        Game game = new Game(Difficulty.EASY);
+        Player player = new Player(600, 0);
+        game.checkGameOver(player);
+        assertEquals(true, game.getBoolean());
+    }
+    /**
+     * Tests if fish coordinates are updated.
+     */
+    @Test
+    public void isUpdated() {
+        Player player = new Player(600, 100);
+        Fish fish = new Tuna();
+        fish.setIsFinished(true);
+        fish.update(player);
+        assertEquals(fish.getX(), 1300);
+        assertEquals(fish.getY(), 1080);
     }
 }
