@@ -159,8 +159,8 @@ public class Game {
         return gameOver;
     }
 
-    public void update(Timer timer) {
-        checkGameOver(player);
+    public boolean update(Timer timer) {
+        boolean gameOver = checkGameOver(player);
         if (player.getDeadFish() >= 15) {
             combatStarted = false;
             timer.cancel();
@@ -170,6 +170,7 @@ public class Game {
             fishArr.get(i).update(player);
         }
         updateFish = true;
+        return gameOver;
     }
 
     public Fish addFish(Timer timer) {
@@ -191,12 +192,18 @@ public class Game {
         return newFish;
     }
 
+<<<<<<< HEAD
     public void checkGameOver(Player player) {
         Intent intent = new Intent(v.getContext(), GameOverActivity.class);
         if (player.getLakeHP() <= 0) {
             fmp.startActivity(intent);
+=======
+    public boolean checkGameOver(Player player) {
+        if (player.getLakeHP() <= 0 ) {
+>>>>>>> origin
             gameOver = true;
         }
+        return gameOver;
     }
     public boolean isCombatStarted() {
         return combatStarted;
