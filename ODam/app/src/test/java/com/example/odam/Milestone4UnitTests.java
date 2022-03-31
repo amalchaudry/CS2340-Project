@@ -1,5 +1,6 @@
 package com.example.odam;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -103,21 +104,29 @@ public class Milestone4UnitTests {
     }
 
     /**
-     * Tests the health set for the fish (specifically tuna fish)
+     * Tests the health set for the fish
      */
     @Test
     public void checkHealth() {
         Fish tuna = new Tuna();
+        Fish salmon = new Salmon();
+        Fish swordf = new Swordfish();
         assertEquals(100, tuna.getHealth());
+        assertEquals(100, salmon.getHealth());
+        assertEquals(100, swordf.getHealth());
     }
 
     /**
-     * Tests the speed set for the fish (specifically salmon fish)
+     * Tests the speed set for the fish
      */
     @Test
     public void checkSpeed() {
+        Fish tuna = new Tuna ();
         Fish salmon = new Salmon();
+        Fish swordf = new Swordfish();
+        assertEquals(50, tuna.getSpeed());
         assertEquals(50, salmon.getHealth());
+        assertEquals(50, swordf.getHealth());
     }
 
 }
