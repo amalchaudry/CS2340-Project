@@ -1,6 +1,5 @@
 package com.example.odam.gameLogic;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
@@ -38,18 +37,18 @@ public class Game {
         int lakeHP = 0;
 
         switch (diff) {
-            case MEDIUM:
-                money = 900;
-                lakeHP = 150;
-                break;
-            case HARD:
-                money = 800;
-                lakeHP = 100;
-                break;
-            default:
-                money = 1000;
-                lakeHP = 200;
-                break;
+        case MEDIUM:
+            money = 900;
+            lakeHP = 150;
+            break;
+        case HARD:
+            money = 800;
+            lakeHP = 100;
+            break;
+        default:
+            money = 1000;
+            lakeHP = 200;
+            break;
         }
 
         player = new Player(money, lakeHP);
@@ -86,9 +85,11 @@ public class Game {
         shop.chooseNewTower(tower);
     }
 
-    public void deselectTower() { shop.stopChoosingTower(); }
+    public void deselectTower() {
+        shop.stopChoosingTower(); }
 
-    public boolean isPlacingChosenTower() { return shop.isPlacingChosenTower(); }
+    public boolean isPlacingChosenTower() {
+        return shop.isPlacingChosenTower(); }
 
     public boolean canBuyChosenTower() {
         return  shop.canBuyChosenTower(player.getMoney());
@@ -152,7 +153,8 @@ public class Game {
         combatStarted = true;
     }
 
-    public boolean getBoolean() {return gameOver; }
+    public boolean getBoolean() {
+        return gameOver; }
 
     public boolean update(Timer timer) {
         boolean gameOver = checkGameOver(player);
@@ -168,7 +170,7 @@ public class Game {
         return gameOver;
     }
 
-    public Fish addFish (Timer timer) {
+    public Fish addFish(Timer timer) {
         Random rand = new Random();
         if (fishCounter >= 15) {
             timer.cancel();
@@ -180,8 +182,7 @@ public class Game {
         } else if (index == 1) {
             newFish = new Tuna();
         } else {
-//            newFish = new Salmon();
-            newFish = new Tuna();
+            newFish = new Salmon();
         }
         fishCounter++;
         fishArr.add(newFish);
@@ -189,7 +190,7 @@ public class Game {
     }
 
     public boolean checkGameOver(Player player) {
-        if (player.getLakeHP() <= 0 ) {
+        if (player.getLakeHP() <= 0) {
             gameOver = true;
         }
         return gameOver;

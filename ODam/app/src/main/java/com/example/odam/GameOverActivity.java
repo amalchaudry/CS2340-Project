@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.odam.databinding.ActivityGameOverBinding;
-import com.example.odam.databinding.ActivityWelcomeScreenBinding;
 
 public class GameOverActivity extends AppCompatActivity {
     private ActivityGameOverBinding binding;
