@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,6 +18,7 @@ import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.GameApplication;
+import com.example.odam.gameLogic.GameOverActivity;
 import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
@@ -36,6 +38,7 @@ public class FirstMapActivity extends AppCompatActivity {
     private Timer timer = new Timer();
     private Timer timer2 = new Timer();
     private ArrayList<ImageView> fishViews = new ArrayList<>();
+    private View v;
     //private int money;
     //private int lakeHP;
 
@@ -262,5 +265,12 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    public void gameOver(Player player) {
+        boolean gO = game.checkGameOver(player);
+        if (gO = true) {
+            startActivity(new Intent(v.getContext(), GameOverActivity.class));
+        }
     }
 }
