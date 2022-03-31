@@ -13,11 +13,13 @@ import com.example.odam.fish.Tuna;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.GameApplication;
+import com.example.odam.gameLogic.GameOverActivity;
 import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Timer;
@@ -121,7 +123,7 @@ public class Milestone4UnitTests {
      */
     @Test
     public void checkSpeed() {
-        Fish tuna = new Tuna ();
+        Fish tuna = new Tuna();
         Fish salmon = new Salmon();
         Fish swordf = new Swordfish();
         assertEquals(50, tuna.getSpeed());
@@ -129,4 +131,26 @@ public class Milestone4UnitTests {
         assertEquals(50, swordf.getHealth());
     }
 
+    /**
+     * Tests that game is over when HP is <= 0.
+     */
+    @Test
+    public void isGameOver() {
+        Game game = new Game(Difficulty.EASY);
+        Player player = new Player(600, 0);
+        game.checkGameOver(player);
+        assertEquals(true, game.getBoolean());
+    }
+    /**
+     * Tests if fish coordinates are updated.
+     */
+    @Test
+    public void isUpdated() {
+        Player player = new Player(600, 100);
+        Fish fish = new Tuna();
+        fish.setIsFinished(true);
+        fish.update(player);
+        assertEquals(fish.getX(), 1300);
+        assertEquals(fish.getY(), 1080);
+    }
 }

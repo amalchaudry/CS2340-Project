@@ -1,12 +1,13 @@
 package com.example.odam.gameLogic;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.Random;
+import android.view.View;
 
 import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
@@ -20,9 +21,11 @@ public class Game {
     private Shop shop;
     private Player player;
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
+    private View v;
 
     private boolean combatStarted = false;
     private boolean updateFish = false;
+    private boolean gameOver = false;
     private FirstMapActivity fmp;
     private int fishCounter = 0; //represent fish generated in round
 
@@ -149,8 +152,10 @@ public class Game {
         combatStarted = true;
     }
 
+    public boolean getBoolean() {return gameOver; }
+
     public void update(Timer timer) {
-//        checkGameOver(); uncomment this once you're done with checkGameOver(Player player) @AMAL
+        checkGameOver(player);
         if (player.getDeadFish() >= 15) {
             combatStarted = false;
             timer.cancel();
@@ -181,11 +186,13 @@ public class Game {
         return newFish;
     }
 
-    //TODO: @AMAL Check if lakeHP is <= 0, if so transition to gameover activity
-//    public void checkGameOver(Player player) {
-//        if (player.getLakeHP() <= 0 ) {
-//        }
-//    }
+    public void checkGameOver(Player player) {
+        Intent intent = new Intent(v.getContext(), GameOverActivity.class);
+        if (player.getLakeHP() <= 0 ) {
+            fmp.startActivity(intent);
+            gameOver = true;
+        }
+    }
     public boolean isCombatStarted() {
         return combatStarted;
     }
