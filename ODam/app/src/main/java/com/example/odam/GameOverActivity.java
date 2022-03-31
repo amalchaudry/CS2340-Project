@@ -7,15 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GameOverActivity extends AppCompatActivity {
+import com.example.odam.databinding.ActivityGameOverBinding;
+import com.example.odam.databinding.ActivityWelcomeScreenBinding;
 
+public class GameOverActivity extends AppCompatActivity {
+    private ActivityGameOverBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
-
+        binding = ActivityGameOverBinding.inflate(getLayoutInflater());
         Button button = findViewById(R.id.buttonreStart);
-        button.setOnClickListener(new View.OnClickListener() {
+        binding.buttonreStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switchActivities();
