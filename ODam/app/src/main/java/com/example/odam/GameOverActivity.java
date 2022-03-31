@@ -16,8 +16,11 @@ public class GameOverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
         binding = ActivityGameOverBinding.inflate(getLayoutInflater());
         Button button = findViewById(R.id.buttonreStart);
+        View view = binding.getRoot();
+        setContentView(view);
         binding.buttonreStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

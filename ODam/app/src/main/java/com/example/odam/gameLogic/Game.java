@@ -180,7 +180,8 @@ public class Game {
         } else if (index == 1) {
             newFish = new Tuna();
         } else {
-            newFish = new Salmon();
+//            newFish = new Salmon();
+            newFish = new Tuna();
         }
         fishCounter++;
         fishArr.add(newFish);

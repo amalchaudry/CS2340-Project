@@ -1,8 +1,5 @@
 package com.example.odam;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +10,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
@@ -271,6 +271,7 @@ public class FirstMapActivity extends AppCompatActivity {
     public void gameOver(Player player) {
         boolean gO = game.checkGameOver(player);
         if (gO) {
+            timer.cancel();
             switchActivities();
         }
     }
