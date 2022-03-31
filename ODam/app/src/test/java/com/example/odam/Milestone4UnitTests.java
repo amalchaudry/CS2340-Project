@@ -21,7 +21,7 @@ import org.junit.Test;
 
 import java.util.Timer;
 
-public class Milestone4UnitTestsTina {
+public class Milestone4UnitTests {
 
     /**
      * This tests if the health goes down by 10 every time fish pass monument
@@ -101,4 +101,23 @@ public class Milestone4UnitTestsTina {
         assertEquals(fish2.getImage(), R.drawable.fish_tuna);
         assertEquals(fish.getImage(), R.drawable.fish_swordfish);
     }
+
+    /**
+     * Tests the health set for the fish (specifically tuna fish)
+     */
+    @Test
+    public void checkHealth() {
+        Fish tuna = new Tuna();
+        assertEquals(100, tuna.getHealth());
+    }
+
+    /**
+     * Tests the speed set for the fish (specifically salmon fish)
+     */
+    @Test
+    public void checkSpeed() {
+        Fish salmon = new Salmon();
+        assertEquals(50, salmon.getHealth());
+    }
+
 }
