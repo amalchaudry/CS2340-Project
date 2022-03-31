@@ -101,7 +101,7 @@ public abstract class Fish {
         this.health = health;
     }
 
-    public int getSpeed() {this.speed = speed; }
+    public int getSpeed() {return speed; }
 
     public int getImage() {
         return imageID;
