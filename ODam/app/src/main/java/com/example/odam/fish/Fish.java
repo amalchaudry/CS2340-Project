@@ -22,7 +22,7 @@ public abstract class Fish {
             {1300, 1080}
         };
     
-    public Fish () {
+    public Fish() {
         x = 0;
         y = 180;
         width = 1;
@@ -45,8 +45,8 @@ public abstract class Fish {
         double magnitude = Math.sqrt(diffX * diffX + diffY * diffY);
         double dirX = (diffX / magnitude);
         double dirY = (diffY / magnitude);
-//        Log.d("length", String.valueOf(checkpoints.length));
-//        Log.d("diffY", String.valueOf(diffY));
+        //Log.d("length", String.valueOf(checkpoints.length));
+        //Log.d("diffY", String.valueOf(diffY));
         swim(dirX, dirY);
     }
 
@@ -93,7 +93,7 @@ public abstract class Fish {
         return width;
     }
 
-    public int getHealth () {
+    public int getHealth() {
         return health;
     }
 
@@ -128,7 +128,7 @@ public abstract class Fish {
         return isFinished;
     }
 
-    public void setIsFinished(boolean Finished) {
-        this.isFinished = Finished;
+    public void setIsFinished(boolean finished) {
+        this.isFinished = finished;
     }
 }

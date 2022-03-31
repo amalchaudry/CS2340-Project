@@ -1,9 +1,7 @@
 package com.example.odam;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,6 +10,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
@@ -29,13 +30,14 @@ import java.util.TimerTask;
 
 public class FirstMapActivity extends AppCompatActivity {
 
-    private  ActivityFirstMapBinding binding;
+    private ActivityFirstMapBinding binding;
     private ImageView chosenTowerImage;
     private Bitmap bitmap;
     private Game game;
     private Timer timer = new Timer();
     private Timer timer2 = new Timer();
     private ArrayList<ImageView> fishViews = new ArrayList<>();
+    private View v;
     //private int money;
     //private int lakeHP;
 
@@ -43,27 +45,21 @@ public class FirstMapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-
         binding = ActivityFirstMapBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
         //change this to be equivalent to other configuration screen's difficulty variable
         chosenTowerImage = new ImageView(FirstMapActivity.this);
         binding.getRoot().addView(chosenTowerImage);
         bitmap = drawableToBitmap(binding.mapImage.getDrawable());
-
         game = new Game(((GameApplication) getApplication()).getDiff(), FirstMapActivity.this);
         Player player = game.getPlayer();
-
         binding.moneyText.setText("Money: " + player.getMoney());
         binding.lakeHealthText.setText("HP: " + player.getLakeHP());
-
         binding.startCombatButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!game.isCombatStarted()) {
@@ -73,7 +69,7 @@ public class FirstMapActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             game.update(timer);
-
+                            gameOver(player);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -89,8 +85,6 @@ public class FirstMapActivity extends AppCompatActivity {
                         }
 
                     };
-
-
                     // inst. task for adding new fish onto map
                     TimerTask addFishTask = new TimerTask() {
                         @Override
@@ -127,8 +121,6 @@ public class FirstMapActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //fisherButton
         binding.fisherButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 game.selectNewTower(new FishermanTower(game.getDiff()));
@@ -137,8 +129,6 @@ public class FirstMapActivity extends AppCompatActivity {
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
-
-        //spearButton
         binding.Spearman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 game.selectNewTower(new SpearTower(game.getDiff()));
@@ -147,8 +137,6 @@ public class FirstMapActivity extends AppCompatActivity {
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
-
-        // boatButton
         binding.Boatman.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 game.selectNewTower(new BoatTower(game.getDiff()));
@@ -157,8 +145,6 @@ public class FirstMapActivity extends AppCompatActivity {
                 binding.towerInfo.setText("Buy: \n" + tower.getName() + " $" + tower.getCost());
             }
         });
-
-
         binding.mapImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 chosenTowerImage.bringToFront();
@@ -186,16 +172,15 @@ public class FirstMapActivity extends AppCompatActivity {
                     binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
                     break;
                 case MotionEvent.ACTION_UP:
-                    if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap) & game.canBuyChosenTower()) {
+                    if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
+                            & game.canBuyChosenTower()) {
                         Tower tower = game.getChosenTower();
                         game.setPlayerMoney(player.getMoney() - tower.getCost());
-
                         binding.moneyText.setText("Money: " + player.getMoney());
                         binding.towerInfo.setText("Buy: Purchased! \n "
                                 + tower.getName() + " for " + tower.getCost());
                         chosenTowerImage.setAlpha(1f);
-                        //game.stopChoosingTower();
-                    } else if (game.getChosenTower() != null){
+                    } else if (game.getChosenTower() != null) {
                         game.deselectTower();
                         chosenTowerImage.setImageResource(0);
                         chosenTowerImage.setOnTouchListener(null);
@@ -204,7 +189,6 @@ public class FirstMapActivity extends AppCompatActivity {
                 default:
                     break;
                 }
-
                 return true;
             }
         });
@@ -262,5 +246,16 @@ public class FirstMapActivity extends AppCompatActivity {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, GameOverActivity.class);
+        startActivity(switchActivityIntent);
+    }
+    public void gameOver(Player player) {
+        boolean gO = game.checkGameOver(player);
+        if (gO) {
+            timer.cancel();
+            switchActivities();
+        }
     }
 }
