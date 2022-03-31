@@ -1,0 +1,10 @@
+1. This test tests that when a fish attacks the monument, the player loses the correct amount of health.
+2. This test is for an internal method that keeps track of the fishes that are happening in the game. Adding a fish to the array means that a fish is on the screen.
+3. This test is for the movement of fishes. We check at each checkpoint the coordinates of the fish. We have random spots where we check that it is correct.
+4. This test makes sure that the final destination of each fish during movement is the same for each checkpoint.
+5. This test checks that if there is a checkpoint out of bounds, the game will appropriately tag the fish as finished.
+6. This test tests the images of the fish as they move.
+7. Tests the instantiation of fishes results in correct health for the tuna, salmon, and swordfish.
+8. Tests the instantiation of fishes results in correct speed for the tuna, salmon, and swordfish.
+9. Tests the check if the game ends when the monument health is 0.
+10. Checks that the update function does not change the coordinates if the fish is finished.

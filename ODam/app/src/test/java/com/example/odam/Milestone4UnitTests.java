@@ -1,10 +1,10 @@
 package com.example.odam;
 
-import static org.junit.Assert.assertArrayEquals;
+//import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertTrue;
 
 import com.example.odam.fish.Fish;
 import com.example.odam.fish.Salmon;
@@ -12,14 +12,14 @@ import com.example.odam.fish.Swordfish;
 import com.example.odam.fish.Tuna;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.Game;
-import com.example.odam.gameLogic.GameApplication;
-import com.example.odam.gameLogic.GameOverActivity;
+//import com.example.odam.gameLogic.GameApplication;
+//import com.example.odam.gameLogic.GameOverActivity;
 import com.example.odam.gameLogic.Player;
-import com.example.odam.tower.BoatTower;
-import com.example.odam.tower.FishermanTower;
-import com.example.odam.tower.SpearTower;
+//import com.example.odam.tower.BoatTower;
+//import com.example.odam.tower.FishermanTower;
+//import com.example.odam.tower.SpearTower;
 
-import org.junit.Rule;
+//import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Timer;
@@ -30,7 +30,7 @@ public class Milestone4UnitTests {
      * This tests if the health goes down by 10 every time fish pass monument
      */
     @Test
-    public void HPDecreases() {
+    public void hpDecreases() {
         Player player = new Player(600, 100);
         Fish fish = new Swordfish();
         fish.setCheckpoint(7);
@@ -41,7 +41,7 @@ public class Milestone4UnitTests {
      * This tests if addFish() adds fish into array
      */
     @Test
-    public void differentTowersDifferentRange() {
+    public void diffTowersDiffRange() {
         Game game = new Game(Difficulty.HARD);
         Fish fish = new Tuna();
         Timer time = new Timer();
@@ -72,7 +72,7 @@ public class Milestone4UnitTests {
      * This tests different fishes move the same
      */
     @Test
-    public void DifferentfishesMoveSame() {
+    public void differentFishMoveSame() {
         Player player = new Player(600, 100);
         Fish fish = new Swordfish();
         Fish fish2 = new Tuna();

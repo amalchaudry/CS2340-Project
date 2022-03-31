@@ -38,20 +38,19 @@ public class Game {
         int lakeHP = 0;
 
         switch (diff) {
-            case MEDIUM:
-                money = 900;
-                lakeHP = 150;
-                break;
-            case HARD:
-                money = 800;
-                lakeHP = 100;
-                break;
-            default:
-                money = 1000;
-                lakeHP = 200;
-                break;
+        case MEDIUM:
+            money = 900;
+            lakeHP = 150;
+            break;
+        case HARD:
+            money = 800;
+            lakeHP = 100;
+            break;
+        default:
+            money = 1000;
+            lakeHP = 200;
+            break;
         }
-
         player = new Player(money, lakeHP);
         shop = new Shop();
     }
@@ -86,12 +85,16 @@ public class Game {
         shop.chooseNewTower(tower);
     }
 
-    public void deselectTower() { shop.stopChoosingTower(); }
+    public void deselectTower() {
+        shop.stopChoosingTower();
+    }
 
-    public boolean isPlacingChosenTower() { return shop.isPlacingChosenTower(); }
+    public boolean isPlacingChosenTower() {
+        return shop.isPlacingChosenTower();
+    }
 
     public boolean canBuyChosenTower() {
-        return  shop.canBuyChosenTower(player.getMoney());
+        return shop.canBuyChosenTower(player.getMoney());
     }
 
     public boolean canPlaceChosenTower(float eventX, float eventY, Bitmap bitmap) {
@@ -152,7 +155,9 @@ public class Game {
         combatStarted = true;
     }
 
-    public boolean getBoolean() {return gameOver; }
+    public boolean getBoolean() {
+        return gameOver;
+    }
 
     public void update(Timer timer) {
         checkGameOver(player);
@@ -167,7 +172,7 @@ public class Game {
         updateFish = true;
     }
 
-    public Fish addFish (Timer timer) {
+    public Fish addFish(Timer timer) {
         Random rand = new Random();
         if (fishCounter >= 15) {
             timer.cancel();
@@ -188,7 +193,7 @@ public class Game {
 
     public void checkGameOver(Player player) {
         Intent intent = new Intent(v.getContext(), GameOverActivity.class);
-        if (player.getLakeHP() <= 0 ) {
+        if (player.getLakeHP() <= 0) {
             fmp.startActivity(intent);
             gameOver = true;
         }
