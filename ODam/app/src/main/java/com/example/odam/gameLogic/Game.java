@@ -25,7 +25,6 @@ public class Game {
     private boolean combatStarted = false;
     private boolean updateFish = false;
     private boolean gameOver = false;
-    private FirstMapActivity fmp;
     private int fishCounter = 0; //represent fish generated in round
 
 
