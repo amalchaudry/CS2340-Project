@@ -39,6 +39,7 @@ public class FirstMapActivity extends AppCompatActivity {
     private Timer timer2 = new Timer();
     private ArrayList<ImageView> fishViews = new ArrayList<>();
     private View v;
+    private double fps = 24.0;
     //private int money;
     //private int lakeHP;
 
@@ -152,7 +153,8 @@ public class FirstMapActivity extends AppCompatActivity {
             // update coordinate of fish time
             // delay: Schedules the specified task for execution after the specified delay.
             // delay: in milliseconds before task is to be executed.
-            timer.scheduleAtFixedRate(updateTask, 0, 250);
+            int period = (int) ((1/ fps) * 1000);
+            timer.scheduleAtFixedRate(updateTask, 0, period);
             // add fish until the 15th fish is added, then stop adding new fish
             timer2.scheduleAtFixedRate(addFishTask, 1000, 1000);
         }
@@ -187,7 +189,11 @@ public class FirstMapActivity extends AppCompatActivity {
                 if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
                         & game.canBuyChosenTower()) {
                     Tower tower = game.getChosenTower();
+                    tower.setX((int) event.getRawX() - 130);
+                    tower.setY((int) event.getRawY());
                     game.setPlayerMoney(player.getMoney() - tower.getCost());
+                    game.getTowerArr().add(tower);
+                    binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " " + Integer.toString(game.getTowerArr().get(0).getY()));
                     binding.moneyText.setText("Money: " + player.getMoney());
                     binding.towerInfo.setText("Buy: Purchased! \n "
                             + tower.getName() + " for " + tower.getCost());

@@ -13,6 +13,7 @@ public abstract class Fish {
     protected int imageID;
     protected int nextCheckpoint = 0;
     protected boolean isFinished = false;
+    protected boolean isSlowed = false;
     protected int[][] checkpoints = {
             {1120, 250},
             {770, 615},
@@ -57,8 +58,8 @@ public abstract class Fish {
         int newY = (int) (y + dirY * speed);
 
         if (((targetX <= x && targetX >= newX)
-                || (targetX >= x && targetX <= newX)
-                && (targetY <= y && targetY >= newY)
+                || (targetX >= x && targetX <= newX))
+                && ((targetY <= y && targetY >= newY)
                 || (targetY >= y && targetY <= newY))) {
             x = targetX;
             y = targetY;
@@ -132,4 +133,18 @@ public abstract class Fish {
     public void setIsFinished(boolean finished) {
         this.isFinished = finished;
     }
+
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isSlowed() {
+        return isSlowed;
+    }
+
+    public void setSlowed(boolean slowed) {
+        isSlowed = slowed;
+    }
+
 }

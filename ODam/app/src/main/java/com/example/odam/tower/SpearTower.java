@@ -1,5 +1,6 @@
 package com.example.odam.tower;
 
+import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.R;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
@@ -23,5 +24,9 @@ public class SpearTower extends Tower {
         }
         range = 300;
         cooldown = 3;
+    }
+
+    public void attack(Fish fish, double distance) {
+        return;
     }
 }
