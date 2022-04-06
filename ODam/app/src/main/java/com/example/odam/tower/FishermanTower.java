@@ -1,5 +1,8 @@
 package com.example.odam.tower;
 
+import android.util.Log;
+
+import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.R;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
@@ -21,7 +24,12 @@ public class FishermanTower extends Tower {
             cost = 650;
             break;
         }
-        range = 50;
+        range = 500;
         cooldown = 1;
+    }
+
+    public void attack(Fish fish, double distance) {
+        Log.d("attack status", "attacked fish");
+        return;
     }
 }
