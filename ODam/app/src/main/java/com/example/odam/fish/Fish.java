@@ -9,6 +9,7 @@ public abstract class Fish {
     protected int width;
     protected int height;
     protected int health;
+    protected int baseSpeed;
     protected int speed;
     protected int imageID;
     protected int nextCheckpoint = 0;
@@ -126,6 +127,7 @@ public abstract class Fish {
     public void setCheckpoint(int nextCheckPoint) {
         this.nextCheckpoint = nextCheckPoint;
     }
+
     public boolean getIsFinished() {
         return isFinished;
     }
@@ -145,6 +147,14 @@ public abstract class Fish {
 
     public void setSlowed(boolean slowed) {
         isSlowed = slowed;
+    }
+
+    public int getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    public void setBaseSpeed(int baseSpeed) {
+        this.baseSpeed = baseSpeed;
     }
 
 }

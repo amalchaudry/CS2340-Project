@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class BoatTower extends Tower {
     private double slowPercent = 0.6;
+    private ArrayList<Fish> fishInRange = new ArrayList<>();
     public BoatTower(Difficulty diff) {
         name = "Boatman";
         imageID = R.drawable.boat1;
@@ -44,13 +45,24 @@ public class BoatTower extends Tower {
         }
     }
 
+    /**
+     * If fish is new to range, then slow
+     * If fish has been in range, then nothing happens
+     * If fish, leaves range, then speed it up again and remove from array
+     * @param fish  the fish in question
+     * @param distance  distance from tower to fish
+     */
     public void attack(Fish fish, double distance) {
-        if (!fish.isSlowed() && distance <= range) {
-            fish.setSpeed((int) (slowPercent * fish.getSpeed()));
+        if (!fishInRange.contains(fish) && distance <= range) {
             fish.setSlowed(true);
-        } else if (fish.isSlowed() && distance > range) {
+            fishInRange.add(fish);
+            fish.setSpeed((int) (slowPercent * fish.getSpeed()));
+        }
+        if (fishInRange.contains(fish) && distance > range) {
             fish.setSlowed(false);
+            fishInRange.remove(fish);
             fish.setSpeed((int) (fish.getSpeed() / slowPercent));
         }
     }
+
 }
