@@ -8,7 +8,8 @@ public class Swordfish extends Fish {
         fishType = "Swordfish";
         imageID = R.drawable.fish_swordfish;
         health = 100;
-        speed = 12;
+        baseSpeed = 12;
+        speed = baseSpeed;
     }
 
 }

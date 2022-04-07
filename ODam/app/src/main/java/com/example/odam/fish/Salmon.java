@@ -8,6 +8,7 @@ public class Salmon extends Fish {
         fishType = "Salmon";
         imageID = R.drawable.fish_salmon;
         health = 100;
-        speed = 5;
+        baseSpeed = 5;
+        speed = baseSpeed;
     }
 }
