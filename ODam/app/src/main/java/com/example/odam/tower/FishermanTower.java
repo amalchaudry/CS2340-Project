@@ -15,13 +15,13 @@ public class FishermanTower extends Tower {
         damage = 10;
         switch (diff) {
         case MEDIUM:
-            cost = 750;
+            cost = 450;
             break;
         case HARD:
-            cost = 850;
+            cost = 550;
             break;
         default:
-            cost = 650;
+            cost = 350;
             break;
         }
         range = 500;

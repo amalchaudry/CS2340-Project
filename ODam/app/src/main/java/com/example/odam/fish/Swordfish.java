@@ -11,5 +11,4 @@ public class Swordfish extends Fish {
         baseSpeed = 12;
         speed = baseSpeed;
     }
-
 }

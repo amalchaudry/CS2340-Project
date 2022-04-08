@@ -1,11 +1,19 @@
 package com.example.odam.tower;
 
+import android.util.Log;
+
+import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.R;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
 
+import java.util.ArrayList;
+
 public class SpearTower extends Tower {
+    private int counter = 0;
+    private int cooldownFrames;
+    private int fishCount = 0;
     public SpearTower(Difficulty diff) {
         name = "Spearman";
         imageID = R.drawable.spearman1;
@@ -13,20 +21,49 @@ public class SpearTower extends Tower {
         damage = 10;
         switch (diff) {
         case MEDIUM:
-            cost = 850;
+            cost = 550;
             break;
         case HARD:
-            cost = 950;
+            cost = 650;
             break;
         default:
-            cost = 750;
+            cost = 450;
             break;
         }
         range = 300;
         cooldown = 3;
+        cooldownFrames = (int) (3 * FirstMapActivity.fps);
+    }
+
+    public void update(ArrayList<Fish> fishes) {
+        if (counter % cooldownFrames == 0)  {
+            for (int i = 0; i < fishes.size(); i++) {
+                Fish fish = fishes.get(i);
+                if (i == 0) {
+//                    Log.d("diff", fish.getX() + "-" + x);
+                }
+                int diffX = fish.getX() - x;
+                int diffY = fish.getY() - y;
+                double distanceToTower =  Math.sqrt(diffX * diffX + diffY * diffY);
+                if (fishCount < 2) {
+                    attack(fish, distanceToTower);
+                    fishCount++;
+                }
+                if (i == fishes.size() - 1) {
+                    fishCount = 0;
+                }
+//                Log.d("ACTUAL Fish health", "" + fish.getHealth());
+            }
+        }
+        counter++;
     }
 
     public void attack(Fish fish, double distance) {
-        return;
+        if (distance <= range) {
+//            Log.d("EXPECTED Fish health", "" + (fish.getHealth()));
+//            Log.d("ATTACK FISH", "" + fish.getHealth());
+//            System.out.println("SHOULD BE DECREASING CUS IT'S ENTERED HERE");
+            fish.setHealth(fish.getHealth() - 30);
+        }
     }
 }
