@@ -10,5 +10,4 @@ public class Swordfish extends Fish {
         health = 100;
         speed = 12;
     }
-
 }

@@ -18,13 +18,13 @@ public class BoatTower extends Tower {
         damage = 10;
         switch (diff) {
         case MEDIUM:
-            cost = 950;
+            cost = 650;
             break;
         case HARD:
-            cost = 1050;
+            cost = 750;
             break;
         default:
-            cost = 850;
+            cost = 550;
             break;
         }
         range = 300;

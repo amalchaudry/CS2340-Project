@@ -78,11 +78,11 @@ public abstract class Fish {
         return y;
     }
 
-    public void setX() {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public void setY() {
+    public void setY(int y) {
         this.y = y;
     }
 
@@ -98,7 +98,7 @@ public abstract class Fish {
         return health;
     }
 
-    public void setHealth() {
+    public void setHealth(int health) {
         this.health = health;
     }
 
@@ -111,12 +111,6 @@ public abstract class Fish {
 
     public void setImage(int imageID) {
         this.imageID = imageID;
-    }
-
-
-    public void attackMon() {
-        //check position and decrease lake HP
-        return;
     }
 
     public int getCheckpoint() {

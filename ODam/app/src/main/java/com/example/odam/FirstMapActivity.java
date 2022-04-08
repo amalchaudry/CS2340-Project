@@ -39,7 +39,7 @@ public class FirstMapActivity extends AppCompatActivity {
     private Timer timer2 = new Timer();
     private ArrayList<ImageView> fishViews = new ArrayList<>();
     private View v;
-    private double fps = 24.0;
+    public static double fps = 24.0;
     //private int money;
     //private int lakeHP;
 
