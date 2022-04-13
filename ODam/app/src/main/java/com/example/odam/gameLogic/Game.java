@@ -183,14 +183,28 @@ public class Game {
         Fish newFish;
         if (index == 0) {
             newFish = new Swordfish();
+            newFish.printHealth();
         } else if (index == 1) {
             newFish = new Tuna();
+            newFish.printHealth();
         } else {
             newFish = new Salmon();
+            newFish.printHealth();
         }
         fishCounter++;
         fishArr.add(newFish);
         return newFish;
+    }
+
+    public addMoney() {
+       // for (int i = 0; i < fishArr.length(); i++) {
+            for (fish : fishArr) {
+                if (fish.health == 0) {
+                    int money = player.getMoney();
+                    money += 50;
+                    player.setMoney(player.getMoney() + money);
+                }
+            }
     }
 
 <<<<<<< HEAD
