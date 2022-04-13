@@ -20,12 +20,12 @@ public class Game {
     private Shop shop;
     private Player player;
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
+    private ArrayList<Tower> towerArr = new ArrayList<>();
     private View v;
 
     private boolean combatStarted = false;
     private boolean updateFish = false;
     private boolean gameOver = false;
-    private FirstMapActivity fmp;
     private int fishCounter = 0; //represent fish generated in round
 
 
@@ -57,7 +57,6 @@ public class Game {
 
     public Game(Difficulty diff, FirstMapActivity fmp) {
         this.diff = diff;
-        this.fmp = fmp;
         Log.d("Diff", diff.toString());
         int money = 0;
         int lakeHP = 0;
@@ -166,6 +165,9 @@ public class Game {
         for (int i = 0; i < fishArr.size(); i++) {
             fishArr.get(i).update(player);
         }
+        for (int i = 0; i < towerArr.size(); i++) {
+            towerArr.get(i).update(fishArr);
+        }
         updateFish = true;
         return gameOver;
     }
@@ -187,6 +189,10 @@ public class Game {
         fishCounter++;
         fishArr.add(newFish);
         return newFish;
+    }
+
+    public void addTower(Tower tower) {
+        towerArr.add(tower);
     }
 
     public boolean checkGameOver(Player player) {
@@ -216,4 +222,11 @@ public class Game {
         this.updateFish = updateFish;
     }
 
+    public ArrayList<Tower> getTowerArr() {
+        return towerArr;
+    }
+
+    public void setTowerArr(ArrayList<Tower> towerArr) {
+        this.towerArr = towerArr;
+    }
 }

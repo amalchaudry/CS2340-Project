@@ -1,7 +1,12 @@
 package com.example.odam.tower;
 
 
+import android.util.Log;
+
+import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
+
+import java.util.ArrayList;
 
 public abstract class Tower {
     protected String name;
@@ -14,6 +19,8 @@ public abstract class Tower {
     protected int cost;
     protected float range;
     protected float cooldown;
+    protected int x;    //TODO: set x and y in firstmapactivity as you place
+    protected int y;
 
     public Tower() {
         name = "";
@@ -24,6 +31,26 @@ public abstract class Tower {
         range = 0;
         cooldown = 0;
     }
+
+    public void update(ArrayList<Fish> fishes) {
+        for (int i = 0; i < fishes.size(); i++) {
+            Fish fish = fishes.get(i);
+            if (i == 0) {
+                Log.d("diff", fish.getX() + "-" + x);
+            }
+            int diffX = fish.getX() - x;
+            int diffY = fish.getY() - y;
+            double distanceToTower =  Math.sqrt(diffX * diffX + diffY * diffY);
+            if (distanceToTower <= range) {
+                attack(fish, distanceToTower);
+            }
+        }
+    }
+
+    //distance is should be the distance between them, calculated in update
+    //TODO: implement in child classes
+    public abstract void attack(Fish fish, double distance);
+
     public String getName() {
         return name;
     }
@@ -79,4 +106,22 @@ public abstract class Tower {
     public void setCooldown(float cooldown) {
         this.cooldown = cooldown;
     }
+
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
 }
