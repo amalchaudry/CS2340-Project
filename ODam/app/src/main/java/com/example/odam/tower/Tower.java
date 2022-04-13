@@ -4,6 +4,7 @@ package com.example.odam.tower;
 import android.util.Log;
 
 import com.example.odam.fish.Fish;
+import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public abstract class Tower {
     }
 
     //distance is should be the distance between them, calculated in update
-    //TODO: implement in child classes
     public abstract void attack(Fish fish, double distance);
 
     public String getName() {
