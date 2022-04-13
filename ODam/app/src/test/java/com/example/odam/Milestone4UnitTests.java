@@ -30,7 +30,7 @@ public class Milestone4UnitTests {
      * This tests if the health goes down by 10 every time fish pass monument
      */
     @Test
-    public void hpDecreases() {
+    public void hPDecreases() {
         Player player = new Player(600, 100);
         Fish fish = new Swordfish();
         fish.setCheckpoint(7);
@@ -49,35 +49,45 @@ public class Milestone4UnitTests {
         assertEquals(game.getFishArr().size(), 1);
     }
     /**
-     * This tests that the fishes move correctly
+     * This tests that the fishes move correctly from checkpoint to checkpoint
      */
     @Test
     public void fishMovement() {
         Player player = new Player(600, 100);
         Fish fish = new Swordfish();
         fish.setCheckpoint(5);
-        fish.update(player);
-        assertEquals(fish.getX(), 770);
-        assertEquals(fish.getY(), 615);
-        fish.setCheckpoint(3);
-        fish.update(player);
-        assertEquals(fish.getX(), 560);
-        assertEquals(fish.getY(), 970);
-        fish.setCheckpoint(1);
-        fish.update(player);
+        for (int i = 0; i < 500; i++) {
+            fish.update(player);
+        }
         assertEquals(fish.getX(), 1300);
         assertEquals(fish.getY(), 1080);
+        fish.setCheckpoint(3);
+        for (int i = 0; i < 500; i++) {
+            fish.update(player);
+        }
+        assertEquals(fish.getX(), 1300);
+        assertEquals(fish.getY(), 1080);
+        fish.setCheckpoint(1);
+        for (int i = 0; i < 500; i++) {
+            fish.update(player);
+        }
+        assertEquals(fish.getX(), 1300);
+        assertEquals(fish.getY(), 1080);
+
     }
     /**
      * This tests different fishes move the same
      */
     @Test
-    public void differentFishMoveSame() {
+    public void differentfishesMoveSame() {
         Player player = new Player(600, 100);
         Fish fish = new Swordfish();
         Fish fish2 = new Tuna();
         fish.setCheckpoint(5);
-        fish.update(player);
+        for (int i = 0; i < 500; i++) {
+            fish.update(player);
+            fish2.update(player);
+        }
         assertEquals(fish.getX(), fish2.getX());
         assertEquals(fish.getY(), fish2.getY());
     }
@@ -127,8 +137,8 @@ public class Milestone4UnitTests {
         Fish salmon = new Salmon();
         Fish swordf = new Swordfish();
         assertEquals(50, tuna.getSpeed());
-        assertEquals(50, salmon.getHealth());
-        assertEquals(50, swordf.getHealth());
+        assertEquals(30, salmon.getSpeed());
+        assertEquals(70, swordf.getSpeed());
     }
 
     /**
@@ -150,7 +160,7 @@ public class Milestone4UnitTests {
         Fish fish = new Tuna();
         fish.setIsFinished(true);
         fish.update(player);
-        assertEquals(fish.getX(), 1300);
-        assertEquals(fish.getY(), 1080);
+        assertEquals(fish.getX(), 0);
+        assertEquals(fish.getY(), 180);
     }
 }

@@ -9,10 +9,12 @@ public abstract class Fish {
     protected int width;
     protected int height;
     protected int health;
+    protected int baseSpeed;
     protected int speed;
     protected int imageID;
     protected int nextCheckpoint = 0;
     protected boolean isFinished = false;
+    protected boolean isSlowed = false;
     protected int[][] checkpoints = {
             {1120, 250},
             {770, 615},
@@ -57,8 +59,8 @@ public abstract class Fish {
         int newY = (int) (y + dirY * speed);
 
         if (((targetX <= x && targetX >= newX)
-                || (targetX >= x && targetX <= newX)
-                && (targetY <= y && targetY >= newY)
+                || (targetX >= x && targetX <= newX))
+                && ((targetY <= y && targetY >= newY)
                 || (targetY >= y && targetY <= newY))) {
             x = targetX;
             y = targetY;
@@ -77,11 +79,11 @@ public abstract class Fish {
         return y;
     }
 
-    public void setX() {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public void setY() {
+    public void setY(int y) {
         this.y = y;
     }
 
@@ -95,7 +97,7 @@ public abstract class Fish {
         return health;
     }
 
-    public void setHealth() {
+    public void setHealth(int health) {
         this.health = health;
     }
 
@@ -111,12 +113,6 @@ public abstract class Fish {
         this.imageID = imageID;
     }
 
-
-    public void attackMon() {
-        //check position and decrease lake HP
-        return;
-    }
-
     public int getCheckpoint() {
         return nextCheckpoint;
     }
@@ -124,6 +120,7 @@ public abstract class Fish {
     public void setCheckpoint(int nextCheckPoint) {
         this.nextCheckpoint = nextCheckPoint;
     }
+
     public boolean getIsFinished() {
         return isFinished;
     }
@@ -131,4 +128,25 @@ public abstract class Fish {
     public void setIsFinished(boolean finished) {
         this.isFinished = finished;
     }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isSlowed() {
+        return isSlowed;
+    }
+
+    public void setSlowed(boolean slowed) {
+        isSlowed = slowed;
+    }
+
+    public int getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    public void setBaseSpeed(int baseSpeed) {
+        this.baseSpeed = baseSpeed;
+    }
+
 }

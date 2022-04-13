@@ -1,6 +1,5 @@
 package com.example.odam.gameLogic;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
@@ -21,12 +20,12 @@ public class Game {
     private Shop shop;
     private Player player;
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
+    private ArrayList<Tower> towerArr = new ArrayList<>();
     private View v;
 
     private boolean combatStarted = false;
     private boolean updateFish = false;
     private boolean gameOver = false;
-    private FirstMapActivity fmp;
     private int fishCounter = 0; //represent fish generated in round
 
 
@@ -57,7 +56,6 @@ public class Game {
 
     public Game(Difficulty diff, FirstMapActivity fmp) {
         this.diff = diff;
-        this.fmp = fmp;
         Log.d("Diff", diff.toString());
         int money = 0;
         int lakeHP = 0;
@@ -169,6 +167,9 @@ public class Game {
         for (int i = 0; i < fishArr.size(); i++) {
             fishArr.get(i).update(player);
         }
+        for (int i = 0; i < towerArr.size(); i++) {
+            towerArr.get(i).update(fishArr);
+        }
         updateFish = true;
         return gameOver;
     }
@@ -193,6 +194,7 @@ public class Game {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void checkGameOver(Player player) {
         Intent intent = new Intent(v.getContext(), GameOverActivity.class);
         if (player.getLakeHP() <= 0) {
@@ -201,6 +203,14 @@ public class Game {
     public boolean checkGameOver(Player player) {
         if (player.getLakeHP() <= 0 ) {
 >>>>>>> origin
+=======
+    public void addTower(Tower tower) {
+        towerArr.add(tower);
+    }
+
+    public boolean checkGameOver(Player player) {
+        if (player.getLakeHP() <= 0) {
+>>>>>>> main
             gameOver = true;
         }
         return gameOver;
@@ -212,7 +222,6 @@ public class Game {
     public void setCombatStarted(boolean combatStarted) {
         this.combatStarted = combatStarted;
     }
-
 
     public ArrayList<Fish> getFishArr() {
         return fishArr;
@@ -226,4 +235,11 @@ public class Game {
         this.updateFish = updateFish;
     }
 
+    public ArrayList<Tower> getTowerArr() {
+        return towerArr;
+    }
+
+    public void setTowerArr(ArrayList<Tower> towerArr) {
+        this.towerArr = towerArr;
+    }
 }

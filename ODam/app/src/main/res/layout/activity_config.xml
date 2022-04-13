@@ -51,6 +51,7 @@
         android:layout_marginTop="17dp"
         android:text="DIFFICULTY"
         android:textColor="@color/black"
+        /*android:fontFamily*/
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
