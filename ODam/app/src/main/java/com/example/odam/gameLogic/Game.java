@@ -197,11 +197,9 @@ public class Game {
     }
 
     public void addMoney(Fish fish) {
-        if (fish.getHealth() <= 0) {
             int money = player.getMoney();
             money += 50;
             player.setMoney(money);
-        }
      }
 
     public boolean checkGameOver(Player player) {
