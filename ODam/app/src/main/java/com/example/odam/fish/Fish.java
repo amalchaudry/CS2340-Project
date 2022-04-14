@@ -150,4 +150,8 @@ public abstract class Fish {
         this.baseSpeed = baseSpeed;
     }
 
+    public void printHealth() {
+        System.out.print("Health: " + health);
+    }
+
 }
