@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/moneyText2"
+        android:id="@+id/selectedFish"
         android:layout_width="155dp"
         android:layout_height="31dp"
         android:layout_marginTop="48dp"

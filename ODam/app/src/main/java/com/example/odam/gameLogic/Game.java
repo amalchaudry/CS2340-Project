@@ -155,25 +155,18 @@ public class Game {
     public boolean getBoolean() {
         return gameOver; }
 
-    public boolean update(Timer timer, ArrayList<Integer> fishIndicesToRemove) {
+    public boolean update(Timer timer) {
         boolean gameOver = checkGameOver(player);
-        if (player.getDeadFish() >= 15) {
-            combatStarted = false;
-            timer.cancel();
-        }
         // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
             Fish fish = fishArr.get(i);
-            if (fish.getHealth() <= 0) {
-                fishIndicesToRemove.add(i);     //every cycle we store the certain fish that will be removed
+            if (fish.getHealth() <= 0 && !fish.isDead()) {
+                fish.setDead(true);
                 addMoney();
-                player.setDeadFish(player.getDeadFish() + 1);
+//                player.setDeadFish(player.getDeadFish() + 1);
             } else {
                 fish.update(player);
             }
-        }
-        for (int i = fishIndicesToRemove.size() - 1; i >= 0; i--) {
-            fishArr.remove(fishIndicesToRemove.get(i));
         }
         for (int i = 0; i < towerArr.size(); i++) {
             towerArr.get(i).update(fishArr);
@@ -211,6 +204,7 @@ public class Game {
         money += 50;
         player.setMoney(money);
      }
+
 
     public boolean checkGameOver(Player player) {
         if (player.getLakeHP() <= 0) {

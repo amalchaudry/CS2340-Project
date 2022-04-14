@@ -20,7 +20,7 @@ public abstract class Tower {
     protected int cost;
     protected float range;
     protected float cooldown;
-    protected int x;    //TODO: set x and y in firstmapactivity as you place
+    protected int x;
     protected int y;
 
     public Tower() {
