@@ -1,6 +1,8 @@
 package com.example.odam;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import com.example.odam.fish.Fish;
 import com.example.odam.fish.Salmon;
 import com.example.odam.fish.Swordfish;
@@ -151,15 +153,16 @@ public class Milestone5UnitTests {
     /* This tests if money is added correctly after the fish dies */
     @Test 
     public void moneyAdd() {
+        Player play = new Player(1000, 200);
         Fish fish = new Swordfish();
         FishermanTower fishMan = new FishermanTower();
         ArrayList<Fish> arrFish = new ArrayList<>();
         arrFish.add(fish);
-        man.update(arrFish);
-        int newMoney = player.getMoney() + 50;
+        fishMan.update(arrFish);
+        int newMoney = play.getMoney() + 50;
         fishMan.attack(fish, 600);
         assertEquals(0, fish.getHealth());
-        assertEquals(newMoney, player.getMoney());
+        assertEquals(newMoney, play.getMoney());
     }
 
     /* This tests that the fish is removed from the fish array after being killed */
@@ -169,9 +172,9 @@ public class Milestone5UnitTests {
     FishermanTower fisherMan = new FishermanTower();
     ArrayList<Fish> arrFish = new ArrayList<>();
     arrFish.add(fish);
-    fishMan.attack(fish, 600);
+    fisherMan.attack(fish, 600);
     fisherMan.update(arrFish);
     assertTrue(!arrFish.contains(fish));
-    assertFalse(arrFish.contains(fish))
+    assertFalse(arrFish.contains(fish));
     }
 }
