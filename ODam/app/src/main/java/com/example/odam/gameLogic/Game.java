@@ -196,15 +196,12 @@ public class Game {
         towerArr.add(tower);
     }
 
-    public addMoney() {
-        // for (int i = 0; i < fishArr.length(); i++) {
-             for (fish : fishArr) {
-                 if (fish.health == 0) {
-                     int money = player.getMoney();
-                     money += 50;
-                     player.setMoney(player.getMoney() + money);
-                 }
-             }
+    public void addMoney(Fish fish) {
+        if (fish.getHealth() <= 0) {
+            int money = player.getMoney();
+            money += 50;
+            player.setMoney(money);
+        }
      }
 
     public boolean checkGameOver(Player player) {
