@@ -30,7 +30,7 @@ public class SpearTower extends Tower {
         }
         range = 300;
         cooldown = 3;
-        cooldownFrames = (int) (1 * FirstMapActivity.fps);
+        cooldownFrames = (int) (1 * FirstMapActivity.getFps());
     }
 
     public void update(ArrayList<Fish> fishes) {
