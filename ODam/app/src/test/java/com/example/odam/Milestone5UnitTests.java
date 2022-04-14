@@ -11,6 +11,7 @@ import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
+import com.example.odam.gameLogic.Player;
 
 import org.junit.Test;
 
@@ -155,25 +156,32 @@ public class Milestone5UnitTests {
     public void moneyAdd() {
         Player play = new Player(1000, 200);
         Fish fish = new Swordfish();
-        FishermanTower fishMan = new FishermanTower();
+        FishermanTower fishMan = new FishermanTower(Difficulty.EASY);
+        fish.setX(120);
+        fish.setY(100);
         ArrayList<Fish> arrFish = new ArrayList<>();
         arrFish.add(fish);
+        fishMan.setX(120);
+        fishMan.setY(100);
         fishMan.update(arrFish);
         int newMoney = play.getMoney() + 50;
-        fishMan.attack(fish, 600);
-        assertEquals(0, fish.getHealth());
+        assertTrue(arrFish.get(1).getHealth() <= 0);
         assertEquals(newMoney, play.getMoney());
     }
 
     /* This tests that the fish is removed from the fish array after being killed */
     @Test
     public void fishDead() {
+    Player play = new Player(1000, 200);
     Fish fish = new Swordfish();
-    FishermanTower fisherMan = new FishermanTower();
+    FishermanTower fishMan = new FishermanTower(Difficulty.EASY);
+    fish.setX(120);
+    fish.setY(100);
     ArrayList<Fish> arrFish = new ArrayList<>();
     arrFish.add(fish);
-    fisherMan.attack(fish, 600);
-    fisherMan.update(arrFish);
+    fishMan.setX(120);
+    fishMan.setY(100);
+    fishMan.update(arrFish);
     assertTrue(!arrFish.contains(fish));
     assertFalse(arrFish.contains(fish));
     }
