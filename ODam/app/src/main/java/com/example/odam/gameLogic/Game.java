@@ -155,7 +155,7 @@ public class Game {
     public boolean getBoolean() {
         return gameOver; }
 
-    public boolean update(Timer timer) {
+    public boolean update(Timer timer, ArrayList<Integer> fishIndicesToRemove) {
         boolean gameOver = checkGameOver(player);
         if (player.getDeadFish() >= 15) {
             combatStarted = false;
@@ -163,7 +163,17 @@ public class Game {
         }
         // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
-            fishArr.get(i).update(player);
+            Fish fish = fishArr.get(i);
+            if (fish.getHealth() <= 0) {
+                fishIndicesToRemove.add(i);     //every cycle we store the certain fish that will be removed
+                player.addMoney();
+                player.setDeadFish(player.getDeadFish() + 1);
+            } else {
+                fish.update(player);
+            }
+        }
+        for (int i = fishIndicesToRemove.size() - 1; i >= 0; i--) {
+            fishArr.remove(fishIndicesToRemove.get(i));
         }
         for (int i = 0; i < towerArr.size(); i++) {
             towerArr.get(i).update(fishArr);
