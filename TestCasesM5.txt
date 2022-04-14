@@ -3,4 +3,6 @@
 3. This tests the fisherman attack (should be able to kill a fish, but only one fish).
 4. This tests that the fisherman tower attacks differ based on the difficulty.
 5. This tests the internal attack method that is an abstract method of tower. It should check the distance a fish is and attack it.
-6. This tests successive calls of attacks. 
+6. This tests successive calls of attacks using the update method. We want to see if it correctly updates after successive calls.
+7. This tests the boat tower's slowing ability on multiple fishes. There should be multiple fishes that are slowed but not all.
+8. This tests the range attribute of the boat tower. We are seeing if the tower slows the fish if it is out of range. 
