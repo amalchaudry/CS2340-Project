@@ -114,6 +114,7 @@ public class FirstMapActivity extends AppCompatActivity {
                         public void run() {
                             binding.lakeHealthText.setText("HP: " + player.getLakeHP());
                             for (int i = fishIndicesToRemove.size() - 1; i > 0; i--){
+                                fishViews.get(fishIndicesToRemove.get(i)).setImageResource(0);
                                 fishViews.remove(fishIndicesToRemove.get(i));
                             }
                             for (int i = 0; i < fishViews.size(); i++) {
@@ -214,12 +215,13 @@ public class FirstMapActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean displayFishHealth(MotionEvent event, Player player) {
-        int action = event.getAction();
-        if (action == MotionEvent.ACTION_DOWN) {
+//    public boolean displayFishHealth(MotionEvent event, Player player) {
+//        int action = event.getAction();
+//        if (action == MotionEvent.ACTION_DOWN) {
+//
+//        }
+//    }
 
-        }
-    }
     @SuppressLint("ClickableViewAccessibility")
     public void newTowerImage(Tower tower) {
         chosenTowerImage = new ImageView(FirstMapActivity.this);
