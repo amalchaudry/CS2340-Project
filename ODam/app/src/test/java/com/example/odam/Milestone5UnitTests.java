@@ -11,6 +11,7 @@ import com.example.odam.fish.Tuna;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.Game;
 import com.example.odam.gameLogic.Player;
+import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
 import com.example.odam.tower.Tower;
@@ -84,5 +85,39 @@ public class Milestone5UnitTests {
         arrFish.add(fish);
         man.update(arrFish);
         assertEquals(50, fish.getHealth());
+    }
+
+    /**
+     * This tests if multiple fish in range are slowed
+     */
+    @Test
+    public void multipleFishSpeedDecreaseBT() {
+        Fish fish1 = new Swordfish();
+        Fish fish2 = new Tuna();
+        Fish fish3 = new Salmon();
+        BoatTower boat = new BoatTower(Difficulty.EASY);
+        ArrayList<Fish> arrFish = new ArrayList<>();
+        arrFish.add(fish1);
+        arrFish.add(fish2);
+        arrFish.add(fish3);
+        boat.update(arrFish);
+        assertEquals(7, arrFish.get(0).getSpeed());
+        assertEquals(4, arrFish.get(1).getSpeed());
+        assertEquals(3, arrFish.get(2).getSpeed());
+    }
+
+    /**
+     * Tests if boat doesn't slow fish when out of range
+     */
+    @Test
+    public void fishOutRangeSpeed() {
+        Fish fish = new Swordfish();
+        BoatTower boat = new BoatTower(Difficulty.EASY);
+        ArrayList<Fish> arrFish = new ArrayList<>();
+        arrFish.add(fish);
+        fish.setX(10000);
+        fish.setY(10000);
+        boat.update(arrFish);
+        assertEquals(arrFish.get(0).getBaseSpeed(), arrFish.get(0).getSpeed());
     }
 }

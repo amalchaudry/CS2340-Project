@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -106,22 +107,23 @@ public class FirstMapActivity extends AppCompatActivity {
             TimerTask updateTask = new TimerTask() {
                 @Override
                 public void run() {
-                    ArrayList<Integer> fishIndicesToRemove = new ArrayList<>();
-                    game.update(timer, fishIndicesToRemove);
+                    game.update(timer);
                     gameOver(player);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             binding.lakeHealthText.setText("HP: " + player.getLakeHP());
-                            for (int i = fishIndicesToRemove.size() - 1; i > 0; i--){
-                                fishViews.get(fishIndicesToRemove.get(i)).setImageResource(0);
-                                fishViews.remove(fishIndicesToRemove.get(i));
-                            }
+                            binding.moneyText.setText("Money: " + player.getMoney());
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
                                 Fish fish = game.getFishArr().get(i);
-                                fishView.setX(fish.getX());
-                                fishView.setY(fish.getY());
+                                Log.d(Integer.toString(i), Boolean.toString(fish.isDead()));
+                                if (fish.isDead()) {
+                                    fishView.setImageResource(0);
+                                } else {
+                                    fishView.setX(fish.getX());
+                                    fishView.setY(fish.getY());
+                                }
                             }
                         }
                     });
@@ -137,6 +139,15 @@ public class FirstMapActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             ImageView fishView = new ImageView(FirstMapActivity.this);
+                            fishView.setOnTouchListener(new View.OnTouchListener() {
+                                public boolean onTouch(View v, MotionEvent event) {
+                                    int action = event.getAction();
+                                    if (action == MotionEvent.ACTION_UP) {
+                                        binding.selectedFish.setText("Fish HP: " + fish.getHealth());
+                                    }
+                                    return true;
+                                }
+                            });
                             binding.getRoot().addView(fishView);
                             fishViews.add(fishView);
                             fishView.bringToFront();
@@ -214,13 +225,6 @@ public class FirstMapActivity extends AppCompatActivity {
         }
         return true;
     }
-
-//    public boolean displayFishHealth(MotionEvent event, Player player) {
-//        int action = event.getAction();
-//        if (action == MotionEvent.ACTION_DOWN) {
-//
-//        }
-//    }
 
     @SuppressLint("ClickableViewAccessibility")
     public void newTowerImage(Tower tower) {

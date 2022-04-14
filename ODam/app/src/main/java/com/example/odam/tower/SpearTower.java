@@ -32,10 +32,11 @@ public class SpearTower extends Tower {
         }
         range = 300;
         cooldown = 3;
-        cooldownFrames = (int) (3 * FirstMapActivity.fps);
+        cooldownFrames = (int) (1 * FirstMapActivity.fps);
     }
 
     public void update(ArrayList<Fish> fishes) {
+        int fishCount = 0;
         if (counter % cooldownFrames == 0)  {
             for (int i = 0; i < fishes.size(); i++) {
                 Fish fish = fishes.get(i);
@@ -45,12 +46,9 @@ public class SpearTower extends Tower {
                 int diffX = fish.getX() - x;
                 int diffY = fish.getY() - y;
                 double distanceToTower =  Math.sqrt(diffX * diffX + diffY * diffY);
-                if (fishCount < 2) {
+                if (fishCount < 2 && !fish.isDead()) {
                     attack(fish, distanceToTower);
                     fishCount++;
-                }
-                if (i == fishes.size() - 1) {
-                    fishCount = 0;
                 }
 //                Log.d("ACTUAL Fish health", "" + fish.getHealth());
             }

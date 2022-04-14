@@ -16,6 +16,7 @@ public abstract class Fish {
     protected int nextCheckpoint = 0;
     protected boolean isFinished = false;
     protected boolean isSlowed = false;
+    protected boolean isDead = false;
     protected int[][] checkpoints = {
             {1120, 250},
             {770, 615},
@@ -156,5 +157,14 @@ public abstract class Fish {
     public void printHealth() {
         System.out.print("Health: " + health);
     }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
 
 }
