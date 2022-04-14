@@ -1,10 +1,7 @@
 package com.example.odam.tower;
 
-
 import android.util.Log;
-
 import com.example.odam.fish.Fish;
-import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
 
 import java.util.ArrayList;

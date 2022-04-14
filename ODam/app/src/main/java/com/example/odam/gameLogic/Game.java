@@ -163,7 +163,6 @@ public class Game {
             if (fish.getHealth() <= 0 && !fish.isDead()) {
                 fish.setDead(true);
                 addMoney();
-//                player.setDeadFish(player.getDeadFish() + 1);
             } else {
                 fish.update(player);
             }
@@ -203,7 +202,7 @@ public class Game {
         int money = player.getMoney();
         money += 50;
         player.setMoney(money);
-     }
+    }
 
 
     public boolean checkGameOver(Player player) {

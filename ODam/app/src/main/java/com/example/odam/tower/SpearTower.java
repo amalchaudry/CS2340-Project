@@ -1,7 +1,5 @@
 package com.example.odam.tower;
 
-import android.util.Log;
-
 import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Difficulty;
@@ -40,9 +38,6 @@ public class SpearTower extends Tower {
         if (counter % cooldownFrames == 0)  {
             for (int i = 0; i < fishes.size(); i++) {
                 Fish fish = fishes.get(i);
-                if (i == 0) {
-//                    Log.d("diff", fish.getX() + "-" + x);
-                }
                 int diffX = fish.getX() - x;
                 int diffY = fish.getY() - y;
                 double distanceToTower =  Math.sqrt(diffX * diffX + diffY * diffY);
@@ -50,7 +45,6 @@ public class SpearTower extends Tower {
                     attack(fish, distanceToTower);
                     fishCount++;
                 }
-//                Log.d("ACTUAL Fish health", "" + fish.getHealth());
             }
         }
         counter++;
@@ -58,9 +52,6 @@ public class SpearTower extends Tower {
 
     public void attack(Fish fish, double distance) {
         if (distance <= range) {
-//            Log.d("EXPECTED Fish health", "" + (fish.getHealth()));
-//            Log.d("ATTACK FISH", "" + fish.getHealth());
-//            System.out.println("SHOULD BE DECREASING CUS IT'S ENTERED HERE");
             fish.setHealth(fish.getHealth() - 30);
         }
     }

@@ -101,13 +101,17 @@ public abstract class Fish {
         return health;
     }
 
-    public int getMaxHealth() { return maxHealth; }
+    public int getMaxHealth() {
+        return maxHealth;
+    }
 
     public void setHealth(int health) {
         this.health = health;
     }
 
-    public int getSpeed() {return speed; }
+    public int getSpeed() {
+        return speed;
+    }
 
     public int getImage() {
         return imageID;

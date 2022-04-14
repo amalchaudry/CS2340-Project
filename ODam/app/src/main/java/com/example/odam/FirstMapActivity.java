@@ -14,7 +14,6 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
@@ -40,7 +39,7 @@ public class FirstMapActivity extends AppCompatActivity {
     private Timer timer2 = new Timer();
     private ArrayList<ImageView> fishViews = new ArrayList<>();
     private View v;
-    public static double fps = 24.0;
+    private static double fps = 24.0;
     //private int money;
     //private int lakeHP;
 
@@ -100,7 +99,7 @@ public class FirstMapActivity extends AppCompatActivity {
     }
 
 
-    public void startCombat(Player player){
+    public void startCombat(Player player) {
         if (!game.isCombatStarted()) {
             game.startCombat();
             // inst. task for updating coordinates
@@ -143,7 +142,8 @@ public class FirstMapActivity extends AppCompatActivity {
                                 public boolean onTouch(View v, MotionEvent event) {
                                     int action = event.getAction();
                                     if (action == MotionEvent.ACTION_UP) {
-                                        binding.selectedFish.setText("Fish HP: " + fish.getHealth());
+                                        binding.selectedFish.setText("Fish HP: "
+                                                + fish.getHealth());
                                     }
                                     return true;
                                 }
@@ -169,7 +169,7 @@ public class FirstMapActivity extends AppCompatActivity {
             // update coordinate of fish time
             // delay: Schedules the specified task for execution after the specified delay.
             // delay: in milliseconds before task is to be executed.
-            int period = (int) ((1/ fps) * 1000);
+            int period = (int) ((1 / fps) * 1000);
             timer.scheduleAtFixedRate(updateTask, 0, period);
             // add fish until the 15th fish is added, then stop adding new fish
             timer2.scheduleAtFixedRate(addFishTask, 1000, 1000);
@@ -182,46 +182,47 @@ public class FirstMapActivity extends AppCompatActivity {
         float offsetX = binding.mapImage.getX() - chosenTowerImage.getWidth() / 2;
         float offsetY = binding.mapImage.getY() - chosenTowerImage.getHeight() / 2;
         switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                if (game.isPlacingChosenTower()) {
-                    if (game.canBuyChosenTower()) {
-                        chosenTowerImage.setImageResource(game.getChosenTower().getImage());
-                        chosenTowerImage.setX((int) event.getX() + offsetX);
-                        chosenTowerImage.setY((int) event.getY() + offsetY);
-                        chosenTowerImage.setAlpha(0.5f);
-                    } else {
-                        binding.towerInfo.setText("Buy: Don't have \n enough money!");
-                    }
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                if (game.isPlacingChosenTower()) {
+        case MotionEvent.ACTION_DOWN:
+            if (game.isPlacingChosenTower()) {
+                if (game.canBuyChosenTower()) {
+                    chosenTowerImage.setImageResource(game.getChosenTower().getImage());
                     chosenTowerImage.setX((int) event.getX() + offsetX);
                     chosenTowerImage.setY((int) event.getY() + offsetY);
+                    chosenTowerImage.setAlpha(0.5f);
+                } else {
+                    binding.towerInfo.setText("Buy: Don't have \n enough money!");
                 }
-                binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
-                break;
-            case MotionEvent.ACTION_UP:
-                if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
-                        & game.canBuyChosenTower()) {
-                    Tower tower = game.getChosenTower();
-                    tower.setX((int) event.getRawX() - 130);
-                    tower.setY((int) event.getRawY());
-                    game.setPlayerMoney(player.getMoney() - tower.getCost());
-                    game.getTowerArr().add(tower);
-                    binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " " + Integer.toString(game.getTowerArr().get(0).getY()));
-                    binding.moneyText.setText("Money: " + player.getMoney());
-                    binding.towerInfo.setText("Buy: Purchased! \n "
-                            + tower.getName() + " for " + tower.getCost());
-                    chosenTowerImage.setAlpha(1f);
-                } else if (game.getChosenTower() != null) {
-                    game.deselectTower();
-                    chosenTowerImage.setImageResource(0);
-                    chosenTowerImage.setOnTouchListener(null);
-                }
-                break;
-            default:
-                break;
+            }
+            break;
+        case MotionEvent.ACTION_MOVE:
+            if (game.isPlacingChosenTower()) {
+                chosenTowerImage.setX((int) event.getX() + offsetX);
+                chosenTowerImage.setY((int) event.getY() + offsetY);
+            }
+            binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
+            break;
+        case MotionEvent.ACTION_UP:
+            if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
+                    & game.canBuyChosenTower()) {
+                Tower tower = game.getChosenTower();
+                tower.setX((int) event.getRawX() - 130);
+                tower.setY((int) event.getRawY());
+                game.setPlayerMoney(player.getMoney() - tower.getCost());
+                game.getTowerArr().add(tower);
+                binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " "
+                        + Integer.toString(game.getTowerArr().get(0).getY()));
+                binding.moneyText.setText("Money: " + player.getMoney());
+                binding.towerInfo.setText("Buy: Purchased! \n "
+                        + tower.getName() + " for " + tower.getCost());
+                chosenTowerImage.setAlpha(1f);
+            } else if (game.getChosenTower() != null) {
+                game.deselectTower();
+                chosenTowerImage.setImageResource(0);
+                chosenTowerImage.setOnTouchListener(null);
+            }
+            break;
+        default:
+            break;
         }
         return true;
     }
@@ -289,4 +290,13 @@ public class FirstMapActivity extends AppCompatActivity {
             switchActivities();
         }
     }
+
+    public static double getFps() {
+        return fps;
+    }
+
+    public static void setFps(double fps) {
+        FirstMapActivity.fps = fps;
+    }
+
 }

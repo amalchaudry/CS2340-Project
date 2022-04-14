@@ -1,7 +1,5 @@
 package com.example.odam.tower;
 
-import android.util.Log;
-
 import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Difficulty;
@@ -11,7 +9,7 @@ import com.example.odam.gameLogic.TowerUpgradeLevel;
 import java.util.ArrayList;
 
 public class FishermanTower extends Tower {
-    private int cooldownFrames = (int) (2.5 * FirstMapActivity.fps);
+    private int cooldownFrames = (int) (2.5 * FirstMapActivity.getFps());
     private int fishCount = 0;
     private int counter = 0;
     private Difficulty currentDiff;
@@ -56,15 +54,15 @@ public class FishermanTower extends Tower {
     public void attack(Fish fish, double distance) {
         if (distance <= range) {
             switch (currentDiff) {
-                case MEDIUM:
-                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 2));
-                    break;
-                case HARD:
-                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 4));
-                    break;
-                default:
-                    fish.setHealth(0);
-                    break;
+            case MEDIUM:
+                fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 2));
+                break;
+            case HARD:
+                fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 4));
+                break;
+            default:
+                fish.setHealth(0);
+                break;
             }
         }
     }
