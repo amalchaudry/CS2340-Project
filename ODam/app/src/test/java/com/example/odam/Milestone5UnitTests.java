@@ -12,6 +12,7 @@ import com.example.odam.tower.SpearTower;
 
 import org.junit.Test;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 
 public class Milestone5UnitTests {
@@ -145,5 +146,32 @@ public class Milestone5UnitTests {
         fish.setY(10000);
         boat.update(arrFish);
         assertEquals(arrFish.get(0).getBaseSpeed(), arrFish.get(0).getSpeed());
+    }
+
+    /* This tests if money is added correctly after the fish dies */
+    @Test 
+    public void moneyAdd() {
+        Fish fish = new Swordfish();
+        FishermanTower fishMan = new FishermanTower();
+        ArrayList<Fish> arrFish = new ArrayList<>();
+        arrFish.add(fish);
+        man.update(arrFish);
+        int newMoney = player.getMoney() + 50;
+        fishMan.attack(fish, 600);
+        assertEquals(0, fish.getHealth());
+        assertEquals(newMoney, player.getMoney());
+    }
+
+    /* This tests that the fish is removed from the fish array after being killed */
+    @Test
+    public void fishDead() {
+    Fish fish = new Swordfish();
+    FishermanTower fisherMan = new FishermanTower();
+    ArrayList<Fish> arrFish = new ArrayList<>();
+    arrFish.add(fish);
+    fishMan.attack(fish, 600);
+    fisherMan.update(arrFish);
+    assertTrue(!arrFish.contains(fish));
+    assertFalse(arrFish.contains(fish))
     }
 }

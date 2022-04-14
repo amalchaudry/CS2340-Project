@@ -6,3 +6,5 @@
 6. This tests successive calls of attacks using the update method. We want to see if it correctly updates after successive calls.
 7. This tests the boat tower's slowing ability on multiple fishes. There should be multiple fishes that are slowed but not all.
 8. This tests the range attribute of the boat tower. We are seeing if the tower slows the fish if it is out of range. 
+9. This tests that money gets added to the total money when a fish is killed
+10. This tests that a fish is removed from the fish array when it is killed.
