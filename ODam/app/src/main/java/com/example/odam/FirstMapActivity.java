@@ -213,6 +213,13 @@ public class FirstMapActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    public boolean displayFishHealth(MotionEvent event, Player player) {
+        int action = event.getAction();
+        if (action == MotionEvent.ACTION_DOWN) {
+
+        }
+    }
     @SuppressLint("ClickableViewAccessibility")
     public void newTowerImage(Tower tower) {
         chosenTowerImage = new ImageView(FirstMapActivity.this);
