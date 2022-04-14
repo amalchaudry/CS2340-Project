@@ -106,12 +106,16 @@ public class FirstMapActivity extends AppCompatActivity {
             TimerTask updateTask = new TimerTask() {
                 @Override
                 public void run() {
-                    game.update(timer);
+                    ArrayList<Integer> fishIndicesToRemove = new ArrayList<>();
+                    game.update(timer, fishIndicesToRemove);
                     gameOver(player);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             binding.lakeHealthText.setText("HP: " + player.getLakeHP());
+                            for (int i = fishIndicesToRemove.size() - 1; i > 0; i--){
+                                fishViews.remove(fishIndicesToRemove.get(i));
+                            }
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
                                 Fish fish = game.getFishArr().get(i);
