@@ -59,10 +59,10 @@ public class FishermanTower extends Tower {
         if (distance <= range) {
             switch (currentDiff) {
                 case MEDIUM:
-                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth()/2));
+//                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth()/2));
                     break;
                 case HARD:
-                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth()/4));
+//                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth()/4));
                     break;
                 default:
                     fish.setHealth(0);

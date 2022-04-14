@@ -166,7 +166,7 @@ public class Game {
             Fish fish = fishArr.get(i);
             if (fish.getHealth() <= 0) {
                 fishIndicesToRemove.add(i);     //every cycle we store the certain fish that will be removed
-                player.addMoney();
+                addMoney();
                 player.setDeadFish(player.getDeadFish() + 1);
             } else {
                 fish.update(player);
@@ -206,10 +206,10 @@ public class Game {
         towerArr.add(tower);
     }
 
-    public void addMoney(Fish fish) {
-            int money = player.getMoney();
-            money += 50;
-            player.setMoney(money);
+    public void addMoney() {
+        int money = player.getMoney();
+        money += 50;
+        player.setMoney(money);
      }
 
     public boolean checkGameOver(Player player) {
