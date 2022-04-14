@@ -9,6 +9,7 @@ public abstract class Fish {
     protected int width;
     protected int height;
     protected int health;
+    protected final int maxHealth = 100;
     protected int baseSpeed;
     protected int speed;
     protected int imageID;
@@ -98,6 +99,8 @@ public abstract class Fish {
     public int getHealth() {
         return health;
     }
+
+    public int getMaxHealth() { return maxHealth; }
 
     public void setHealth(int health) {
         this.health = health;
