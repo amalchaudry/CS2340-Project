@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.Random;
 import android.view.View;
@@ -29,53 +30,22 @@ public class Game {
     private int fishCounter = 0; //represent fish generated in round
 
 
-    //for junit testing
-    public Game(Difficulty diff) {
-        this.diff = diff;
-        Log.d("Diff", diff.toString());
-        int money = 0;
-        int lakeHP = 0;
-
-        switch (diff) {
-        case MEDIUM:
-            money = 900;
-            lakeHP = 150;
-            break;
-        case HARD:
-            money = 800;
-            lakeHP = 100;
-            break;
-        default:
-            money = 1000;
-            lakeHP = 200;
-            break;
-        }
-
-        player = new Player(money, lakeHP);
-        shop = new Shop();
-    }
-
     public Game(Difficulty diff, FirstMapActivity fmp) {
         this.diff = diff;
         this.fmp = fmp;
         Log.d("Diff", diff.toString());
         int money = 0;
         int lakeHP = 0;
-
-        switch (diff) {
-        case MEDIUM:
-            money = 900;
-            lakeHP = 150;
-            break;
-        case HARD:
-            money = 800;
-            lakeHP = 100;
-            break;
-        default:
-            money = 1000;
-            lakeHP = 200;
-            break;
-        }
+        HashMap<Difficulty, Integer> difficultiesHealth = new HashMap<>();
+        difficultiesHealth.put(Difficulty.EASY, 200);
+        difficultiesHealth.put(Difficulty.MEDIUM, 150);
+        difficultiesHealth.put(Difficulty.HARD, 100);
+        HashMap<Difficulty, Integer> difficultiesMoney = new HashMap<>();
+        difficultiesMoney.put(Difficulty.EASY, 1000);
+        difficultiesMoney.put(Difficulty.MEDIUM, 900);
+        difficultiesMoney.put(Difficulty.HARD, 800);
+        money = difficultiesMoney.get(diff);
+        lakeHP = difficultiesHealth.get(diff);
 
         player = new Player(money, lakeHP);
         shop = new Shop();

@@ -1,6 +1,8 @@
-package com.example.odam.gameLogic;
+package com.example.odam;
 
 import android.app.Application;
+
+import com.example.odam.gameLogic.Difficulty;
 
 public class GameApplication extends Application {
     private Difficulty diff;

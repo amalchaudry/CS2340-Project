@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.gameLogic.Game;
-import com.example.odam.gameLogic.GameApplication;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;

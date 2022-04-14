@@ -17,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.odam.databinding.ActivityFirstMapBinding;
 import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.Game;
-import com.example.odam.gameLogic.GameApplication;
 import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
