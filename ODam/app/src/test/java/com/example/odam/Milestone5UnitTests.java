@@ -1,25 +1,18 @@
 package com.example.odam;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
-
 import com.example.odam.fish.Fish;
 import com.example.odam.fish.Salmon;
 import com.example.odam.fish.Swordfish;
 import com.example.odam.fish.Tuna;
 import com.example.odam.gameLogic.Difficulty;
-import com.example.odam.gameLogic.Game;
-import com.example.odam.gameLogic.Player;
 import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
-import com.example.odam.tower.Tower;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class Milestone5UnitTests {
 
