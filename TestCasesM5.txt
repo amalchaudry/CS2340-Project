@@ -1,0 +1,6 @@
+1. This first test tests the multiattack ability of the spear fisherman. He should only be able to attack 2 fishes.
+2. This tests the spear fisherman's attacks on easy difficulty. 
+3. This tests the fisherman attack (should be able to kill a fish, but only one fish).
+4. This tests that the fisherman tower attacks differ based on the difficulty.
+5. This tests the internal attack method that is an abstract method of tower. It should check the distance a fish is and attack it.
+6. This tests successive calls of attacks. 

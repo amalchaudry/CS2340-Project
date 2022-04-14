@@ -55,7 +55,7 @@ public class Milestone5UnitTests {
     }
 
     /**
-     * Tests if only 1 fish is killed by fisherman.
+     * Tests if only 1 fish is killed by fisherman tower.
      */
     @Test
     public void multipleFishHPDecreaseFT() {
@@ -84,5 +84,38 @@ public class Milestone5UnitTests {
         arrFish.add(fish);
         man.update(arrFish);
         assertEquals(50, fish.getHealth());
+        fish.setHealth(100);
+        FishermanTower man2 = new FishermanTower(Difficulty.HARD);
+        man2.update(arrFish);
+        assertEquals(25, fish.getHealth());
+    }
+    /**
+     * Tests if internal attack method works correctly.
+     */
+    @Test
+    public void attackTestWithDistances() {
+        Fish fish = new Tuna();
+        FishermanTower man = new FishermanTower(Difficulty.MEDIUM);
+        man.attack(fish, 600);
+        assertEquals(100, fish.getHealth());
+        man.attack(fish, 500);
+        assertEquals(50, fish.getHealth());
+    }
+    /**
+     * Tests successive calls to update method for combat
+     */
+    @Test
+    public void updateTest() {
+        Fish fish = new Tuna();
+        FishermanTower man = new FishermanTower(Difficulty.MEDIUM);
+        ArrayList<Fish> arrFish = new ArrayList<>();
+        arrFish.add(fish);
+        man.update(arrFish);
+        assertEquals(50, fish.getHealth());
+        Fish fish1 = new Swordfish();
+        arrFish.add(fish1);
+        man.update(arrFish);
+        assertEquals(0, fish.getHealth());
+        assertEquals(100, fish1.getHealth());
     }
 }
