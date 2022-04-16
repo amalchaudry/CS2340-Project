@@ -16,7 +16,7 @@ public class BoatTower extends Tower {
         name = "Boatman";
         imageID = R.drawable.boat1;
         upgradeLevel = TowerUpgradeLevel.BASE;
-        damage = 10;
+        damage = 0;
         switch (diff) {
         case MEDIUM:
             cost = 650;
@@ -65,4 +65,18 @@ public class BoatTower extends Tower {
         }
     }
 
+    public void upgradeOne() {
+        range = 400;
+        slowPercent = 0.5;
+    }
+
+    public void upgradeTwo() {
+        range = 500;
+        slowPercent = 0.45;
+    }
+
+    public void upgradeThree() {
+        range = 600;
+        slowPercent = 0.4;
+    }
 }

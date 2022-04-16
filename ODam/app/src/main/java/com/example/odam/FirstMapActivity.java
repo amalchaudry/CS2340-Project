@@ -96,6 +96,12 @@ public class FirstMapActivity extends AppCompatActivity {
                 return mapImageFunc(event, player);
             };
         });
+        binding.upgradeButton.setVisibility(View.GONE);
+        binding.upgradeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                game.upgradeTower();
+            }
+        });
     }
 
 
@@ -234,7 +240,7 @@ public class FirstMapActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 if (action == MotionEvent.ACTION_UP) {
-                    display(tower, chosenTowerImage);
+                    showUpgrade(tower);
                 }
                 return true;
             }
@@ -249,9 +255,9 @@ public class FirstMapActivity extends AppCompatActivity {
         chosenTowerImage.setDrawingCacheEnabled(true);
     }
 
-    public void display(Tower tower, ImageView image) {
-        image.setX(200);
-        image.setY(200);
+    public void showUpgrade(Tower tower) {
+        game.setViewedTower(tower);
+        binding.upgradeButton.setVisibility(View.VISIBLE);
     }
 
     public static Bitmap drawableToBitmap(Drawable drawable) {

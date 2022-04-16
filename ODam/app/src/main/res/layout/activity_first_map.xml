@@ -79,12 +79,22 @@
         app:layout_constraintTop_toBottomOf="@+id/Spearman"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/upgradeButton"
+        android:layout_width="109dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="#FF7F1F"
+        android:text="UPGRADE"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="361dp" />
+
     <TextView
         android:id="@+id/lakeHealthText"
         android:layout_width="92dp"
         android:layout_height="22dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="280dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="300dp"
         android:fontFamily="@font/archivo_black"
         android:text="Lake HP: 0"
         android:textAlignment="textStart"
@@ -97,8 +107,8 @@
         android:id="@+id/moneyText"
         android:layout_width="127dp"
         android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/archivo_black"
         android:text="Money: 0"
         android:textAlignment="textStart"
@@ -111,21 +121,22 @@
         android:layout_width="155dp"
         android:layout_height="31dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="@font/archivo_black"
         android:text="Chosen Fish HP: 0"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/lakeHealthText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/towerInfo"
-        android:layout_width="122dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="117dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
         android:fontFamily="@font/archivo_black"
         android:text="Buy:"
         android:textAlignment="textStart"

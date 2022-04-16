@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class FishermanTower extends Tower {
     private int cooldownFrames = (int) (2.5 * FirstMapActivity.getFps());
     private int fishCount = 0;
+    private int fishCountMax = 1;
     private int counter = 0;
     private Difficulty currentDiff;
     public FishermanTower(Difficulty diff) {
@@ -42,7 +43,7 @@ public class FishermanTower extends Tower {
                 int diffX = fish.getX() - x;
                 int diffY = fish.getY() - y;
                 double distanceToTower =  Math.sqrt(diffX * diffX + diffY * diffY);
-                if (fishCount < 1 && !fish.isDead()) {
+                if (fishCount < fishCountMax && !fish.isDead()) {
                     attack(fish, distanceToTower);
                     fishCount++;
                 }
@@ -65,5 +66,17 @@ public class FishermanTower extends Tower {
                 break;
             }
         }
+    }
+
+    public void upgradeOne() {
+        fishCountMax = 2;
+    }
+
+    public void upgradeTwo() {
+        fishCountMax = 3;
+    }
+
+    public void upgradeThree() {
+        fishCountMax = 5;
     }
 }
