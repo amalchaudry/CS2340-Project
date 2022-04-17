@@ -18,49 +18,50 @@
 
     <ImageView
         android:id="@+id/mapImage"
-        android:layout_width="880dp"
-        android:layout_height="411dp"
+        android:layout_width="907dp"
+        android:layout_height="499dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538"
         app:srcCompat="@drawable/mapver2" />
 
     <Button
         android:id="@+id/fisherButton"
-        android:layout_width="73dp"
-        android:layout_height="39dp"
+        android:layout_width="72dp"
+        android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="52dp"
         android:text="Fisher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/towerInfo" />
 
     <Button
         android:id="@+id/startCombatButton"
-        android:layout_width="137dp"
-        android:layout_height="40dp"
+        android:layout_width="135dp"
+        android:layout_height="39dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#87E10A"
         android:text="Start Combat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.972"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/towerInfo" />
 
     <Button
         android:id="@+id/Spearman"
-        android:layout_width="90dp"
-        android:layout_height="39dp"
+        android:layout_width="96dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Spearer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fisherButton" />
 
@@ -74,17 +75,17 @@
         android:text="Boater"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Spearman"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.083" />
 
     <TextView
         android:id="@+id/lakeHealthText"
         android:layout_width="92dp"
         android:layout_height="22dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="280dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="312dp"
         android:fontFamily="@font/archivo_black"
         android:text="Lake HP: 0"
         android:textAlignment="textStart"
@@ -97,7 +98,7 @@
         android:id="@+id/moneyText"
         android:layout_width="127dp"
         android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/archivo_black"
         android:text="Money: 0"
@@ -108,24 +109,25 @@
 
     <TextView
         android:id="@+id/selectedFish"
-        android:layout_width="155dp"
-        android:layout_height="31dp"
+        android:layout_width="147dp"
+        android:layout_height="36dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="3dp"
         android:fontFamily="@font/archivo_black"
         android:text="Chosen Fish HP: 0"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/lakeHealthText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58" />
 
     <TextView
         android:id="@+id/towerInfo"
-        android:layout_width="122dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="124dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="@font/archivo_black"
         android:text="Buy:"
         android:textAlignment="textStart"

@@ -18,25 +18,28 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonreStart"
-        android:layout_width="230dp"
+        android:layout_width="226dp"
         android:layout_height="91dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="256dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginBottom="84dp"
         android:background="#558080"
         android:text="Play Again"
-        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gameOver" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="132dp"
+        android:layout_width="418dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="72dp"
+        android:letterSpacing="0.1"
         android:text="GAME OVER"
-        android:textSize="70dp"
+        android:textColor="@color/white"
+        android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

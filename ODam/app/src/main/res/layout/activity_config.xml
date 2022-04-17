@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="737dp"
-        android:layout_height="491dp"
+        android:layout_width="779dp"
+        android:layout_height="513dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/configbackground" />
@@ -87,7 +88,7 @@
         android:id="@+id/imageView8"
         android:layout_width="41dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="104dp"
+        android:layout_marginEnd="92dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/mediumButton"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -99,7 +100,7 @@
         android:id="@+id/imageView5"
         android:layout_width="41dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginEnd="140dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/mediumButton"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -123,22 +124,22 @@
         android:id="@+id/imageView3"
         android:layout_width="41dp"
         android:layout_height="36dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="128dp"
         app:layout_constraintBottom_toTopOf="@+id/easyButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"
+        app:layout_constraintVertical_bias="0.962"
         app:srcCompat="@drawable/fishdiff" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="41dp"
         android:layout_height="36dp"
-        android:layout_marginStart="516dp"
+        android:layout_marginStart="528dp"
         app:layout_constraintBottom_toTopOf="@+id/hardButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"
+        app:layout_constraintVertical_bias="0.966"
         app:srcCompat="@drawable/fishdiff" />
 
     <ImageView
@@ -148,10 +149,10 @@
         android:layout_marginEnd="88dp"
         app:layout_constraintBottom_toTopOf="@+id/hardButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.806"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"
+        app:layout_constraintVertical_bias="0.966"
         app:srcCompat="@drawable/fishdiff" />
 
     <ImageView
@@ -161,16 +162,17 @@
         android:layout_marginEnd="132dp"
         app:layout_constraintBottom_toTopOf="@+id/hardButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.291"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846"
+        app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@drawable/fishdiff" />
 
     <Button
         android:id="@+id/hardButton"
         android:layout_width="94dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="104dp"
+        android:layout_marginEnd="120dp"
         android:backgroundTint="@color/teal_700"
         android:text="Hard"
         app:layout_constraintBottom_toBottomOf="parent"

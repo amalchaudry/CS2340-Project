@@ -13,8 +13,9 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="736dp"
+        android:layout_height="602dp"
+        android:layout_marginTop="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/welcome_background"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,28 +24,28 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonStart"
-        android:layout_width="230dp"
-        android:layout_height="91dp"
+        android:layout_width="207dp"
+        android:layout_height="74dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="248dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginBottom="160dp"
         android:background="#63dec1"
         android:text="START"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonQuit"
-        android:layout_width="230dp"
-        android:layout_height="91dp"
+        android:layout_width="207dp"
+        android:layout_height="74dp"
         android:layout_below="@id/buttonStart"
-        android:layout_marginStart="248dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginBottom="245dp"
         android:background="#63dec1"
         android:text="QUIT"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView1"
@@ -52,17 +53,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="208dp"
-        android:layout_marginBottom="292dp"
+        android:layout_width="303dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginBottom="304dp"
         android:fontFamily="@font/archivo_black"
+        android:letterSpacing="0.01"
         android:lines="2"
-        android:text="Defense of \n the Fishermen"
+        android:text="DEFENSE OF \n THE FISHERMAN"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="38dp"
-        android:textStyle="bold"
+        android:textSize="28dp"
+        android:textStyle=
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView1" />
 
