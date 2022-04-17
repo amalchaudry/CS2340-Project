@@ -19,6 +19,7 @@ public class Game {
     private Difficulty diff;
     private Shop shop;
     private Player player;
+    private Tower viewedTower;
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
     private ArrayList<Tower> towerArr = new ArrayList<>();
     private View v;
@@ -211,6 +212,17 @@ public class Game {
         }
         return gameOver;
     }
+
+    public boolean upgradeTower() {
+        if (player.getMoney() < viewedTower.getCost()) {
+            return false;
+        }
+        viewedTower.upgradeTower();
+        int newMoney = player.getMoney() - viewedTower.getCost();
+        player.setMoney(newMoney);
+        return true;
+    }
+
     public boolean isCombatStarted() {
         return combatStarted;
     }
@@ -238,5 +250,13 @@ public class Game {
 
     public void setTowerArr(ArrayList<Tower> towerArr) {
         this.towerArr = towerArr;
+    }
+
+    public Tower getViewedTower() {
+        return viewedTower;
+    }
+
+    public void setViewedTower(Tower viewedTower) {
+        this.viewedTower = viewedTower;
     }
 }

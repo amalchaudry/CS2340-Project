@@ -80,12 +80,22 @@
         app:layout_constraintTop_toBottomOf="@+id/Spearman"
         app:layout_constraintVertical_bias="0.083" />
 
+    <Button
+        android:id="@+id/upgradeButton"
+        android:layout_width="109dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="28dp"
+        android:backgroundTint="#FF7F1F"
+        android:text="UPGRADE"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="361dp" />
+
     <TextView
         android:id="@+id/lakeHealthText"
         android:layout_width="92dp"
         android:layout_height="22dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="300dp"
         android:fontFamily="@font/archivo_black"
         android:text="Lake HP: 0"
         android:textAlignment="textStart"
@@ -112,7 +122,7 @@
         android:layout_width="147dp"
         android:layout_height="36dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="@font/archivo_black"
         android:text="Chosen Fish HP: 0"
         android:textAlignment="textStart"

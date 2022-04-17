@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class SpearTower extends Tower {
     private int counter = 0;
     private int cooldownFrames;
-    private int fishCount = 0;
+    private int fishCount = 30;
+    private int fishCountMax = 2;
     public SpearTower(Difficulty diff) {
         name = "Spearman";
         imageID = R.drawable.spearman1;
@@ -29,12 +30,11 @@ public class SpearTower extends Tower {
             break;
         }
         range = 300;
-        cooldown = 3;
         cooldownFrames = (int) (1 * FirstMapActivity.getFps());
     }
 
     public void update(ArrayList<Fish> fishes) {
-        int fishCount = 0;
+        fishCount = 0;
         if (counter % cooldownFrames == 0)  {
             for (int i = 0; i < fishes.size(); i++) {
                 Fish fish = fishes.get(i);
@@ -52,7 +52,19 @@ public class SpearTower extends Tower {
 
     public void attack(Fish fish, double distance) {
         if (distance <= range) {
-            fish.setHealth(fish.getHealth() - 30);
+            fish.setHealth((int) (fish.getHealth() - damage));
         }
+    }
+
+    public void upgradeOne() {
+        damage = 60;
+    }
+
+    public void upgradeTwo() {
+        fishCountMax = 4;
+    }
+
+    public void upgradeThree() {
+        cooldownFrames = (int) (0.5 * FirstMapActivity.getFps());
     }
 }

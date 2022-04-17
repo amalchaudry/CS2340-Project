@@ -5,6 +5,7 @@ import com.example.odam.fish.Fish;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class Tower {
     protected String name;
@@ -13,12 +14,14 @@ public abstract class Tower {
                                 tower stores the drawable resource id,
                                 imageview is constructed in activity code **/
     protected TowerUpgradeLevel upgradeLevel;
+    protected HashMap<TowerUpgradeLevel, Runnable> upgradeMap = new HashMap<>();
     protected float damage;
     protected int cost;
     protected float range;
     protected float cooldown;
     protected int x;
     protected int y;
+    protected int upgradeCost;
 
     public Tower() {
         name = "";
@@ -28,6 +31,10 @@ public abstract class Tower {
         cost = 0;
         range = 0;
         cooldown = 0;
+        upgradeCost = 300;
+        upgradeMap.put(TowerUpgradeLevel.UPGRADE_ONE, () -> upgradeOne());
+        upgradeMap.put(TowerUpgradeLevel.UPGRADE_TWO, () -> upgradeTwo());
+        upgradeMap.put(TowerUpgradeLevel.UPGRADE_THREE, () -> upgradeThree());
     }
 
     public void update(ArrayList<Fish> fishes) {
@@ -45,8 +52,16 @@ public abstract class Tower {
         }
     }
 
+    public void upgradeTower() {
+        upgradeLevel = upgradeLevel.next();
+        upgradeMap.get(upgradeLevel).run();
+    }
     //distance is should be the distance between them, calculated in update
     public abstract void attack(Fish fish, double distance);
+
+    public abstract void upgradeOne();
+    public abstract void upgradeTwo();
+    public abstract void upgradeThree();
 
     public String getName() {
         return name;
