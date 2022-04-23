@@ -13,8 +13,8 @@
         <entry key="app/src/main/res/layout-land/activity_game_over.xml" value="0.3417223464454503" />
         <entry key="app/src/main/res/layout-land/activity_welcome_screen.xml" value="0.25377068628920024" />
         <entry key="app/src/main/res/layout/activity_config.xml" value="0.2539154052734375" />
-        <entry key="app/src/main/res/layout/activity_first_map.xml" value="0.3465985956285726" />
-        <entry key="app/src/main/res/layout/activity_game_over.xml" value="0.4088541666666667" />
+        <entry key="app/src/main/res/layout/activity_first_map.xml" value="0.45300592718035565" />
+        <entry key="app/src/main/res/layout/activity_game_over.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_welcome_screen.xml" value="0.13721804511278196" />
       </map>
     </option>

@@ -2,6 +2,7 @@ package com.example.odam.tower;
 
 import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
+import com.example.odam.fish.Shark;
 import com.example.odam.gameLogic.Difficulty;
 import com.example.odam.R;
 import com.example.odam.gameLogic.TowerUpgradeLevel;
@@ -56,13 +57,25 @@ public class FishermanTower extends Tower {
         if (distance <= range) {
             switch (currentDiff) {
             case MEDIUM:
-                fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 2));
+                if (fish.getClass() == Shark.class) {
+                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 4));
+                } else {
+                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 2));
+                }
                 break;
             case HARD:
-                fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 4));
+                if (fish.getClass() == Shark.class) {
+                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 6));
+                } else {
+                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 4));
+                }
                 break;
             default:
-                fish.setHealth(0);
+                if (fish.getClass() == Shark.class) {
+                    fish.setHealth(fish.getHealth() - (fish.getMaxHealth() / 2));
+                } else {
+                    fish.setHealth(0);
+                }
                 break;
             }
         }

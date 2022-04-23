@@ -112,13 +112,42 @@ public class FirstMapActivity extends AppCompatActivity {
             TimerTask updateTask = new TimerTask() {
                 @Override
                 public void run() {
+                    Log.d("Final Boss:", Boolean.toString(game.getFinalBoss()));
                     game.update(timer);
                     gameOver(player);
+                    Fish fish = game.addShark();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             binding.lakeHealthText.setText("HP: " + player.getLakeHP());
                             binding.moneyText.setText("Money: " + player.getMoney());
+                            if (fish != null) {
+                                ImageView fishView = new ImageView(FirstMapActivity.this);
+                                fishView.setOnTouchListener(new View.OnTouchListener() {
+                                    public boolean onTouch(View v, MotionEvent event) {
+                                        int action = event.getAction();
+                                        if (action == MotionEvent.ACTION_UP) {
+                                            binding.selectedFish.setText("Fish HP: "
+                                                    + fish.getHealth());
+                                        }
+                                        return true;
+                                    }
+                                });
+                                binding.getRoot().addView(fishView);
+                                fishViews.add(fishView);
+                                fishView.bringToFront();
+                                fishView.setImageResource(fish.getImage());
+                                fishView.setX(fish.getX());
+                                fishView.setY(fish.getY());
+                                fishView.setAdjustViewBounds(true);
+                                fishView.setMaxHeight(100);
+                                fishView.setMaxWidth(100);
+                                fishView.setLayoutParams(new ConstraintLayout.LayoutParams(
+                                        ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                                        ConstraintLayout.LayoutParams.WRAP_CONTENT));
+                                fishView.setDrawingCacheEnabled(true);
+                                gameOver(player);
+                            }
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
                                 Fish fish = game.getFishArr().get(i);
@@ -130,10 +159,10 @@ public class FirstMapActivity extends AppCompatActivity {
                                     fishView.setY(fish.getY());
                                 }
                             }
+
                         }
                     });
                 }
-
             };
             // inst. task for adding new fish onto map
             TimerTask addFishTask = new TimerTask() {

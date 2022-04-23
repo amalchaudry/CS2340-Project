@@ -25,7 +25,7 @@ public abstract class Fish {
             {1230, 870},
             {1300, 1080}
         };
-    
+
     public Fish() {
         x = 0;
         y = 180;
@@ -34,14 +34,19 @@ public abstract class Fish {
     }
 
     public void update(Player player) {
-        int totalHealth;
+        int totalHealth = player.getLakeHP();
         if (isFinished) {
             return;
         }
         if (nextCheckpoint >= checkpoints.length) {
             isFinished = true;
-            totalHealth = player.getLakeHP() - 10;
+            if (getClass() == Shark.class && !isDead) {
+                totalHealth = player.getLakeHP() - 100;
+            } else if (!isDead){
+                totalHealth = player.getLakeHP() - 10;
+            }
             player.setLakeHP(totalHealth);
+            isDead = true;
             return;
         }
         int diffX = checkpoints[nextCheckpoint][0] - x;

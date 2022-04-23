@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.odam.FirstMapActivity;
 import com.example.odam.fish.Fish;
 import com.example.odam.fish.Salmon;
+import com.example.odam.fish.Shark;
 import com.example.odam.fish.Swordfish;
 import com.example.odam.fish.Tuna;
 import com.example.odam.tower.Tower;
@@ -23,7 +24,7 @@ public class Game {
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
     private ArrayList<Tower> towerArr = new ArrayList<>();
     private View v;
-
+    private boolean finalBoss = false;
     private boolean combatStarted = false;
     private boolean updateFish = false;
     private boolean gameOver = false;
@@ -195,6 +196,32 @@ public class Game {
         return newFish;
     }
 
+    public boolean checkAddShark() {
+        if (finalBoss) {
+            return false;
+        }
+        int counter = 0;
+        for (int i = 0; i < fishArr.size(); i++) {
+            if (fishArr.get(i).isDead() == true) {
+                counter++;
+            }
+        }
+        if (fishCounter >= 16 && counter == fishArr.size()) {
+            finalBoss = true;
+            return true;
+        }
+        return false;
+    }
+
+    public Fish addShark() {
+        if (checkAddShark()) {
+            Fish newFish = new Shark();
+            fishArr.add(newFish);
+            return newFish;
+        }
+        return null;
+    }
+
     public void addTower(Tower tower) {
         towerArr.add(tower);
     }
@@ -207,7 +234,7 @@ public class Game {
 
 
     public boolean checkGameOver(Player player) {
-        if (player.getLakeHP() <= 0) {
+        if (player.getLakeHP() <= 0 || fishArr.size() >= 17 && fishArr.get(16).isDead()) {
             gameOver = true;
         }
         return gameOver;
@@ -221,6 +248,18 @@ public class Game {
         int newMoney = player.getMoney() - viewedTower.getCost();
         player.setMoney(newMoney);
         return true;
+    }
+
+    public boolean getFinalBoss() {
+        return finalBoss;
+    }
+
+    public int getFishCounter() {
+        return fishCounter;
+    }
+
+    public void setFishCounter(int fishCount) {
+        fishCounter = fishCount;
     }
 
     public boolean isCombatStarted() {
@@ -258,5 +297,13 @@ public class Game {
 
     public void setViewedTower(Tower viewedTower) {
         this.viewedTower = viewedTower;
+    }
+
+    public void setFinalBoss(boolean b) {
+        finalBoss = b;
+    }
+
+    public void setFishArr(ArrayList<Fish> newFishArr) {
+        fishArr = newFishArr;
     }
 }
