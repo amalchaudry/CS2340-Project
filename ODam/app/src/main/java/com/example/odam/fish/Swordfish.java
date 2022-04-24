@@ -6,7 +6,7 @@ public class Swordfish extends Fish {
     public Swordfish() {
         super();
         fishType = "Swordfish";
-        imageID = R.drawable.fish_swordfish;
+        imageID = R.drawable.swordfish;
         health = 100;
         baseSpeed = 12;
         speed = baseSpeed;

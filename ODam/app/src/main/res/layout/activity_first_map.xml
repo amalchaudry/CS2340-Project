@@ -45,11 +45,11 @@
         android:layout_width="135dp"
         android:layout_height="39dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#87E10A"
         android:text="Start Combat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.988"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/towerInfo" />
 
@@ -84,17 +84,17 @@
         android:id="@+id/upgradeButton"
         android:layout_width="107dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="#FF7F1F"
         android:text="UPGRADE"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="398dp" />
+        tools:layout_editor_absoluteY="374dp" />
 
     <TextView
         android:id="@+id/lakeHealthText"
         android:layout_width="92dp"
         android:layout_height="22dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="328dp"
         android:fontFamily="@font/archivo_black"
         android:text="Lake HP: 0"
@@ -108,8 +108,8 @@
         android:id="@+id/moneyText"
         android:layout_width="127dp"
         android:layout_height="30dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/archivo_black"
         android:text="Money: 0"
         android:textAlignment="textStart"
@@ -119,10 +119,10 @@
 
     <TextView
         android:id="@+id/selectedFish"
-        android:layout_width="147dp"
-        android:layout_height="36dp"
+        android:layout_width="143dp"
+        android:layout_height="42dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="0dp"
         android:fontFamily="@font/archivo_black"
         android:text="Chosen Fish HP: 0"
         android:textAlignment="textStart"
@@ -130,14 +130,14 @@
         app:layout_constraintBottom_toTopOf="@+id/lakeHealthText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <TextView
         android:id="@+id/towerInfo"
         android:layout_width="124dp"
         android:layout_height="87dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/archivo_black"
         android:text="Buy:"
         android:textAlignment="textStart"
@@ -145,15 +145,5 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lakeHealthText" />
-
-    <TextView
-        android:id="@+id/testview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="28dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

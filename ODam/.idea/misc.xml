@@ -10,12 +10,15 @@
         <entry key="..\:/Documents/HW/_Spring 2022/CS 2340/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_main2.xml" value="0.2246376811594203" />
         <entry key="..\:/Documents/HW/_Spring 2022/CS 2340/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_welcome_screen.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Charlie/Documents/HW/CS 2340/2340 Project/Defense-of-The-Fishermen/ODam/app/src/main/res/layout/activity_first_map.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/boat1.xml" value="0.324" />
         <entry key="app/src/main/res/layout-land/activity_game_over.xml" value="0.3417223464454503" />
         <entry key="app/src/main/res/layout-land/activity_welcome_screen.xml" value="0.25377068628920024" />
         <entry key="app/src/main/res/layout/activity_config.xml" value="0.2539154052734375" />
-        <entry key="app/src/main/res/layout/activity_first_map.xml" value="0.45300592718035565" />
+        <entry key="app/src/main/res/layout/activity_first_map.xml" value="0.30228881835937504" />
         <entry key="app/src/main/res/layout/activity_game_over.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_welcome_screen.xml" value="0.13721804511278196" />
+        <entry key="app/src/main/res/layout/boat1.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/boat1.xml" value="0.2385" />
       </map>
     </option>
   </component>

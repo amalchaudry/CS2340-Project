@@ -6,7 +6,7 @@ public class Shark extends Fish {
     public Shark() {
         super();
         fishType = "Shark";
-        imageID = R.drawable.fish_shark;
+        imageID = R.drawable.sharkie;
         health = 200;
         baseSpeed = 12;
         speed = baseSpeed;
