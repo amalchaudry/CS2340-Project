@@ -83,13 +83,16 @@ public class FishermanTower extends Tower {
 
     public void upgradeOne() {
         fishCountMax = 2;
+        imageID = R.drawable.fisherman2;
     }
 
     public void upgradeTwo() {
         fishCountMax = 3;
+        imageID = R.drawable.fisherman3;
     }
 
     public void upgradeThree() {
         fishCountMax = 5;
+        imageID = R.drawable.fisherman3;
     }
 }

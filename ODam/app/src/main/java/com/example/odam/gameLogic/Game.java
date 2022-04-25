@@ -97,11 +97,11 @@ public class Game {
     }
 
     public boolean canPlaceChosenTower(float eventX, float eventY, Bitmap bitmap) {
-        int bitmapOffsetX = 220;
-        int bitmapOffsetY = 25;
+        int bitmapOffsetX = 260;
+        int bitmapOffsetY = 155;
         int viewableWidth = 1980;
         int viewableHeight = 1075;
-        int mapWidth = 1530;
+        int mapWidth = 1580;
         int mapHeight = viewableHeight;
         int bitmapWidth = 3300;
         int bitmapHeight = 1640;
@@ -206,7 +206,7 @@ public class Game {
                 counter++;
             }
         }
-        if (fishCounter >= 16 && counter == fishArr.size()) {
+        if (counter == 15) {
             finalBoss = true;
             return true;
         }
