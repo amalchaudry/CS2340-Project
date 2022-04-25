@@ -95,4 +95,8 @@ public class FishermanTower extends Tower {
         fishCountMax = 5;
         imageID = R.drawable.fisherman3;
     }
+
+    public int getFishCountMax() {
+        return fishCountMax;
+    }
 }

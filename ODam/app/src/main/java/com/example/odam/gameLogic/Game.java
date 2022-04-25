@@ -206,7 +206,7 @@ public class Game {
                 counter++;
             }
         }
-        if (counter == 15) {
+        if (counter == fishArr.size()) {
             finalBoss = true;
             return true;
         }
