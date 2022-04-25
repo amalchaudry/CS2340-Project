@@ -147,6 +147,7 @@ public class FirstMapActivity extends AppCompatActivity {
                                         ConstraintLayout.LayoutParams.WRAP_CONTENT));
                                 fishView.setDrawingCacheEnabled(true);
                                 gameOver(player);
+                                gameWon(fish);
                             }
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
@@ -234,7 +235,7 @@ public class FirstMapActivity extends AppCompatActivity {
                 chosenTowerImage.setX((int) event.getX() + offsetX);
                 chosenTowerImage.setY((int) event.getY() + offsetY);
             }
-            binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
+            //binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
             break;
         case MotionEvent.ACTION_UP:
             if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
@@ -244,8 +245,8 @@ public class FirstMapActivity extends AppCompatActivity {
                 tower.setY((int) event.getRawY());
                 game.setPlayerMoney(player.getMoney() - tower.getCost());
                 game.getTowerArr().add(tower);
-                binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " "
-                        + Integer.toString(game.getTowerArr().get(0).getY()));
+                //binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " "
+                        //+ Integer.toString(game.getTowerArr().get(0).getY()));
                 binding.moneyText.setText("Money: " + player.getMoney());
                 binding.towerInfo.setText("Buy: Purchased! \n "
                         + tower.getName() + " for " + tower.getCost());
@@ -318,11 +319,24 @@ public class FirstMapActivity extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, GameOverActivity.class);
         startActivity(switchActivityIntent);
     }
+
+    private void switchActivitiesWin() {
+        Intent switchActivityIntent = new Intent(this, WinActivity.class);
+        startActivity(switchActivityIntent);
+    }
     public void gameOver(Player player) {
         boolean gO = game.checkGameOver(player);
         if (gO) {
             timer.cancel();
             switchActivities();
+        }
+    }
+
+    public void gameWon(Fish fish) {
+        boolean gW = game.checkWin(fish);
+        if (gW) {
+            timer.cancel();
+            switchActivitiesWin();
         }
     }
 
