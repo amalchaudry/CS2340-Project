@@ -168,7 +168,7 @@ public class Game {
         // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
             Fish fish = fishArr.get(i);
-            if (fish.getHealth() <= 0 && !fish.isDead()) {
+            if (fish.getHealth() <= 0 && fish.isDead() == true) {
                 fish.setDead(true);
                 fishKilled++;
                 addMoney();
@@ -234,7 +234,8 @@ public class Game {
     }
 
     public int moneySpent() {
-        for (int i = 0; i <= towerArr.size(); i++) {
+        moneySpent = 0;
+        for (int i = 0; i < towerArr.size(); i++) {
             moneySpent += towerArr.get(i).getCost();
         }
         return moneySpent;

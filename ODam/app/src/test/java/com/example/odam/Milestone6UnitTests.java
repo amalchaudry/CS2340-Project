@@ -12,10 +12,13 @@ import com.example.odam.tower.BoatTower;
 import com.example.odam.tower.FishermanTower;
 import com.example.odam.tower.SpearTower;
 import com.example.odam.gameLogic.Game;
+import com.example.odam.tower.Tower;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class Milestone6UnitTests {
 
@@ -154,4 +157,37 @@ public class Milestone6UnitTests {
     }
 
 
+     * Tests if money spent is correctly added.
+     */
+    @Test
+    public void testMoneySpent() {
+        Game game1 = new Game(Difficulty.EASY);
+        ArrayList<Tower> arrTower = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            arrTower.add(new BoatTower(Difficulty.EASY));
+        }
+        game1.setTowerArr(arrTower);
+        game1.moneySpent();
+        assertEquals(1650, game1.moneySpent());
+    }
+
+    /**
+     * Tests if correct amount of fish killed is counted.
+     */
+    @Test
+    public void testFishKilled() {
+        Fish fish;
+        Timer timer = new Timer();
+        ArrayList<Fish> arrFish = new ArrayList<>();
+        Game game1 = new Game(Difficulty.EASY);
+        game1.setFishArr(arrFish);
+        for (int i = 0; i < 5; i++) {
+            fish = new Tuna();
+            fish.setDead(true);
+            fish.setHealth(0);
+            arrFish.add(fish);
+        }
+        game1.update(timer);
+        assertEquals(5, game1.getFishKilled());
+    }
 }
