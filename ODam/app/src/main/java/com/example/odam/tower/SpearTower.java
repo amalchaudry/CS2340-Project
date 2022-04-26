@@ -63,13 +63,16 @@ public class SpearTower extends Tower {
 
     public void upgradeOne() {
         damage = 60;
+        imageID = R.drawable.spearman2;
     }
 
     public void upgradeTwo() {
         fishCountMax = 4;
+        imageID = R.drawable.spearman3;
     }
 
     public void upgradeThree() {
         cooldownFrames = (int) (0.5 * FirstMapActivity.getFps());
+        imageID = R.drawable.spearman3;
     }
 }

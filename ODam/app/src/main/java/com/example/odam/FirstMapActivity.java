@@ -99,7 +99,14 @@ public class FirstMapActivity extends AppCompatActivity {
         binding.upgradeButton.setVisibility(View.GONE);
         binding.upgradeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                game.upgradeTower();
+                boolean upgraded = game.upgradeTower();
+                if (upgraded) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            chosenTowerImage.setImageResource(game.getViewedTower().getImage());
+                        }
+                    });
+                }
             }
         });
     }
@@ -115,7 +122,7 @@ public class FirstMapActivity extends AppCompatActivity {
                     Log.d("Final Boss:", Boolean.toString(game.getFinalBoss()));
                     game.update(timer);
                     gameOver(player);
-                    Fish fish = game.addShark();
+                    Fish fish = game.addShark(); //null if added
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -140,8 +147,8 @@ public class FirstMapActivity extends AppCompatActivity {
                                 fishView.setX(fish.getX());
                                 fishView.setY(fish.getY());
                                 fishView.setAdjustViewBounds(true);
-                                fishView.setMaxHeight(100);
-                                fishView.setMaxWidth(100);
+                                fishView.setMaxHeight(200);
+                                fishView.setMaxWidth(200);
                                 fishView.setLayoutParams(new ConstraintLayout.LayoutParams(
                                         ConstraintLayout.LayoutParams.WRAP_CONTENT,
                                         ConstraintLayout.LayoutParams.WRAP_CONTENT));
@@ -152,7 +159,6 @@ public class FirstMapActivity extends AppCompatActivity {
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
                                 Fish fish = game.getFishArr().get(i);
-                                Log.d(Integer.toString(i), Boolean.toString(fish.isDead()));
                                 if (fish.isDead()) {
                                     fishView.setImageResource(0);
                                 } else {
@@ -160,7 +166,6 @@ public class FirstMapActivity extends AppCompatActivity {
                                     fishView.setY(fish.getY());
                                 }
                             }
-
                         }
                     });
                 }
@@ -219,6 +224,7 @@ public class FirstMapActivity extends AppCompatActivity {
         float offsetY = binding.mapImage.getY() - chosenTowerImage.getHeight() / 2;
         switch (action) {
         case MotionEvent.ACTION_DOWN:
+            Log.d("map offset", "X: " + event.getX() + "Y: " + event.getY());
             if (game.isPlacingChosenTower()) {
                 if (game.canBuyChosenTower()) {
                     chosenTowerImage.setImageResource(game.getChosenTower().getImage());
@@ -238,23 +244,23 @@ public class FirstMapActivity extends AppCompatActivity {
             //binding.testview.setText("X: " + event.getRawX() + " Y: " + event.getRawY());
             break;
         case MotionEvent.ACTION_UP:
-            if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
-                    & game.canBuyChosenTower()) {
-                Tower tower = game.getChosenTower();
-                tower.setX((int) event.getRawX() - 130);
-                tower.setY((int) event.getRawY());
-                game.setPlayerMoney(player.getMoney() - tower.getCost());
-                game.getTowerArr().add(tower);
-                //binding.testview.setText(Integer.toString(game.getTowerArr().get(0).getX()) + " "
-                        //+ Integer.toString(game.getTowerArr().get(0).getY()));
-                binding.moneyText.setText("Money: " + player.getMoney());
-                binding.towerInfo.setText("Buy: Purchased! \n "
-                        + tower.getName() + " for " + tower.getCost());
-                chosenTowerImage.setAlpha(1f);
-            } else if (game.getChosenTower() != null) {
-                game.deselectTower();
-                chosenTowerImage.setImageResource(0);
-                chosenTowerImage.setOnTouchListener(null);
+            if (game.isPlacingChosenTower()) {
+                if (game.canPlaceChosenTower(event.getX(), event.getY(), bitmap)
+                        & game.canBuyChosenTower()) {
+                    Tower tower = game.getChosenTower();
+                    tower.setX((int) event.getRawX() - 130);
+                    tower.setY((int) event.getRawY());
+                    game.setPlayerMoney(player.getMoney() - tower.getCost());
+                    game.getTowerArr().add(tower);
+                    binding.moneyText.setText("Money: " + player.getMoney());
+                    binding.towerInfo.setText("Buy: Purchased! \n "
+                            + tower.getName() + " for " + tower.getCost());
+                    chosenTowerImage.setAlpha(1f);
+                } else if (game.getChosenTower() != null && chosenTowerImage != null) {
+                    game.deselectTower();
+                    chosenTowerImage.setImageResource(0);
+                    chosenTowerImage.setOnTouchListener(null);
+                }
             }
             break;
         default:
@@ -266,11 +272,12 @@ public class FirstMapActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     public void newTowerImage(Tower tower) {
         chosenTowerImage = new ImageView(FirstMapActivity.this);
+        ImageView towerImageRef = chosenTowerImage;
         chosenTowerImage.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 if (action == MotionEvent.ACTION_UP) {
-                    showUpgrade(tower);
+                    showUpgrade(tower, towerImageRef);
                 }
                 return true;
             }
@@ -285,8 +292,9 @@ public class FirstMapActivity extends AppCompatActivity {
         chosenTowerImage.setDrawingCacheEnabled(true);
     }
 
-    public void showUpgrade(Tower tower) {
+    public void showUpgrade(Tower tower, ImageView towerImage) {
         game.setViewedTower(tower);
+        chosenTowerImage = towerImage;
         binding.upgradeButton.setVisibility(View.VISIBLE);
     }
 

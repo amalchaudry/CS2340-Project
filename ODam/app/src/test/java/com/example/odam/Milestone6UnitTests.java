@@ -49,7 +49,7 @@ public class Milestone6UnitTests {
         Fish fish;
         ArrayList<Fish> arrFish = new ArrayList<>();
         Game game1 = new Game(Difficulty.EASY);
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 16; i++) {
             fish = new Tuna();
             fish.setDead(true);
             arrFish.add(fish);
@@ -58,6 +58,33 @@ public class Milestone6UnitTests {
         game1.setFishArr(arrFish);
         game1.setFinalBoss(false);
         game1.addShark();
-        assertEquals(Shark.class, arrFish.get(17).getClass());
+        assertEquals(Shark.class, arrFish.get(16).getClass());
+    }
+
+    /**
+     * This tests if upgrade once works
+     */
+    @Test
+    public void upgradeOnce() {
+        FishermanTower fisherman = new FishermanTower(Difficulty.EASY);
+        Game game1 = new Game(Difficulty.EASY);
+        game1.setViewedTower(fisherman);
+        game1.upgradeTower();
+        assertEquals(fisherman.getFishCountMax(), 2);
+        assertEquals(fisherman.getImage(), R.drawable.fisherman2);
+    }
+
+    /**
+     * This tests if upgrade twice works
+     */
+    @Test
+    public void upgradeTwice() {
+        FishermanTower fisherman = new FishermanTower(Difficulty.EASY);
+        Game game1 = new Game(Difficulty.EASY);
+        game1.setViewedTower(fisherman);
+        game1.upgradeTower();
+        game1.upgradeTower();
+        assertEquals(fisherman.getFishCountMax(), 3);
+        assertEquals(fisherman.getImage(), R.drawable.fisherman3);
     }
 }
