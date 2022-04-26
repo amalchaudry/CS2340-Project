@@ -122,6 +122,7 @@ public class FirstMapActivity extends AppCompatActivity {
                     Log.d("Final Boss:", Boolean.toString(game.getFinalBoss()));
                     game.update(timer);
                     gameOver(player);
+                    gameWon();
                     Fish fish = game.addShark(); //null if added
                     runOnUiThread(new Runnable() {
                         @Override
@@ -153,8 +154,6 @@ public class FirstMapActivity extends AppCompatActivity {
                                         ConstraintLayout.LayoutParams.WRAP_CONTENT,
                                         ConstraintLayout.LayoutParams.WRAP_CONTENT));
                                 fishView.setDrawingCacheEnabled(true);
-                                gameOver(player);
-                                gameWon(fish);
                             }
                             for (int i = 0; i < fishViews.size(); i++) {
                                 ImageView fishView = fishViews.get(i);
@@ -340,8 +339,8 @@ public class FirstMapActivity extends AppCompatActivity {
         }
     }
 
-    public void gameWon(Fish fish) {
-        boolean gW = game.checkWin(fish);
+    public void gameWon() {
+        boolean gW = game.checkWin();
         if (gW) {
             timer.cancel();
             switchActivitiesWin();

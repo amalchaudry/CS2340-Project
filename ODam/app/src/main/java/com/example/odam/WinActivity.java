@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.example.odam.databinding.ActivityWinBinding;
 import com.example.odam.gameLogic.Game;
-import com.example.odam.gameLogic.GameApplication;
 
 public class WinActivity extends AppCompatActivity {
     private ActivityWinBinding binding;
@@ -30,11 +29,11 @@ public class WinActivity extends AppCompatActivity {
         binding.buttonreStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchActivities();
+                switchActivitiesWin();
             }
         });
     }
-    private void switchActivities() {
+    private void switchActivitiesWin() {
         Intent switchActivityIntent = new Intent(this, WelcomeScreenActivity.class);
         startActivity(switchActivityIntent);
     }

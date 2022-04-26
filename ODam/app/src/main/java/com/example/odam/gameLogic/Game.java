@@ -164,7 +164,7 @@ public class Game {
 
     public boolean update(Timer timer) {
         boolean gameOver = checkGameOver(player);
-        boolean gameWon = checkWin(fish);
+        boolean gameWon = checkWin();
         // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
             Fish fish = fishArr.get(i);
@@ -246,19 +246,16 @@ public class Game {
         player.setMoney(money);
     }
 
-    public boolean checkWin(Fish fish) {
-        if (fish.getClass() == Shark.class) {
-            if (fish.getHealth() == 0 && !fish.isDead()) {
-                gameWon = true;
-            } else {
-                gameOver = true;
-            }
+    public boolean checkWin() {
+        gameWon = false;
+        if (fishArr.size() >= 17 && fishArr.get(16).isDead()) {
+            gameWon = true;
         }
         return gameWon;
     }
 
     public boolean checkGameOver(Player player) {
-        if (player.getLakeHP() <= 0 || fishArr.size() >= 17 && fishArr.get(16).isDead()) {
+        if (player.getLakeHP() <= 0) {
             deathCounter++;
             gameOver = true;
         }
