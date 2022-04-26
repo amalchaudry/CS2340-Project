@@ -120,7 +120,7 @@ public class Milestone6UnitTests {
      * Tests the upgrade feature and ensures that tower can only update 3 times
      */
     @Test
-    public void upgradeImage() {
+    public void upgradeMax() {
         FishermanTower fishMan = new FishermanTower(Difficulty.EASY);
         Game game1 = new Game(Difficulty.EASY);
         game1.setViewedTower(fishMan);
