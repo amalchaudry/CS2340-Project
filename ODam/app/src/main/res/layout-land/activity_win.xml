@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WinActivity">
+
+    <ImageView
+        android:id="@+id/gameOver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/winscreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonreStart"
+        android:layout_width="226dp"
+        android:layout_height="91dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginBottom="32dp"
+        android:background="#558080"
+        android:text="Play Again"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/gameOver" />
+
+    <TextView
+        android:id="@+id/totalDeathText"
+        android:layout_width="200dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="500dp"
+        android:layout_marginBottom="164dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Total Deaths:"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/fishKilledText"
+        android:layout_width="200dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="264dp"
+        android:layout_marginBottom="164dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Fish Killed:"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/moneySpentText"
+        android:layout_width="200dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="164dp"
+        android:fontFamily="@font/archivo_black"
+        android:text="Money Spent:"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
