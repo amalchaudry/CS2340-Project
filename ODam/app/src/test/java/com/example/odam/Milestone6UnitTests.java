@@ -146,17 +146,6 @@ public class Milestone6UnitTests {
         assertEquals(spearMan.getImage(), R.drawable.spearman3);
     }
 
-    /**
-     * 
-     */
-
-    @Test
-    public void sharkDeath () {
-        Shark sharkie = new Shark();
-
-    }
-
-
      * Tests if money spent is correctly added.
      */
     @Test
