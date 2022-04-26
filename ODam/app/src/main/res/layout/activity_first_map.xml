@@ -46,12 +46,15 @@
         android:layout_height="39dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
         android:backgroundTint="#87E10A"
         android:text="Start Combat"
+        app:layout_constraintBottom_toTopOf="@+id/fisherButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.988"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/towerInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/towerInfo"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/Spearman"
@@ -84,11 +87,13 @@
         android:id="@+id/upgradeButton"
         android:layout_width="107dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#FF7F1F"
         android:text="UPGRADE"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="374dp" />
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Boatman" />
 
     <TextView
         android:id="@+id/lakeHealthText"

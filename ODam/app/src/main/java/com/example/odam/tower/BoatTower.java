@@ -68,15 +68,18 @@ public class BoatTower extends Tower {
     public void upgradeOne() {
         range = 400;
         slowPercent = 0.5;
+        imageID = R.drawable.boat2;
     }
 
     public void upgradeTwo() {
         range = 500;
         slowPercent = 0.45;
+        imageID = R.drawable.boat3;
     }
 
     public void upgradeThree() {
         range = 600;
         slowPercent = 0.4;
+        imageID = R.drawable.boat3;
     }
 }

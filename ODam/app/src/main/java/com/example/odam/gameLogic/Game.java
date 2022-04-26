@@ -20,6 +20,7 @@ public class Game {
     private Difficulty diff;
     private Shop shop;
     private Player player;
+    private Fish fish;
     private Tower viewedTower;
     private ArrayList<Fish> fishArr = new ArrayList<Fish>();
     private ArrayList<Tower> towerArr = new ArrayList<>();
@@ -28,6 +29,10 @@ public class Game {
     private boolean combatStarted = false;
     private boolean updateFish = false;
     private boolean gameOver = false;
+    private boolean gameWon = false;
+    private int deathCounter = 0;
+    private int fishKilled = 0;
+    private int moneySpent = 0;
     private int fishCounter = 0; //represent fish generated in round
 
 
@@ -97,11 +102,11 @@ public class Game {
     }
 
     public boolean canPlaceChosenTower(float eventX, float eventY, Bitmap bitmap) {
-        int bitmapOffsetX = 220;
-        int bitmapOffsetY = 25;
+        int bitmapOffsetX = 260;
+        int bitmapOffsetY = 155;
         int viewableWidth = 1980;
         int viewableHeight = 1075;
-        int mapWidth = 1530;
+        int mapWidth = 1580;
         int mapHeight = viewableHeight;
         int bitmapWidth = 3300;
         int bitmapHeight = 1640;
@@ -159,11 +164,13 @@ public class Game {
 
     public boolean update(Timer timer) {
         boolean gameOver = checkGameOver(player);
+        boolean gameWon = checkWin();
         // easy solution is remove that fish from fish array
         for (int i = 0; i < fishArr.size(); i++) {
             Fish fish = fishArr.get(i);
             if (fish.getHealth() <= 0 && !fish.isDead()) {
                 fish.setDead(true);
+                fishKilled++;
                 addMoney();
             } else {
                 fish.update(player);
@@ -206,7 +213,7 @@ public class Game {
                 counter++;
             }
         }
-        if (fishCounter >= 16 && counter == fishArr.size()) {
+        if (counter == fishArr.size() && fishArr.size() >= 16) {
             finalBoss = true;
             return true;
         }
@@ -226,18 +233,37 @@ public class Game {
         towerArr.add(tower);
     }
 
+    public int moneySpent() {
+        for (int i = 0; i <= towerArr.size(); i++) {
+            moneySpent += towerArr.get(i).getCost();
+        }
+        return moneySpent;
+    }
+
     public void addMoney() {
         int money = player.getMoney();
         money += 50;
         player.setMoney(money);
     }
 
+    public boolean checkWin() {
+        gameWon = false;
+        if (fishArr.size() >= 17 && fishArr.get(16).isDead()) {
+            gameWon = true;
+        }
+        return gameWon;
+    }
 
     public boolean checkGameOver(Player player) {
-        if (player.getLakeHP() <= 0 || fishArr.size() >= 17 && fishArr.get(16).isDead()) {
+        if (player.getLakeHP() <= 0) {
+            deathCounter++;
             gameOver = true;
         }
         return gameOver;
+    }
+
+    public int getDeathCounter() {
+        return deathCounter;
     }
 
     public boolean upgradeTower() {
@@ -306,4 +332,6 @@ public class Game {
     public void setFishArr(ArrayList<Fish> newFishArr) {
         fishArr = newFishArr;
     }
+
+    public int getFishKilled() { return fishKilled; }
 }
